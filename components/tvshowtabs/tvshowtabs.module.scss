@@ -1,0 +1,20 @@
+@import "variables.scss";
+
+.tabsHome {
+    margin-top: -50px;
+    position: relative;
+    z-index: 2;
+    @include breakpoint(tablet) {  margin-top: 0; }
+        .tabsInner{
+            &.active{display: block;}
+            &.inactive{display: none;}
+        }
+   
+}
+
+.tabsInner1{ padding:0 55px; margin-bottom:10px;
+    @include breakpoint(mac) { }
+    @media (max-width: 1299px) { padding:0 25px; }
+    @include breakpoint(tablet) {  padding:0 15px; }
+}
+

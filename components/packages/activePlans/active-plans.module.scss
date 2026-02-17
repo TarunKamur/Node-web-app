@@ -1,0 +1,62 @@
+@import 'variables.scss';
+.active_plan{ max-width: 1000px; margin: auto; padding:10px 20px;
+        @include breakpoint(tablet-potrait) {
+            width: 100%;
+            padding: 0 10px;
+        }
+        @include breakpoint(tablet) {
+            max-width: 760px;
+            padding: 0;
+            margin: 0 auto;
+        }
+    
+        @include breakpoint(mobile) {
+            width: 100%;
+        }
+    .active_plan_inner{
+        // background: #232323;
+        border-radius: 6px;
+        border: 2px solid $Order-summary-border;
+        // box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+        box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+        .active_plan_header{ border-bottom: 1px solid $Order-summary-border; opacity: 0.8;
+            font-size: 18px; line-height: 38px; padding: 0% 20px; background: $Order-summary-header-bg;
+            @include breakpoint(tablet) { font-size:16px; line-height: 44px;}
+            @include breakpoint(mobile-common) { font-size:14px; line-height: 40px;}
+        }
+        .active_plan_body{
+            padding: 20px;
+            .active_plan_details{
+                display: flex;
+                justify-content: space-between;
+                @include breakpoint(mobile) { display: block; }
+                .active_plan_name,.active_plan_expiry{
+                    .label,.value {
+                        display: block;
+                    }
+                    .label{
+                        font-size: 14px;
+                        margin-bottom: 6px;
+                        opacity: 0.8;
+                    }
+                    .value{
+                        font-size: 18px;
+                        @include breakpoint(tablet) { font-size:17px; }
+                        @include breakpoint(mobile) { font-size:16px; }
+                }
+                }
+                .active_plan_expiry{
+                    @include breakpoint(mobile) { margin-top:20px; }
+                }
+
+            }
+        }
+
+        &.ismobile{
+            width: 100%;
+            .active_plan_details{
+                display: block;
+            }
+        }
+    }
+}

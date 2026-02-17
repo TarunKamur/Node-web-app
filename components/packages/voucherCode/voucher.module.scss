@@ -1,0 +1,104 @@
+@import "@/styles/variables.scss";
+
+.coupon_code{
+    border: 2px solid $Order-summary-border; padding: 20px 28px 20px;
+    border-radius: 6px; margin-top:20px; display: block; overflow: hidden;
+    &.have_code{ cursor: pointer;
+      h3{ display: block;}
+      .coupon_code_inner{ display: none;}
+    }
+    &.bottomOverlay{
+        background-color: $secondary-color !important; margin-top: 0; border-radius: 0;
+        @include breakpoint(mobile) { border: none !important; }
+        .close_icon {
+            cursor: pointer;
+            z-index: 999;
+            position: absolute;
+            right: 0;
+            padding: 20px;
+            top: 0;
+            &::after {
+              content: " ";
+              display: block;
+              width: 20px;
+              height: 20px;
+              background: url(https://d2ivesio5kogrp.cloudfront.net/static/yvs/images/sprite-icons.png)
+                no-repeat;
+              background-position: -44px 2px;
+            }
+            @include breakpoint(mobile) {
+              background: $bottom-layout-gradient;
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+    }
+    .coupon_code_inner{
+        @include breakpoint(mobile) { display: none;}
+    }
+    h3{ margin: 0; font-size: 18px; color: #fff; font-weight: 400; text-align: center;}
+    h4{ font-size: 16px; color: #fff; opacity: .85; font-weight: 300;
+        @include breakpoint(mobile) { text-align: center; }
+    }
+    p{ font-size:11px; color:rgba(255, 255, 255, 0.6); margin:10px 0 15px;
+      @include breakpoint(mobile) { text-align: center; }
+    }
+    .coupon_section{
+      .coupon_box{
+        .input_section{ position: relative;
+          @include breakpoint(mobile) { display: flex; }
+          input{
+            background: none;
+            border: none;
+            padding: 0 10px;
+            font-size: 14px;
+            color: #fff;
+            display: block;
+            width: calc(100% - 106px);
+            margin-top:10px; border:dashed 1px $input-border; height:40px;
+            padding-right:120px;
+            border-radius: 3px; float: left;
+            &:focus, &:focus-visible{
+              border:dashed 1px $input-border-focus; outline: none;
+            }
+            &.not_valid{ border-color:$coupon-error;}
+            @include breakpoint(mobile) { padding-right: 0px; width: calc(100% - 96px); }
+          }
+        }
+        button{
+          width: 96px;
+          height: 40px;
+          background: $coupon-button;
+          border-radius: 3px;
+          border: none;
+          color: #fff;
+          font-size: 12px;
+          cursor: pointer;
+          margin-left: 10px;
+          right:5px;
+          float:left; margin-top:10px;
+          &:hover{
+            background: $coupon-button-hover;
+          }
+          &.disabled{
+            opacity: 0.6; cursor: not-allowed;
+            &:hover{ background-color:$coupon-button;}
+          }
+          @include breakpoint(mobile) { margin-left: 0; border-radius: 0 3px 3px 0;}
+        }
+        .error{ color:$coupon-error; font-size:11px; margin-top:3px;}
+      }
+    }
+}
+.showInMob{
+    display: none !important;
+    @include breakpoint(mobile) { display: block !important;}
+}

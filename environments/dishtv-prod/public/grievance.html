@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" lang="en" prefix="og:http://ogp.me/ns#" itemscope="" itemtype="http://schema.org/WebPage">
+
+<head>
+	<title>Watcho</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+    <link rel="icon" type="image/x-icon" href="https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/watcho-favicon.png" />
+		
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+		
+		<style>
+            th{
+                text-align: center;
+            }
+            td:first-child{
+                text-align: center;
+            }
+            .subtext{
+                text-align: left !important;
+            }
+			*{ margin:0; padding:0;}
+ body{  font-family: "Poppins", sans-serif;}
+ body.default_theme {background: #232323;}
+ body.white_theme { background:white;}
+ 
+ body.white .grievance_container.template {
+      color: black;
+    }
+            ::-webkit-scrollbar {
+    width: 6px;
+    }
+    /* Track */
+    ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+    border-radius: 6px;
+    }
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 6px;
+    }
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    }
+			.template-fluid .grievance_container{min-height: 500px;}
+			.grievance_container .header h1{font-size: 22px; line-height: 1.2; font-weight: 400;}
+
+			@media screen and (max-width: 1200px){
+				.template-fluid .grievance_container{width: 100%;}
+				.template-fluid .grievance_container{min-height: 300px;}
+			}
+			/* @media screen and (max-width: 768px){
+				.template-fluid .grievance_container ul .tabList{padding: 12px 15px;margin-bottom: 15px;}
+				.template-fluid .grievance_container ul li button{font-size: 14px;}
+				.template-fluid .grievance_container ul .tabList:after{top: 20px;}
+				.template-fluid .grievance_container .accordian-head .accordionTitle{font-size: 14px;padding: 12px 15px;}
+				.template-fluid .grievance_container .accordian-head .accordionContent{font-size: 12px;padding: 12px 15px 6px;}
+				.template-fluid .grievance_container .accordian-head .accordionTitle::after{top: 15px;}
+				.template-fluid .grievance_container .accordian-head.is-open .accordionTitle::after{top: 19px;}
+				.template-fluid .grievance_container .accordian-head{margin-bottom: 15px;}
+			} */
+
+			/* mobile html css */
+			.grievance_container{ width:100%;}
+			.grievance_container .tabcontent h1{color: #f5f5f5; font-size: 24px; line-height: 1.2;}
+			.grievance_container .header{ position: relative; margin-bottom: 25px;}
+			.grievance_container .header h1{ color:#f5f5f5; font-weight:500;padding-left: 30px;}
+			.grievance_container ul{ padding:0; margin-top: 8px;}
+			.grievance_container ul .tabList{ padding:15px 20px; background:#2d2d2d; border-radius:4px;
+				margin-bottom:20px; list-style:none; position:relative; transition:all 0.3s;cursor: pointer;
+			}
+			.grievance_container .header .back{position: absolute;top: 0;cursor: pointer;}
+			/* .grievance_container ul li:hover{ background:#333;} */
+			.grievance_container ul li button{background: #2d2d2d;border: none;color: #fff;font-size: 16px; text-align:left;}
+			.grievance_container ul .tabList:after{border: solid #ccc; border-width: 0 2px 2px 0; display: inline-block; padding: 4px;
+				transform: rotate(-45deg); -webkit-transform: rotate(-45deg); content:"";
+				position:absolute; right:25px; top:22px;
+			}
+			
+			.grievance_container .accordian-head{margin-bottom: 20px;position: relative;list-style: none;}
+			.grievance_container .accordian-head .accordionTitle::after{border: solid #ccc; border-width: 0 2px 2px 0; display: inline-block; padding: 4px;
+				transform: rotate(45deg); -webkit-transform: rotate(45deg); content:"";
+				position:absolute; right:25px; top:20px;transition: .2s ease-in-out;
+			}
+			.grievance_container .accordian-head.is-open .accordionTitle::after{transform: rotate(-135deg); -webkit-transform: rotate(-135deg);transition: .2s ease-in-out;top: 24px;}
+			.grievance_container .accordian-head .accordionTitle{color:#fff; font-size:14px; text-decoration:none;
+				display:block; padding-right:50px; background:none; border:none; text-decoration:none; cursor:pointer;padding: 15px 15px;background: #2d2d2d;border-radius: 4px;}
+			.grievance_container .accordian-head .accordionContent{color: #fff;padding: 16px 20px 8px;font-size: 14px;border-radius: 3px;display: none;opacity: 0.85;}
+			.grievance_container .accordian-head .accordionContent p{margin-bottom: 15px;}
+			.grievance_container .accordian-head.is-open .accordionContent{display: block;}
+			.grievance_container .accordian-head .accordionContent ul,.grievance_container .accordian-head .accordionContent ol{padding-left: 40px;margin-bottom: 8px;}
+			.grievance_container .accordian-head .accordionContent ol li{list-style: decimal;}
+			.grievance_container .accordian-head .accordionContent ul li{list-style: disc;}
+			.grievance_container .accordian-head .accordionContent .bullet{list-style: disc;}
+			.grievance_container .accordian-head .accordionContent .link{text-decoration: none;color: #04a5e8;}
+
+			.tabcontent { color: #000; display: none; padding: 0px 0px; }
+			#defaultOpen{ display:block;}
+
+            .template-fluid{  height: 99%;  overflow: auto; }
+            .html-terms .template{ padding:50px 15px;font-size:16px; color:#fff;}
+            .template-fluid .html-terms.template{padding: 0 20px 0 0 ;}
+            .html-terms{padding: 0;}
+            .html-terms .temp_inner h1{color:#fff; padding:0; margin:0;}
+            .html-terms .temp_inner p{font-size:14px; color:#858585; margin-bottom:15px; word-break: break-word;}
+            .html-terms .temp_inner .list_item{ margin:15px 0 5px; display: block;}
+            .html-terms .temp_inner .lists{ margin-bottom:15px;}
+            .html-terms .temp_inner .lists p{ padding-left:20px; margin-bottom:5px;}
+            .html-terms .mt10{ margin-top:10px;}
+            .html-terms .ml15{ margin-left:15px;}
+            .html-terms .title{font-size: 18px;font-weight: 400; margin-bottom: 8px; line-height: 1.2;}
+            .html-terms .mt20 {margin-top: 20px;font-size: 14px;}
+            .html-terms a{ color:#0056b3; cursor: pointer;font-size: 14px;}
+            .html-terms table th,table td { color: #fff;padding: 10px;vertical-align: top; border: 1px solid #858585;border-collapse: collapse;}
+            .html-terms table td{color:#858585;}
+            .html-terms table th{color:#fff;}
+            .html-terms table td a{color:#858585;}
+            .html-terms table td a:hover{color:#0056b3;text-decoration: underline;}
+            .html-terms.template ul {padding-left: 35px;color: #858585;font-size: 14px;}
+            .html-terms.template ul li {list-style: disc !important;padding-left:5px !important;}
+            .html-terms  ul li a{  color:#858585;text-decoration: none;}
+            .html-terms  ul li a:hover{  color:#0056b3;;text-decoration: underline;}
+			/* .accordionTitle {cursor: pointer;-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;user-select: none} */
+
+            @media screen and (max-device-width: 1024px){ 
+            body.default_theme {background: #141414;}
+            body.white_theme{background: #fff;}
+            .grievance_container.template{background: #141414;}
+            body.white {background: white;}
+            body.white .grievance_container.template{background: #fff;}
+            ::-webkit-scrollbar {
+            display: none;
+            }
+            }
+			@media screen and (max-width: 768px){
+				.grievance_container{width: 100%;}
+				.grievance_container .header h1, .grievance_container .tabcontent h1{font-size: 24px;font-weight: 400; }
+				.grievance_container .header .back{top: 2px}
+				.grievance_container ul .tabList{padding: 10px 30px 10px 15px;margin-bottom: 15px;}
+				.grievance_container ul li button{font-size: 14px;}
+				.grievance_container ul .tabList:after{top: 17px;}
+				.grievance_container ul .tabList:after{right: 15px;}
+				.grievance_container .accordian-head .accordionTitle{font-size: 14px;padding: 15px 30px 15px 15px}
+				.grievance_container .accordian-head .accordionContent{font-size: 12px;}
+				/* .grievance_container .accordian-head .accordionTitle::after{top: 13px;right: 15px;} */
+				.grievance_container .accordian-head.is-open .accordionTitle::after{top: 18px;}
+				.grievance_container .accordian-head{margin-bottom: 20px;}
+				.grievance_container .accordian-head .accordionContent ul, .grievance_container .accordian-head .accordionContent ol{padding-left: 30px;}
+			}
+            @media screen and (max-device-width: 768px){
+                .grievance_container .accordian-head .accordionTitle{font-size: 14px;
+                    padding: 10px 30px 10px 15px;}
+                .grievance_container .accordian-head .accordionTitle::after {
+                    top: 13px;
+                    right: 15px;
+                }  
+                .grievance_container .accordian-head .accordionContent{
+                    padding: 12px 15px 6px;
+            
+                } 
+            }
+			@media screen and (max-width : 480px){
+				.grievance_container .tabcontent{padding:0px;}
+				.grievance_container .header{margin-bottom: 20px;}
+				.grievance_container h1{font-size: 22px;}
+                .grievance_container h5{ font-size:18px; margin-bottom:30px;}
+				.grievance_container .header .back{top: 3px;height: 20px;}
+				.grievance_container .accordian-head .accordionContent ul, .grievance_container .accordian-head .accordionContent ol{padding-left: 20px;}
+			}
+      
+            .white_theme .grievance_container.template {padding:50px 15px; background: white; font-size:16px;}
+            .white_theme .grievance_container.template .tabcontent h1{color: #2d2d2d;}
+		</style>
+	</head>
+	<body id="grievance" class="default_theme">
+		<div class="grievance_container template">
+			<div class="tabcontent" id="defaultOpen">
+				<h1>Register Grievance</h1>
+				<ul>
+					<li onclick="accordion(this.id)" id='00'class="accordian-head">
+						<a class="accordionTitle" >Register Grievance for OTT Content</a>
+						<div class="accordionContent">
+							<div class="html-terms template">
+                                <h5 class="title">COMPLAINT POLICY AND PROCEDURE</h5>
+                                <span class="mt20">Table of contents:</span>
+                                <ul class="mt10">
+                                    <li>Making A Complaint</li>
+                                    <li>Procedure For Complaints Management</li>
+                                    <li>What If You Are Unhappy With The Resolution?</li>
+                                    <li>Record Keeping</li>
+                                </ul>
+                                <div class="temp_inner">
+                                    <div class="mt20">
+                                        <p> Dish Infra Services Private Limited (“Dish Infra”) is committed to ensuring that any person or organization using services provided by Dish Infra or affected by its operations has the right to lodge a complaint and to have their concerns addressed in ways that ensure access and equity, fairness, accountability and transparency.</p>
+                                         
+                                        <p>We provide a complaints management procedure in respect of online curated content published and that is simple to use and is available to all via the Watcho website /App. We ensure that your complaints are fairly assessed and responded to promptly.</p>
+                                       
+                                        <div class="mt10">
+                                            <span class="list_item" id="account">Making A Complaint</span>
+                                            <p>1. A person wishing to make a complaint may do so in writing email to the Grievance Officer at the email -grievance@watcho.com or a letter at the Address FC-19, Sector 16A, Film City, Noida -201306</p>
+                                            <p>2.Grievance Officer will be responsible for receiving this correspondence and acknowledge the complaint within 24 hours.</p>
+                                            <span class="list_item">Procedure For Complaints Management:</span>
+                                            <p>The Grievance Officer will be responsible for:</p>
+                            
+                                            <span class="list_item">1. Registering the complaint:</span>
+                                            <div class="lists">
+                                                <ul class=" ml15">
+                                                    <li>You will be acknowledged within 24 hours that the complaint has been received.</li>
+                                                </ul>
+                                            </div>
+                                            <span class="list_item"> 2. Resolving the complaint</span>
+                                            <div class="lists">
+                                                <ul class=" ml15">
+                                                    <li>Your complaint will be examined and will be decided within 15 days of being received.</li>
+                                                    <li> If you do not receive our decision within 15 days of lodging of your complaint, you may escalate to the self-regulating body prescribed under the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021.</li>
+                                                </ul>
+                                            </div>
+                                            <span class="list_item">What If You Are Unhappy With The Resolution?</span>
+                                            <div class="lists">
+                                                <ul class=" ml10">
+                                                    <li>If you are not happy with the outcomes of a complaint or our decision, you may prefer an appeal with the self-regulating body.</li>
+                                                    <li> If you are not happy with the outcomes of a complaint or the decision of the self-regulating body, you may prefer an appeal with the Oversight Mechanism prescribed under the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021.</li>
+                                                </ul>
+                                            </div>
+                                            <span class="list_item">Record Keeping</span>
+                                            <div class="lists">
+                                                <ul class=" ml10">
+                                                    <li>A register of complaints will be kept by Dish Infra at its office.</li>
+                                                    <li>The complaints record and files will be confidential and access is restricted.</li>
+                                                </ul>
+                                            </div>
+                                            <div style="overflow-x: auto;" class="table-scroll">
+                                                <table style="width:100%;margin-bottom: 10px;">
+                                                    <tr>
+                                                        <th>Sl.No.	</th>
+                                                        <th>Grievance and Actions taken</th>
+                                                        <th>Number</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Grievances pending at the beginning of the month</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Grievances received during the month</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Grievances disposed out of (1) above</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Grievances disposed out of (2) above</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>Grievances pending at the end of the month (1+2-3-4)</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6</td>
+                                                        <td colspan="2">Classification of grievances disposed</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>6a</td>
+                                                        <td>Grievances not related to Code of Ethics</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td rowspan="4">6b</td>
+                                                        <td>Grievances related to Code of Ethics:</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="subtext">(i) Agreed to by the publisher and action taken</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="subtext">(ii) Not agreed to by the publisher</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="subtext">(iii) Any other action taken</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7</td>
+                                                        <td colspan="2">Orders, directions and advisories received from Central Government and Self regulatory Bodies</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7(a)</td>
+                                                        <td>Number of Orders, directions and advisories received</td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>7(b)</td>
+                                                        <td>Orders, directions and advisories complied to</td>
+                                                        <td></td>
+                                                    </tr>
+                                                  
+                                                </table>
+                                            </div>
+                                            <p>Last Updated On: September 30, 2022</p>
+                                    </div>  
+                                </div>
+                              </div>
+                            </div>
+						</div>
+					</li>
+					<!-- <li onclick="accordion(this.id)" id='01'class="accordian-head">
+						<a class="accordionTitle" >Register Grievance for Social Media Content</a>
+						<div class="accordionContent">
+                            <div class="html-terms template">
+                                <h5 class="title">COMPLAINT POLICY AND PROCEDURE</h5>
+                                <span class="mt20">Table of contents:</span>
+                                <ul class="mt10">
+                                    <li><a href="#account">Making A Complaint</a></li>
+                                    <li><a href="">Procedure For Complaints Management</a></li>
+                                    
+                                    <li><a href="">Record Keeping</a></li>
+                                </ul>
+                                <div class="temp_inner">
+                                    <div class="mt20">
+                                        <p> Dish Infra Services Private Limited (“Dish Infra”) is committed to ensuring that any person or organization using services provided by Dish Infra or affected by its operations has the right to lodge a complaint and to have their concerns addressed in ways that ensure access and equity, fairness, accountability and transparency.</p>
+                                         
+                                        <p>We provide a complaints management procedure in respect of online curated content published and that is simple to use and is available to all via the Watcho website /App. We ensure that your complaints are fairly assessed and responded to promptly.</p>
+                                       
+                                        <div class="mt10">
+                                            <span class="list_item" id="account">Making A Complaint</span>
+                                            <p>1. A person wishing to make a complaint may do so in writing email to the Grievance Officer at the email -grievance@watcho.com or a letter at the Address FC-19, Sector 16A, Film City, Noida -201306</p>
+                                            <p>2.Grievance Officer will be responsible for receiving this correspondence and acknowledge the complaint within 24 hours.</p>
+                                            <span class="list_item">Procedure For Complaints Management:</span>
+                                            <p>The Grievance Officer will be responsible for:</p>
+                            
+                                            <span class="list_item">1. Registering the complaint:</span>
+                                            <div class="lists">
+                                                <ul class=" ml15">
+                                                    <li>You will be acknowledged within 24 hours that the complaint has been received.</li>
+                                                </ul>
+                                            </div>
+                                            <span class="list_item"> 2. Resolving the complaint</span>
+                                            <div class="lists">
+                                                <ul class=" ml15">
+                                                    <li>Your complaint will be examined and will be decided within 15 days of being received.</li>
+                                                    <li> If you do not receive our decision within 15 days of lodging of your complaint, you may escalate to the self-regulating body prescribed under the Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules 2021.</li>
+                                                </ul>
+                                            </div>
+                            
+                                            <span class="list_item">Record Keeping</span>
+                                            <div class="lists">
+                                                <ul class=" ml10">
+                                                    <li>A register of complaints will be kept by Dish Infra at its office.</li>
+                                                    <li>The register will be maintained by the Grievance Officer and will record the following for each complaint:</li>
+                                                    <li> Details of the complainant and the nature of the complaint</li>
+                                                    <li>Date lodged</li>
+                                                    <li> Action taken</li>
+                                                    <li>Date of resolution and reason for decision</li>
+                                                    <li>Indication of complainant being notified of outcome</li>
+                                                    <li>Complainant response and any further action</li>
+                                                    <li>Copies of all correspondence and other materials received by Dish Infra in connection with any complaints will be kept confidential.</li>
+                                                </ul>
+                                            </div>
+                                            <div style="overflow-x: auto;" class="table-scroll">
+                                                <table style="width:100%;text-align: center;margin-bottom: 10px;">
+                                                    <tr>
+                                                        <th>Sr	</th>
+                                                        <th>Contents</th>
+                                                        <th>Counts</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td> Complaint Received</td>
+                                                        <td>00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td> Action taken on complaint</td>
+                                                        <td>00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td> Reply sent</td>
+                                                        <td>00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td> Order/direction received</td>
+                                                        <td> 00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td> Action taken on such orders/directions</td>
+                                                        <td> 0</td>
+                                                    </tr>
+                                                  
+                                                </table>
+                                            </div>
+                                            <p>Last Updated On: September 30, 2022</p>
+                                    </div>  
+                                </div>
+                              </div>
+                            </div>
+						</div>
+					</li> -->
+				
+				</ul>
+			</div>
+		</div>
+		<script>
+			function openPage(pageName) {
+				var url = new URL(window.location.href);
+				url.searchParams.append('item', pageName)
+				window.location.href = url.href;				
+			}
+				valParam = location.search;
+				if(valParam){
+					item = new URLSearchParams(valParam).get('item');
+					theme = new URLSearchParams(valParam).get('theme');
+					deviceid = new URLSearchParams(valParam).get('deviceid');
+					lang = new URLSearchParams(valParam).get('lang');
+					if(item){
+						document.getElementById('defaultOpen').style.display = "none";
+						document.getElementById(item).style.display = "block";
+					}					
+				}
+			function accordion(id){
+				// const  a = document.querySelector('.is-open');
+				// myFunction(id)
+				if(document.getElementById(id).classList.contains('is-open')){				
+					document.getElementById(id).classList.remove('is-open');
+				}
+				else{
+					document.getElementById(id).classList.add('is-open')				
+				}
+			}
+			// function myFunction(e) {
+			// 	var elems = document.querySelector(".is-open");
+			// 	if(elems !==null){
+			// 		elems.classList.remove("is-open");
+			// 	}
+			// }
+			function back(){
+				window.history.back();
+			}
+            var params = {};
+         themes = ['white']
+         for (const [key, value] of (new URLSearchParams(location.search))) {
+             params[`${key}`] = `${value}`
+             
+         }
+         if(!!params.theme && themes.includes(params.theme)){
+           document.getElementById("grievance").classList.add("white_theme");
+         }
+		</script>
+	</body>
+</html>

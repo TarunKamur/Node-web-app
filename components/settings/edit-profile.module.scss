@@ -1,0 +1,147 @@
+@import "variables.scss";
+
+.editProfileCont{ width:100%; min-height:100vh; margin:0 auto; background: $body-color;  height:100%;  
+    display: flex; align-items: center; justify-content: center;padding: 121px 0px;
+    
+    @include breakpoint(mobile) {
+    flex-direction: column; padding-top: 10px; justify-content: normal;}
+    .mobileBack {
+        display: none; width: 100%;position: fixed; top: 0px; 
+        border-bottom: 1px solid $mobileBack-border; z-index: 2;
+    
+        @include breakpoint(mobile) {
+            display: flex;
+            padding: 16px 20px 16px 18px;
+            background: $settings-mobileback-bg;
+            gap: 10px;
+            font-weight: 400;
+            font-size: 16px;
+            text-align: left;
+        }
+    }
+    .editProfileCen{
+        width: 700px;
+        padding: 30px 40px;
+        background:$popup-bg; 
+        border-radius: $border-radius;
+        @include breakpoint(tablet) { max-width: 100%; margin-top: 48px; padding: 30px 20px; }
+        @include breakpoint(mobile-common-land) {width: 100%; }
+        @include breakpoint(mobile){ margin-top: 40px;}
+        h4{margin-bottom: 23px; font-weight: 400; font-size: 22px; line-height: 1.2; color: $text-color;
+            @include breakpoint(tablet) { font-size:20px;} 
+            @include breakpoint(mobile) { font-size:18px;} 
+            @include breakpoint(mobile-common-land){font-size: 16px;}
+        }
+            .editForm{
+                form{
+                    display: flex;   flex-direction: column;
+                    input{  font-family: Poppins, sans-serif; color: $text-color !important; 
+                        -webkit-text-fill-color:  $text-color !important;
+                        font-size: 14px; }
+                    .mobile_field{pointer-events: none;}
+                    .nameNumField{ display: flex; gap: 30px; 
+                        @include breakpoint(mobile-common-land) {gap: 0;}
+                        @include breakpoint(mobile-common-land) {
+                             flex-direction: column;
+                        }}
+                    .forgot{ position: relative;  text-align: left; width: 50%;  
+                        text-wrap: nowrap;
+                          @include breakpoint(mobile-common-land) {width: 100%;} 
+                          .valid_error{bottom: 4px; color: $danger; margin-top: -3px;
+                              font-size: 12px;}
+                      }
+                      .ageField{  width: 47.5%; 
+                        @include breakpoint(mobile-common-land) {width: 100%;}  }
+                      .btncont{
+                          display: flex;
+                          gap: 20px;
+                          .button{ min-height:44px; line-height: 44px;  text-transform: none; width: 100%; font-size: 14px; font-weight: normal;
+                            @include breakpoint(mac){font-size: 16px;}
+                            @include breakpoint(laptop){font-size: 14px; }
+                            @include breakpoint(tablet){margin-top: 20px;}
+                        }
+                        .cancel{ background: none; border: 1px solid #666;color: $text-color;
+                            &:hover {background: none !important;}
+                          }
+                    }
+        .genderCont{ display: flex; flex-direction: column; gap: 10px;color:$grey-text-color; line-height: 20px; margin: 10px 0px 30px;
+            @include breakpoint(mobile){margin-bottom: 10px;}
+           .genderLabelSh{font-weight: 400; color: $text-color; font-size: 12px;}
+            .genderLabel { position: relative; display: flex; 
+                    font-size: 14px; color: $grey-text-color;
+                    .loopGender{
+                        input{display: none;}
+                        .radiobtn{
+                            position: relative;
+                            padding-left: 25px;
+                            cursor: pointer;
+                            line-height: 20px;
+                            display: inline-block;
+                            color: #666;
+                            margin-right: 10px;
+                            font-size: 14px;
+                            &::before{
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 18px;
+                                height: 18px;
+                                border: 1px solid #666;
+                                border-radius: 100%;
+                                background: transparent;
+                                box-sizing: border-box;
+                            }
+                        }
+                        input[type=radio]:checked + .radiobtn::before{
+                                content: "";
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 18px;
+                                height: 18px;
+                                border: 1px solid $primary-color;
+                                border-radius: 100%;
+                                background: transparent;
+                                                        }
+                        input[type=radio]:checked + .radiobtn::after{
+                            content: "";
+                            width: 10px;
+                            height: 10px;
+                            background: $primary-color;
+                            position: absolute;
+                            top: 4px;
+                            left: 4px;
+                            border-radius: 100%;
+                            transition: all .2s ease;
+                        }
+                        input[type=radio]:not(:checked)+ .radiobtn::after{
+                            content: "";
+                            width: 10px;
+                            height: 10px;
+                            background: $primary-color;
+                            position: absolute;
+                            top: 4px;
+                            left: 4px;
+                            border-radius: 100%;
+                            transition: all .2s ease;
+                        }
+                        input[type=radio]:checked + .radiobtn::after{
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                        input[type=radio]:not(:checked )+ .radiobtn::after{
+                            opacity: 0;
+                            transform: scale(0);
+                        }
+                    }
+            }
+        }
+      
+                }
+                .noteFields{
+                    font-size: 12px;color: $grey-text-color;  text-align: center; margin-top: 40px;
+                }
+            }
+    }
+}

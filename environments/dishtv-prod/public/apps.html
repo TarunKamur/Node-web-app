@@ -1,0 +1,239 @@
+<html>
+
+<head>
+    <base href="/">
+    <title>Watcho</title>
+    <meta charset="utf-8">
+   <link rel="icon" type="image/x-icon" href="https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/watcho-favicon.png" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <script type="text/javascript" src="https://dd5fjho32kkoi.cloudfront.net/staticstorage/yuppflix_files/jQuery.min.js?v=0.31"></script>
+    <script>
+        // load Branch
+        (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking qrCode".split(" "), 0);
+        // init Branch      
+        var options = { no_journeys: true };
+        branch.init('key_live_kfRjeIpRvXzvCEEzGMp6YmpaEFn7AXvK', options, function(err, data) {});
+       // key_live_kfRjeIpRvXzvCEEzGMp6YmpaEFn7AXvK
+       //key_test_fBjnHmKHZA3Pty6g5t0m1kheqxfJfLW8
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   
+    body {
+        background-color: #333333;
+        color: #fff;
+        font-size: 14px;
+        font-family: 'Lato', sans-serif;
+        background: url(https://d2ivesio5kogrp.cloudfront.net/static/gotv/images/sign-in-bg.jpg);
+    }
+
+    .bgimg {
+        text-align: center;
+        background-attachment: fixed;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 30px;
+        padding: 30px 0;
+    }
+    a {
+        color: #ffffff;
+    }
+    .wasa{ display: block;overflow: hidden;}
+    ul{overflow: hidden;display: flex;align-items: center;justify-content: center;padding: 0;}
+    li{float:left; list-style: none;
+        }
+    img{width: 90%;}
+   
+    #spinner{
+     display: none;
+     position: absolute;
+     inset: 0;
+     align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: rgb(89, 89, 89);
+    opacity: 0.7;
+     }
+    
+    .nk-spinner {
+          position: relative;
+          box-sizing: border-box;
+          width: 90px;
+          height: 90px;
+          text-indent: -9999em;
+          border: 6px solid  rgba(#fff, .3);
+          border-left: 6px solid #fff;
+          border-radius: 50%;
+        animation: nk-spinner .8s infinite linear;
+    }
+
+    @keyframes nk-spinner {
+        100% { transform: rotate(360deg) }
+    }
+    
+</style>
+
+</head>
+
+<body> 
+
+    <div class="container" >
+        
+        <section>
+
+            <div class="row bgimg" id="container-in">
+                <div class="col-md-12 text-center">
+                    <img src="https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/logo.svg" alt="logo" style="padding: 15px 0; width: 100px;">
+                </div>
+                <div class="text-center col-md-12">
+                    <h4 style="color:#ffffff; font-size: 20px; font-weight: bold;">Watch Watcho TV on the Go!</h4>
+                    <h4 style="color:#ffffff; font-size: 16px; font-weight: bold;">Download our Mobile App on your phone.</h4>
+                </div>
+            </div>
+            <div class="wasa">
+                <ul style="text-align: center;">
+                  <li class="">
+                      <a target="_blank" href="https://apps.apple.com/in/app/watcho-original-web-shows/id1440733653"><img class="img-responsive yupptv-white-app-image-auto" 
+                        src="https://d13v5ue6svgdmz.cloudfront.net/images/float_bar/iOSAppstore-1.png" alt="iOS App store"></a>
+                  </li>
+                  <li class=""><a target="_blank" href="https://play.google.com/store/apps/details?id=com.watcho">
+                    <img class="img-responsive yupptv-white-app-image-auto" src="https://d13v5ue6svgdmz.cloudfront.net/images/float_bar/GooglePlay-1.png" alt="Google Play"></a>
+                </li>
+                </ul>
+            </div>
+        </section>
+        <div id="spinner">
+            <div class="nk-spinner">
+         </div>
+   </div>
+        
+    </div>
+    
+    <script>
+        var spinner = document.getElementById("spinner")
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                return "Windows Phone";
+            }
+
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+            if (/Win|Mac|Linux/i.test(userAgent)) {
+                return "Desktop";
+            }
+
+            return "unknown";
+        }   
+        function getQueryParams(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const params = {};
+            for (const [key, value] of urlParams.entries()) {
+                params[key] = value;
+            }
+            if(Object.keys(params).length){
+                if(!!params.source){
+                    params.utm_source = params.source;
+                    delete params.source;
+                }
+                if(!!params.referrervalue){
+                    params.utm_uid = params.referrervalue;
+                    delete params.referrervalue;
+                }
+                if(!!params.campaign){
+                    params.utm_campaign = params.campaign;
+                    delete params.campaign;
+                }
+                if(!!params.Medium){
+                    params.utm_medium = params.Medium;
+                    delete params.Medium;
+                }
+                if(!!params.medium){
+                    params.utm_medium = params.medium;
+                    delete params.medium;
+                }
+                if(!!params.deeplink){
+                    params.utm_deeplink = params.deeplink;
+                    delete params.deeplink;
+                }
+            }
+            return params;
+            
+        }
+  
+        function DetectAndServe() {
+            let os = getMobileOperatingSystem();
+            let qParams = getQueryParams();
+            if(Object.keys(qParams).length){  
+                let ops= encodeURIComponent(Object.keys(qParams).map(function(k) {
+                    return k + '=' + qParams[k]
+                }).join('&')) 
+                if (os == "Android") {
+                   window.location.href = `https://play.google.com/store/apps/details?id=com.watcho&referrer=${ops}`;
+                   
+                } else if (os == "iOS") {
+                    //window.location.href = "https://apps.apple.com/in/app/watcho-original-web-shows/id1440733653";  
+                    creatLink(qParams);
+                }   
+                if (os == "Desktop" && !!qParams.utm_deeplink) {
+                    window.location.href = qParams.utm_deeplink
+                }
+            } else {
+                if (os == "Android") {
+                    window.location.href = "https://play.google.com/store/apps/details?id=com.watcho";
+                } else if (os == "iOS") {
+                    // window.location.href = "https://apps.apple.com/in/app/watcho-original-web-shows/id1440733653"; 
+                    creatLink(qParams);
+                }
+                if (os == "Desktop" && !!qParams.utm_deeplink) {
+                    window.location.href = qParams.utm_deeplink
+                }
+            }
+        }
+
+        function creatLink(pp){
+            spinner.style.display = "flex"
+            var linkData = {
+            campaign: pp.utm_campaign,
+            channel: pp.utm_source,
+            feature: pp.utm_uid,
+            medium: pp.utm_medium,
+            stage: 'new user',
+            tags: [ 'tag1', 'tag2', 'tag3' ],
+            alias: '',
+            data: pp
+            };
+
+            branch.link(linkData, function(err, link) {           
+                    let handle =window.open(link || err);
+                    if (!handle) {
+                        window.location.href=link || err;
+                    }              
+                   // window.open(link || err);
+                   setTimeout(()=>{
+                           spinner.style.display = 'none';
+                   }, 3000);
+
+            });
+
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            DetectAndServe();
+        });
+
+      
+       
+    </script>
+</body>
+
+</html>

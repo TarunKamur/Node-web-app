@@ -1,0 +1,238 @@
+@import 'variables.scss';
+
+.container{
+  padding-top: 120px;
+    width: 1000px;
+    margin: 0 auto;
+    @include breakpoint (mac){
+        width: 850px;
+    }
+    @include breakpoint (laptop){
+        width: 800px;
+        padding-top: 100px;
+    }
+    @include breakpoint (tablet-portrait){
+        width: 700px;
+    }
+  
+    @include breakpoint (tablet){
+      padding: 0;
+    }
+    @include breakpoint (mobile){
+        width: auto;
+        margin: 0;
+        padding: 0 20px;
+    }
+
+    .heading{
+        font-size: 24px;
+        color:var(--arrow-color);
+        font-weight: 500;
+        margin: 20px 0;
+        display: flex;
+        gap: 10px;
+        &>img{
+          display: none;
+        }
+        @include breakpoint (mac){
+            font-size: 22px;
+        }
+        @include breakpoint (laptop){
+            font-size: 20px;
+        }
+        @include breakpoint (mobile){
+          font-size: 18px;
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          margin: 0;          
+        background: black;
+        padding: 20px 10px;
+        border-bottom: 1px solid #ffffff42;
+          &>img{
+            display: block;
+          }
+
+      }
+    }
+    .cardswraper {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        @include breakpoint(mobile){
+          padding-top: 80px;
+          // background-color: #2d2d2d;
+          width: 100%;
+          height: 100vh;
+        }
+    }
+}
+
+
+
+// pay-popup styles starts here
+.modal {
+    background: $secondary-color;
+    color: $white-color;
+    border-radius: 12px;
+    width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    margin-top: 3%;
+    @include breakpoint (mobile){
+      width: auto;
+      margin: 0 20px;
+    }
+    .header{
+      // background: red;
+      border-bottom: 1px solid $grey-color;
+      .headercontent {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        
+        p {
+          font-size: 18px;
+          font-weight: 400;
+          margin: 0;
+          @include breakpoint (laptop){
+            font-size: 16px;
+          }
+          @include breakpoint (mobile){
+            font-size: 14px;
+          }
+        }
+      
+        .closeButton {
+          background: transparent;
+          color: #ffffff;
+          font-size: 30px;
+          border: none;
+          cursor: pointer;
+          @include breakpoint (laptop){
+            font-size: 28px;
+          }
+          @include breakpoint (mobile){
+            font-size: 24px;
+          }
+        }
+       
+      }
+    }
+    .detailsList {
+      list-style: none;
+      margin: 0;
+      padding: 10px 20px;
+      font-size: 14px;
+    
+      li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        font-size: 16px;
+        padding: 5px 0;
+        @include breakpoint (laptop){
+          font-size: 14px;
+        }
+        @include breakpoint (mobile){
+          font-size: 12px;
+        }
+    
+        &:last-child {
+          margin-bottom: 16px;
+        }
+    
+        span:first-child {
+          // font-weight: 500;
+          color: $white-color;
+          opacity: 0.8;
+  
+        }
+    
+        span:last-child {
+          // font-weight: 500;
+        }
+      }
+    }
+      
+  .status {
+    display: inline-block;
+    margin-top: 0.25rem;
+    padding: 1px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 25px;
+   
+
+    &.success {
+        color: #6fc290;
+        background-color: #00FF9433;
+    }
+
+    &.canceled {
+        color: #F54B5F;
+        background-color: #533;
+    }
+}
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 10px 20px;
+  @include breakpoint (mobile){
+    padding: 5px 20px;
+    // justify-content: center;
+  }
+
+  .downloadButton {
+ background: transparent;
+    border: none;
+    color: #ffffff;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    @include breakpoint (laptop){
+      font-size: 14px;
+    }
+    @include breakpoint (mobile){
+      font-size: 12px;
+    }
+
+  }
+
+  .okayButton {
+    
+    background: transparent;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    @include breakpoint (laptop){
+      font-size: 13px;
+    }
+    @include breakpoint (mobile){
+      font-size: 12px;
+
+    }
+
+    &:hover {
+      background: #ffffff;
+      color: #1c1c1e;
+    }
+  }
+}
+  }
+  
+  
+  
+ 
+
+  
+  
+  

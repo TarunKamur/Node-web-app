@@ -1,0 +1,90 @@
+@import "@/styles/variables.scss";
+
+.payment_success_container{
+  width: 36%;
+    padding: 40px;
+    background: $payment-success-bg;
+    margin: 50px auto;
+    margin-top: 150px;
+    @include breakpoint(mobile) {
+      width: 100%;
+      background: none;
+      margin-top: 30px;
+    };
+    .payment_success_inner{
+      text-align: center;
+      margin:0 auto;
+      img{
+          margin-bottom: 20px;
+          width: 48px;
+          cursor: pointer;
+      }
+      .message1{
+        font-size: 22px;
+          font-weight: 400;
+          margin-bottom: 20px;
+          color: #fff;
+          @include breakpoint(mac){
+            font-size: 20px;
+              margin-bottom: 15px;
+          }
+                    @include breakpoint(laptop) {
+                      font-size: 20px;
+                    }
+                    
+                 @include breakpoint(mobile-common-land) {
+                   font-size: 18px;
+                 }
+      }
+
+      .message2{
+          font-size: 16px;
+          color: hsla(0, 0%, 100%, .75);
+          display: block;
+          line-height: 30px;
+          margin: 0;
+          font-weight: 400;
+          @include breakpoint(tablet) {
+              font-size: 15px;
+             
+            }
+          
+            @include breakpoint(mobile) {
+              font-size: 14px;
+            }
+      }
+
+      .btn_wrap{
+        text-align: center;
+        padding-top: 81px;
+          @include breakpoint(mac) {
+            padding-top: 60px;
+            }
+                    @include breakpoint(mac) {
+                      padding-top: 40px;
+                    }
+           .btn{
+            line-height: 1.5;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+              border: 0;
+              font-family: Poppins, sans-serif;
+              text-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+              min-width: 130px;
+              padding: 7px 20px;
+              display: inline-block;
+              position: relative;
+              cursor: pointer;
+              background-color: $primary-color;
+              color:#fff;
+              width: 192px;
+              padding: 12px 19px;
+                font-weight: 400;
+                font-size: 16px;
+                border-radius: 3px;
+                @include breakpoint(mac) {
+                   padding: 12px 0;
+                  }
+           }
+      }
+    }
+}

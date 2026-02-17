@@ -1,0 +1,843 @@
+@import "variables.scss";
+
+.tablet_logo{  position: fixed; cursor: pointer; max-width: 180px; max-height: 80px; left: 120px; top: 60px;
+  @include breakpoint(widescreen){left: 90px; top: 57px; max-width: 138px;}
+  @include breakpoint(laptop){left: 78px; top: 50px; max-width: 122px;}
+  @include breakpoint(tablet){ display: none;}
+}
+.manage_profile,
+.select_profile {
+  padding: 145px 100px 0;
+  // min-height: 100vh !important;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    // height: 100vh;
+   @include breakpoint(laptop){padding-top: 120px;}
+   @include breakpoint(mobile){padding: 0;}
+
+    .mobile_logo { display: none;
+        @media (max-width: 767px) {  display: block; width: 80px; margin-top: 20px;
+            margin-left: 10px; margin-right: auto }
+        @media (max-width: 640px) { width: 50px; }
+    }
+  
+    h2 { font-size: 32px; font-weight: normal;  display: block;
+        color: $text-color;
+        @media (max-width: 1440px) { font-size: 32px;  }
+        @media (max-width: 1366px) { font-size: 26px;  }
+        @media (max-width: 991px) {  font-size: 22px;margin-top: 50px; }
+        @media (max-width: 767px) { font-size: 20px; }
+        @media (max-width: 640px) { font-size: 18px; }
+        @include breakpoint(mobile) {  margin-top: 35px; }
+    }
+    .subText{font-size: 16px;  color: #fff; opacity: 0.8; font-weight: 400;
+      // @include breakpoint(laptop){margin-bottom: 90px;}
+     @include breakpoint(mobile){font-size: 12px; margin-bottom: 64px; margin-top: 10px;}
+    }
+    
+    .manage__profile_btn{margin-top: 0; margin-left: auto; background: none; min-width: 100px;}
+    .user_profiles { margin: 120px auto 0; text-align: center; display: flex;
+      align-items: flex-start; justify-content: center;
+        // gap:10px;
+        @include breakpoint(mobile) { display: grid; padding:0 ; grid-template-columns: auto auto; gap:  32px 64px;}
+        @include breakpoint(mobile-small){padding: 0;}
+        .profile { width: 218px; float: left; padding: 0 10px;
+            @media (max-width: 1440px) { width: 164px; }
+            @include breakpoint(laptop){width: 145px;}
+            @include breakpoint(mobile) { flex-basis: 120px; max-width: 120px; flex-grow: 1;
+               }
+              @include breakpoint(mobile-common-land){max-width: 100px; flex-basis: 100px;}
+            .inner { position: relative; background: #343434; height: 162px; width: 162px; display: inline-flex; align-items: center; justify-content: center;
+              border-radius: 50%;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16); cursor: pointer;
+                @media (max-width: 1440px) { width: 122px; height: 122px; border-radius: 50%;}
+                @include breakpoint(laptop){width: 108px; height: 108px;}
+                @include breakpoint(mobile) { width:110px; height: 110px;}
+                @include breakpoint(mobile-common-land){width: 88px; height: 88px;}
+                .profile_img { width: 100%; height: 100%; border-radius: 50%;
+                    
+                    // @include breakpoint(mobile) {  height: auto;}
+                }
+                .loader_active { opacity: 0.5; pointer-events: none; cursor: not-allowed; }
+                .lock { position: absolute; right: 6px; top: 6px;
+                    width: 20px; height: 20px;
+                    @media (max-width: 767px) { width: 16px; height: 16px; }
+                }
+                .edit{ position: absolute; left:0; right:0; top:0; bottom:0; margin:auto; z-index: 2;
+                    display: block;
+                    @include breakpoint(tablet) { width:28px; height:28px; }
+                    @include breakpoint(mobile) { width:24px; height:24px; }
+                }
+                .overlay{ width:100%; height:100%; background: rgba(0, 0, 0, 0.65); z-index:1; left:0; right:0; border-radius: 7px;
+                    top:0; display: block; position: absolute; border-radius: 50%;
+                }               
+                .is_children { position: absolute; bottom: 8px; right: 0; left: 0; color: $text-color; opacity: 0.75; 
+                    text-shadow: 1px 1px 1px #000; font-size: 14px;
+                    @media (max-width: 1366px) { font-size: 13px; }
+                    @media (max-width: 767px) {font-size: 12px; }
+                }
+
+                .btn_loader { 
+                   position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                }
+                
+            }
+
+            &.add_profile {
+                .inner { display: inline-flex; align-items: center; justify-content: center;
+                    flex-direction: column;  margin-bottom: 6px;
+                    .add_icon { width: 42px; height: 42px;
+                        @media (max-width: 991px) { width: 35px; height: 35px; }
+                        @media (max-width: 767px) { width: 28px; height: 28px; }
+                    }
+
+                    .profile_name { margin-top: 10px; display: block; color: #fff; font-size: 20px;}
+                }
+
+            }
+
+            .profile_name { font-size: 20px; color: $text-color; margin-top: 10px;
+                display: block; overflow: hidden; text-overflow: ellipsis; 
+                @media (max-width: 1440px) { margin-top: 10px; }
+                @media (max-width: 1366px) { font-size: 14px; }
+                @media (max-width: 991px) { font-size: 14px; margin-top: 4px; min-height: 21px;}
+                @media (max-width: 640px) { font-size: 12px; margin-top: 0px; min-height: 18px; margin-bottom: 5px;}
+            }
+        }
+   
+    }
+
+    button { padding: 10px 5px; float: left; border: none; background: none; color: #fff;
+        min-width: 220px; text-align: center; margin-top: 110px; font-size: 21px;
+        border-radius: 3px;
+        -moz-border-radius: 3px; -webkit-border-radius: 3px;
+        @include breakpoint(widescreen){font-size: 16px;}
+        @include breakpoint(laptop){margin-top: 90px;}
+   
+    }
+    .manage__profile__btn{
+      @include breakpoint(mobile){display: none;}
+    }
+}
+.btn_div{display: none; padding: 22px 16px;
+  @include breakpoint(mobile){display: flex; justify-content: end;}
+  .manage_mobile__btn{background: none; border: none; outline: none; 
+  color: #fff; font-size: 12px; 
+}
+}
+
+
+.mobBackHead{height: 60px;width: 100%;background: $settings-mobileback-bg;align-items: center;padding: 0 20px; display:none;
+  @include breakpoint(tablet) { display: block; position: fixed; top:0; left:0; width:100%; display: flex; z-index: 2;}
+  img{width: 24px;height: 24px;}
+  h2{font-size: 16px;margin: 0 10px;color: $white-color;font-weight: normal;
+  
+  
+  }
+}
+.update_profile,
+.create_profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 30px;
+  @include  breakpoint(mobile){margin-top: 60px;}
+  .update_inner {
+    margin: 120px auto 30px;
+    width: 680px;
+    // height: 580px;
+    @media (max-width: 991px) {width: 100%;height:inherit; margin-top: 15px;}
+    @include  breakpoint(mobile){margin-top: 0;}
+    h2 {
+      font-size: 36px;
+      color: $text-color;
+      font-weight: 400;
+      margin-bottom: 20px;
+      @include breakpoint(mac){font-size: 32px;}
+      @include breakpoint(laptop){font-size: 26px;
+        margin-bottom: 15px;}
+      @media (max-width: 991px) {display: none;}
+    }
+    .edit_body {
+      padding: 40px 0 16px;
+      border-top: 1px solid #555;
+      border-bottom: 1px solid #555;
+      overflow: hidden;
+      @include breakpoint(laptop){padding: 25px 0;}
+    @media (max-width: 991px) {border: none;padding:20px 0}
+    @include breakpoint(mobile){padding: 0;}
+      .profile_icon_left {
+        width: 160px;
+        float: left;
+        position: relative;
+        height: 160px;
+        display: block;
+        background: #7a7a80;
+        border-radius: 6px;
+        overflow: hidden;
+        @media (max-width: 991px) {float: inherit;margin: 20px auto 40px; height:120px;width:120px}
+       @include breakpoint(mobile){    width: 100px;
+        height: 100px;
+        margin-bottom: 0!important;}
+        @include breakpoint(mobile-common){    width: 80px;
+          height: 80px;}
+        .profile_icon {
+          width: 100%;
+        }
+        .edit_icon {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          width: 34px;
+          height: 34px;
+          cursor: pointer;
+          z-index: 1;
+          @media (max-width: 991px) {width: 24px;height:24px;bottom:4px;right:4px;}
+          @include breakpoint(mobile-common){    width: 16px;
+            height: 16px;}
+        }
+        .child{
+          font-size: 11px;
+    color: $white-color;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    position: absolute;
+    display: block;
+    text-align: center;
+    text-shadow: 1px 1px 1px #000;
+    @include breakpoint(mobile){    bottom: 6px;}
+    @include breakpoint(tablet){bottom: 4px; right: 10px; font-size: 8px;}
+    // @include breakpoint(mobile-common){font-size: 10px;}
+        }
+      }
+      .profile_edit {
+        float: left;
+        margin: 0 0 0 40px;
+        width: calc(100% - 220px);
+        @media (max-width: 991px) {float: inherit; margin: 30px auto;
+          width: calc(100% - 140px);}
+        @media (max-width: 767px){width: calc(100% - 40px);}
+        @media (max-width: 576px) {width: calc(100% - 40px); margin-top: 4px;
+        }
+        .input_label {
+          border: 1px solid #555;
+          cursor: pointer;
+          position: relative;
+          border-radius: 4px;
+          margin-top: 20px;
+          margin-bottom: 38px;
+          height: 50px;
+          width: 100%;
+          display: block;
+          @include breakpoint(mac){margin-top: 10px;}
+          .label_title {
+            color: #888;
+            font-size: 12px;
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            background: #141414;
+            padding: 0 5px;
+            z-index: 1;
+          }
+          .input_box {
+            background: none;
+            border: none;
+            color: $text-color;
+            padding: 0 100px 0 16px;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.65;
+            font-size: 15px !important;
+            height: 48px;
+            line-height: 48px;
+            display: inline-block;
+            @media (max-width: 576px) {padding: 0 50px 0 16px;}
+            &:focus {
+              outline: none;
+            }
+          }
+          .lang_more {
+            position: absolute;
+            left: 125px;
+            top: 15px;
+            font-size: 14px;
+            color: $primary-color;
+            cursor: pointer;
+            font-style: italic;
+          }
+          .more_channels_arrow {
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            cursor: pointer;
+            border-right: 5px solid transparent;
+            border-top: 7px solid #555;
+            position: absolute;
+            right: 14px;
+            top: 22px;
+            content: "";
+          }
+        }
+        .forgot{ position: relative; height: 92px; text-align: left;    
+         
+          .valid_error{ color: $danger; position: absolute;
+              font-size: 12px;} 
+            input{ color:$grey-text-color !important; padding: 13.5px 110px 14px 14px; opacity: 1; }           
+            label{font-size: 14px; position: absolute; user-select: none;} 
+            .child_control{
+              position: absolute;
+                top: 16px;
+               right: 16px;
+               label{
+                border: none;
+                display: flex;
+                align-items: center;
+                height: 50px;
+                position: relative;
+                .sm_label{
+                display: inline-block;
+                font-size: 12px;
+                color: #888;
+                margin-right: 10px;
+                cursor: pointer;
+    }
+    input{
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      cursor: pointer;
+      position: absolute;
+      z-index: -1;
+      display: none;
+      &:checked ~ .checkbox_indicator{
+        background: $primary-color;
+        border: 2px solid $primary-color;
+        &::after{display: block;}
+       
+      }
+      &:checked ~ .sm_label{
+        color: $primary-color;
+      }
+     }
+     .checkbox_indicator{
+      border: 2px solid #555;
+    height: 20px;
+    width: 20px;
+    border-radius: 2px;
+    position: relative;
+    &::after{
+      left: 5px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+      content: "";
+      position: absolute;
+      display: none;
+      box-sizing: border-box;
+    }
+     }
+               }
+           
+            }
+        }
+
+        .maturity_section {
+          padding: 20px 0;
+          border-top: solid 1px #555555;
+          // border-bottom: 1px solid #555555;
+          &.kids{
+            border-bottom: none;
+          }
+          h2 {
+            font-size: 20px;
+            display: block;
+            margin-bottom: 14px;
+            font-weight: normal;
+            color: $text-color;
+            @media (max-width: 1440px) {
+              font-size: 18px;
+            }
+            @media (max-width: 1366px) {
+              font-size: 17px;
+            }
+            @media (max-width: 991px) {
+              font-size: 16px;
+            }
+            @media (max-width: 360px) {
+              font-size: 14px;
+            }
+          }
+          .maturity_actions {
+            display: block;
+            overflow: hidden;
+            button {
+              padding: 10px 25px;
+              float: left;
+              border: none;
+              background: rgba(255, 255, 255, 0.15);
+              color: $text-color;
+              border-radius: 3px;
+              -moz-border-radius: 3px;
+              -webkit-border-radius: 3px;
+              font-size: 16px;
+              @media (max-width: 767px) {
+                font-size: 14px;
+                margin-bottom: 5px;
+              }
+              @media (max-width: 360px) {
+                font-size: 12px;
+              }
+              &:first-child {
+                margin-right: 16px;
+              }
+            }
+            .isChildren {
+              cursor: not-allowed;
+            }
+            .no_btn_beh {
+              cursor: default;
+            }
+          }
+          span {
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px;
+            display: block;
+          }
+        }
+
+        .profile_lock {
+          padding: 20px 0;
+          border-top: solid 1px #555555;
+          .lock {
+            margin-right: 8px;
+            opacity: 0.65;
+            @media (max-width: 991px) {
+              display: none;
+            }
+          }
+          .pr_label {
+            font-size: 14px;
+            color: $grey-text-color;
+            span {
+              font-size: 16px;
+              color: $text-color;
+              font-weight: bold;
+              cursor: pointer;
+              &.on_off {
+                color: $primary-color;
+              }
+            }
+          }
+        }
+      }
+    }
+    .btns{
+      &.mob{display: none;
+        @include breakpoint(tablet){
+          display: flex;
+          font-size: 14px;
+          color: $text-color;
+          align-items: center;
+          background: none;
+          border: none;
+          padding: 0;
+          margin: 0 auto;
+        }
+        img{margin-right: 5px;}
+      }
+    }
+    .footer_action {
+      display: flex;
+      // align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+      @include breakpoint(tablet){margin: 0; padding: 30px 20px 0;}
+      @media (max-width: 576px){margin: 0;}
+      .btns {
+        font-size: 16px;
+        padding: 10px 5px;
+        margin-right: 16px;
+        width: 140px;
+        color: $text-color;
+        border-radius: 2px;
+        @include breakpoint(tablet){font-size: 14px; }
+        @include breakpoint(mobile){    width: calc(50% - 8px);
+          max-width: 200px;}
+      
+        &:last-child{margin-right: 0; color:$primary-button-text-color;}
+       
+       &.del{@include breakpoint(tablet){display: none;}}
+       &:disabled{opacity: .5;}
+       
+      }
+    }
+  }
+}
+
+.Profileworks{padding: 180px 90px 0px; 
+  @include breakpoint(laptop){padding: 130px 60px 0px;}
+  @include breakpoint(tablet){padding: 100px 40px 0px;}
+  @include breakpoint(mobile){
+    padding: 0;
+  }
+  .mobileHeaderback{display: none;
+   @include breakpoint(mobile){display: flex; position: fixed; top: 0;
+    background: #1E1E1E; padding: 16px; width: 100%; align-items: center;
+    img{width: 20px; margin-right: 8px; @include breakpoint(mobile){width: 14px; height: 16px; cursor: pointer;}}
+    h2{font-size: 16px; font-weight: 400;}
+  }
+  }
+  .Profileworks_inner{
+    @include breakpoint(mobile){padding: 70px 16px 16px;}
+    text-align: center;
+    .list{display: flex; justify-content: space-between;
+      @include breakpoint(mobile){flex-direction: column; justify-content: initial;}
+      .left_container{
+         width: 50%;
+         @include breakpoint(tablet){width: 55%;}
+         @include breakpoint(mobile){width: 100%;}
+         h1{ text-align: left;
+          font-size: 32px; font-weight: 600; margin-bottom: 50px;
+          @include breakpoint(laptop){font-size: 28px; margin-bottom: 35px;}
+          @include breakpoint(mobile){font-size: 16px; text-align: center; font-weight: 500; margin-bottom: 40px;}
+         }
+         .flow_list{
+           .list_item{display: flex; align-items: center; margin-bottom: 40px; text-align: left; gap: 24px;
+            @include breakpoint(laptop){margin-bottom: 35px;}
+            @include breakpoint(mobile){gap: 12px;}
+            .imgCon{
+              min-width: 25px;
+              img{width: 19px; height: 34px;
+                @include breakpoint(mobile){
+                  height: 23px;
+                }
+              }
+            }
+            .listText{font-size: 16px; 
+              font-weight: 400;
+              // line-height: 120%;
+              letter-spacing: 0cap;
+              color: #fff;
+               @include breakpoint(laptop){font-size: 15px;}
+              @include breakpoint(mobile){font-size: 14px;}
+
+            
+            }
+          }
+         }
+      }
+      .right_container{
+        width: 38%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        img{width: 100%;}
+        @include breakpoint(tablet){width: 45%;}
+        @include breakpoint(mobile){width: 100%; justify-content: center;
+          img{
+            max-width: 300px; 
+          }
+        }
+      }
+    }
+    .btns{min-width: 300px; height: 54px; border-radius: 8px; outline: none; text-align: center; margin-bottom: 30px; margin-top: 88px;
+      @include breakpoint(tablet){margin-top: 40px;}
+     @include breakpoint(mobile){
+      margin-top: 86px; width: 100%; height: 42px; font-size: 14px; 
+     }
+    }
+  }
+
+}
+
+.addNew_profile{
+  margin-top: 121px;
+  padding: 0px 90px 0px;
+  font-family: 'Poppins', sans-serif;
+  @include breakpoint(laptop){
+    padding: 0px 79px 0px;
+  }
+   @include breakpoint(tablet){padding: 0; margin-top: 0px;}
+  .header{display: flex; gap: 8px; align-items: center;
+     @include breakpoint(tablet){
+      background: #1E1E1E; padding: 16px; height: 56px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+     }
+    h2{font-size: 28px; font-weight: 500;
+     @include  breakpoint(laptop){font-size: 20px;}
+     @include breakpoint(mobile){font-size: 16px; line-height: 120%; letter-spacing: 0cap; text-transform: capitalize; color: #FFFFFF;}
+    }
+   img{
+    cursor: pointer;
+    @include breakpoint(laptop){width: 24px; height: 24px;}
+    @include breakpoint(mobile){width: 14px; height: 16px;}
+  }
+  }
+  .add_profiles{max-width: 660px; margin: 10px auto;
+     @include breakpoint(laptop){
+      max-width: 586px; 
+     }
+     @include breakpoint(tablet){margin: 0 auto;}
+    .add_profiles_inner{
+      .profile_img_container{ font-family: 'Poppins', sans-serif; padding: 36px 61px 0; text-align: center;
+        @include breakpoint(laptop){padding: 31px 88px 0px;}
+        @include breakpoint(mobile){padding: 20px 0; display: flex; flex-direction: column; align-items: center;}
+       
+       p{font-size: 16px;
+        @include breakpoint(mobile){font-size: 14px; font-weight: 400;line-height: 120%; letter-spacing: 0cap; color: #FFFFFFCC;}
+      }
+        // .AvatarRow{
+        //   display: flex;
+        //   justify-content: center;
+        //   align-items: center;
+        //   gap: 12px;
+        //   padding: 12px 0;
+        //   // overflow-x: auto;
+        //   // scroll-snap-type: x mandatory;
+        //   scroll-snap-type: none; 
+        
+        //  }
+          @include breakpoint(laptop){
+            gap: 10px;
+            padding: 10px 0px;
+          }
+          @include breakpoint(mobile){gap: 12px; overflow: auto; padding: 16px 0 0px;}
+          .AvatarRow {
+            // width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 0;
+
+            @include breakpoint(mobile){
+              width: 100%;
+              max-width: 420px;
+              // padding: 20px;
+            }
+           .mySwiper{
+            .inactivate_slider{
+              // display: none;
+
+              opacity: 0.5;
+                        }
+           }
+       
+          
+            .avatar {
+              width: 48px;
+              height: 48px;
+              border-radius: 50%;
+              overflow: hidden;
+              transition: all 0.3s ease;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+              }
+            
+              &.center_avatar {
+                width: 124px;
+                height: 124px;
+                // margin: 0 20px; // pushes away neighboring avatars
+              }
+            }
+         
+          }
+          
+
+        }
+        .input_box{display: flex; flex-direction: column; margin-top: 20px; padding: 0 66px;
+          @include breakpoint(laptop){margin-top: 17px; padding: 0 58px;}
+          @include breakpoint(mobile){padding: 0 16px; width: 100%;}
+          label{
+            margin-bottom: 24px; 
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: 0cap;
+            color: #FFFFFF;
+            @include breakpoint(mobile){
+              font-size: 14px;
+              color: #FFFFFFCC;
+            }
+          }
+          input{background: none; outline: none; border: none; font-size: 24px; color: #fff; text-align: center; font-family: 'Poppins', sans-serif;
+            border-bottom: 1px solid #FFFFFF33; padding-bottom: 10px; 
+            font-weight: 500;
+            line-height: 100%;
+            letter-spacing: 0cap;
+            @include breakpoint(laptop){font-size: 20px; padding-bottom: 8px;}
+            @include breakpoint(mobile){width: 100%; font-size: 16px;}
+          }
+        }
+      }
+      
+    }
+
+    .addNew_profile_bottom{padding-top: 32px; 
+      max-width: 660px;
+      margin: 10px auto 20px;
+        @include breakpoint(laptop){padding-top: 25px;}
+        @include breakpoint(mobile){padding: 32px 16px 0; margin: 0 auto;}
+        p{
+          text-align: center;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 120%;
+          letter-spacing: 0cap;
+          color: #FFFFFF;
+          @include breakpoint(mobile){
+            font-size: 14px;
+            line-height: 100%;
+            color: #FFFFFFCC;
+          }
+        }
+      .audience_options{
+        display: flex;
+        // justify-content: center;
+        flex-wrap: wrap;
+        max-width: 660px;
+        gap: 12px;
+        margin-top: 1rem;
+
+        @include breakpoint(mobile){
+         display: grid;
+         grid-template-columns: auto auto;
+         gap: 16px;
+         margin: 32px auto 0px;
+        //  justify-content: start;
+         width: 100%;
+         max-width: 400px;
+        }
+        .audience_card{
+           background-color: #2D2B2B;
+          border-radius: 5px;
+          padding: 12px 8px;
+          // width: 156px;
+          min-width: 156px;
+          height: 48px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          transition: 0.2s ease;
+          font-family: sans-serif;
+          @include breakpoint(mobile){
+          //  width: 50%;
+          }
+          @include breakpoint(mobile){ }
+             &.active{
+              .indicator{
+              border: 4px solid $primary-color !important;
+              height: 18px;
+              width: 18px;
+              background: #fff;
+              border-radius: 50px;
+              // @include breakpoint(laptop){height: 15px; width: 15px;}
+              // @include breakpoint(mobile){width: 18px; height: 18px;}
+             }
+          }
+          @include breakpoint(mobile-common){
+            min-width: 100px;
+          }
+          input{
+             display: none;
+             
+            }
+            .text{font-size: 14px;
+             @include breakpoint(laptop){font-size: 12px; margin-left: 3px;}
+            }
+          .icon {
+            font-size: 14px;
+            vertical-align: middle;
+            img{
+              width: 18px;
+              height: 18px;
+            }
+            @include breakpoint(laptop){font-size: 12px;}
+          }
+          .indicator{
+              border: 2px solid #767676;
+              height: 18px;
+              width: 18px;
+              border-radius: 50px;
+              margin-right: 7px;
+              @include breakpoint(laptop){
+                 height: 18px; 
+                 width: 18px;
+                 margin-right: 6px;
+              }
+              @include breakpoint(mobile){width: 18px; height: 18px;}
+          }
+          .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include breakpoint(mobile){
+              padding-top: 2px;
+            }
+            .label{
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 120%;
+              letter-spacing: 0cap;
+              color: #FFFFFF;
+              @include breakpoint(mobile){
+                font-size: 12px;
+              }
+            }
+          }
+          
+       
+        }
+        
+
+      }
+      .actions{ width: 100%; text-align: center; 
+        // @include breakpoint(mobile){padding: 0 16px;}
+        .btn{width: 400px; height: 54px; border-radius: 8px; margin: 30px auto 24px; font-size: 16px; font-weight: 600;
+          line-height: 120%;
+          letter-spacing: 0cap;
+          text-transform: capitalize;
+          color: #FFFFFF;
+          @include breakpoint(laptop){  margin: 30px auto 21px; font-size: 14px;}
+          @include breakpoint(mobile){width: 100%;font-size: 14px; height: 42px; max-width: 400px;  margin: 52px auto 21px;}
+          &.disabled{
+            opacity: 0.5;
+            cursor:not-allowed;
+          }
+        }
+        a{
+          text-decoration: none; /* remove underline */
+          color: inherit;        /* use parent text color */
+          background: none;
+          border: none;
+          outline: none;
+          cursor: pointer;
+        
+        }
+      }
+      }
+  }
+
+
+
+
+  // .inactivate_slide{}

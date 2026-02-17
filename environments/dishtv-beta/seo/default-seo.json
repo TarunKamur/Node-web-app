@@ -1,0 +1,122 @@
+{
+    "default" : {
+        "status": true,
+        "response": {
+            "title": "Watcho",
+            "description": "Watch Watcho anywhere anytime",
+            "keywords": "Watcho",
+            "metaTags": [
+              {
+                  "tagType": "og:title",
+                  "tagName": "property",
+                  "content": "Watcho"
+              },
+              {
+                  "tagType": "og:description",
+                  "tagName": "property",
+                  "content": "Watch Watcho anywhere anytime"
+              },
+              {
+                  "tagType": "og:url",
+                  "tagName": "property",
+                  "content": "https://dishtv-reacttestweb.revlet.net/"
+              },
+               {
+                  "tagType": "og:site_name",
+                  "tagName": "property",
+                  "content": "Watcho"
+              },
+              {
+                  "tagType": "og:image",
+                  "tagName": "property",
+                  "content": "https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/logo.svg"
+              },
+              {
+                  "tagType": "robots",
+                  "tagName": "name",
+                  "content": "index,follow"
+              }
+          ]
+        }
+      },
+    "support" : {
+        "status": true,
+        "response": {
+            "title": "Watcho",
+            "description": "Watch Watcho anywhere anytime",
+            "keywords": "Watcho",
+            "metaTags": [
+              {
+                  "tagType": "og:title",
+                  "tagName": "property",
+                  "content": "Watcho"
+              },
+              {
+                  "tagType": "og:description",
+                  "tagName": "property",
+                  "content": "Watch Watcho anywhere anytime"
+              },
+              {
+                  "tagType": "og:url",
+                  "tagName": "property",
+                  "content": "https://dishtv-reacttestweb.revlet.net/"
+              },
+               {
+                  "tagType": "og:site_name",
+                  "tagName": "property",
+                  "content": "Watcho"
+              },
+              {
+                  "tagType": "og:image",
+                  "tagName": "property",
+                  "content": "https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/logo.svg"
+              },
+              {
+                  "tagType": "robots",
+                  "tagName": "name",
+                  "content": "index,follow"
+              }
+          ]
+        }
+      },
+    "packages" : {
+        "status": true,
+        "response": {
+            "title": "Watcho",
+            "description": "Watch Watcho anywhere anytime",
+            "keywords": "Watcho",
+            "metaTags": [
+              {
+                  "tagType": "og:title",
+                  "tagName": "property",
+                  "content": "Watcho"
+              },
+              {
+                  "tagType": "og:description",
+                  "tagName": "property",
+                  "content": "Watch Watcho anywhere anytime"
+              },
+              {
+                  "tagType": "og:url",
+                  "tagName": "property",
+                  "content": "https://dishtv-reacttestweb.revlet.net/"
+              },
+               {
+                  "tagType": "og:site_name",
+                  "tagName": "property",
+                  "content": "Watcho"
+              },
+              {
+                  "tagType": "og:image",
+                  "tagName": "property",
+                  "content": "https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/logo.svg"
+              },
+              {
+                  "tagType": "robots",
+                  "tagName": "name",
+                  "content": "index,follow"
+              }
+          ]
+        }
+      }
+}

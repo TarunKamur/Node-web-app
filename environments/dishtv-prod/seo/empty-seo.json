@@ -1,0 +1,13 @@
+{
+  "status": true,
+  "response": {
+      "title": "Watcho",
+      "metaTags": [ 
+        {
+            "tagType": "robots",
+            "tagName": "name",
+            "content": "noindex, nofollow"
+        }
+      ]
+  }
+}

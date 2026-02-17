@@ -1,0 +1,59 @@
+@import "variables.scss";
+.accept_cookies {
+  background: #000;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+  color: #fff;
+  padding: 20px 10px;
+  text-align: center;
+  border-top: 2px solid #333;
+  @include breakpoint(tablet) {
+    background: rgba(0, 0, 0, 0.8);
+  }
+  .text {
+    padding-right: 200px;
+    font-size: 14px;
+    @include breakpoint(laptop){
+      max-width: 1024px;
+      margin: 0 auto;
+      padding-right: 100px;
+    }
+    @include breakpoint(tablet-portrait) {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 0 30px;
+    }
+    @include breakpoint(mobile) {
+      padding: 0 20px;
+    }
+    @include breakpoint(mobile-common) {
+      padding: 0 15px;
+      font-size: 12px;
+    }
+  }
+  .accept_btn {
+    background: $primary-color;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: 400;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    border: none;
+    @include breakpoint(tablet-portrait) {
+      position: static;
+    }
+    @include breakpoint(mobile) {
+      font-size: 14px;
+      transform: translateY(0px);
+    }
+    @include breakpoint(mobile-common) {
+      font-size: 13px;
+    }
+  }
+}

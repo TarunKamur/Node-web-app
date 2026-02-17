@@ -1,0 +1,191 @@
+@import 'variables.scss';
+.social_login{ margin-top:20px;
+    .social1{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
+        .facebook_login{
+            background-color: #3b5998;border: 0;border-radius: 3px; color:#fff;font-size: 13px;height: 40px;line-height: 40px;padding: 0;
+            box-sizing:border-box; flex:48%;
+            // @include breakpoint(mobile-common-land ){flex:100%}
+            .image_fb{border-radius: 2px;width: 25px; height: 25px;position: relative;margin:7.5px 5px 7.5px 10px;vertical-align: middle; float: left;
+            }
+            .fb_text{
+             &.web{@include breakpoint(mobile){display: none;}}
+             &.mobile{display: none;
+              @include breakpoint(mobile){display: block; text-align: center; width: 100%;}}
+            }
+        }
+        .google_login{
+            background-color: #4184f3;border: 0;border-radius: 3px;color: #fff;font-size: 13px;height: 40px;line-height: 40px;padding: 0;
+            box-sizing:border-box ; flex:48%;
+            // @include breakpoint(mobile-common-land ){flex:100%}
+            .image_gg{float: left;margin:7.5px 5px 7.5px 10px; background: white;padding: 3px;border-radius: 3px; width: 25px; height: 25px;
+            }
+            .google_text{
+                &.web{@include breakpoint(mobile){display: none;}}
+                &.mobile{display: none;
+                 @include breakpoint(mobile){display: block; text-align: center; width: 100%;}}
+            }
+        }
+        .apple_login{
+                background-color:#fff; border: 0; border-radius: 3px; color:#000; font-size: 16px; font-weight: 500; padding: 0; height: 40px; line-height: 40px; width: 100%; margin-bottom: 16px;
+            .image_apple{    border-radius: 2px; width: 21px; height: 21px; position: relative; top: -2px; vertical-align: middle;}
+            .apple_text{margin-left: 8px;}
+           
+           
+                @include breakpoint(mobile-common-land ){flex:100%;}
+        }
+    }
+}
+
+
+.signin_cont_new{
+    
+    .userDetailCont{
+        display: block;
+        overflow: hidden;
+        width: 480px;
+        margin: 120px auto 30px auto;
+        background: $userdeatils-bg;
+        text-align: center;
+        padding: 40px 30px 60px;
+
+        .logo{
+            position: fixed;  
+            top: 30px;
+            left: 30px;
+            width: 160px;
+        cursor: pointer;
+        z-index: 1;
+        }
+    }
+    
+    .signin_inner{
+        h2{ font-size:28px; margin-bottom:70px; font-weight: normal;
+            @include breakpoint(mac) { font-size:26px; }
+            @include breakpoint(laptop) { font-size:24px;margin-bottom:40px;}
+            @include breakpoint(tablet) { font-size:22px;}
+            @include breakpoint(mobile) { font-size:20px; }
+            @include breakpoint(mobile-common-land) { font-size:18px; }
+        }
+      ::-webkit-calendar-picker-indicator {
+        filter: invert(1); cursor: pointer;
+      }
+      .forgot{ position: relative; height: 92px; text-align: left;
+        .datePicker{
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+        .valid_error{bottom: 5px; color: $danger; position: absolute;
+            font-size: 12px;}
+        &.inline{display: flex; justify-content: space-between;}
+         .mobileNumber{width: calc(100% - 14px);
+                &.has_country_code{ padding-left:100px;}
+            }
+    }
+    
+    .genderCont{
+        display: flex;
+        gap: 20px;
+        color: $grey-text-color;
+        line-height: 20px;
+        margin-top: 10px;
+        .genderLabel {
+                position: relative;
+                display: flex;
+                gap: 20px;
+                font-size: 14px;
+                color: $grey-text-color;
+                .loopGender{
+                    width: fit-content;
+                 label{   cursor: pointer;}
+                }
+                .genderradio{
+                    position: relative;
+                    .dotbutton{
+                        width: 9px;
+                        top: 5px;
+                        left: 5.178px;
+                        height: 9px;
+                        border-radius: 50%;
+                        background-color: $gender-radio-bg;
+                        position: absolute;
+                        margin: 0;
+                    }
+                }
+        
+                label {  min-width: fit-content;
+                    margin-left: 25px;
+                    position: relative;
+                }
+        
+                [type="radio"] {
+                    position: absolute;
+                    cursor: pointer;
+                    inset: 0;
+                }
+                [type="radio"]:before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 18px;
+                    height: 18px;
+                    border: 1px solid $radio-btn-broder;
+                    border-radius: 100%;
+                    background: $radio-btn-broder;
+                }
+        
+        .whitebtn{
+            &[type="radio"]:before {
+                background: $gender-radio-bg;
+            }
+        }
+              
+                [type="radio"]:after {
+                    content: '';
+                    width: 16px;
+                    height: 16px;
+                    background: $userdeatils-bg;
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    border-radius: 100%;
+                    -webkit-transition: all 0.2s ease;
+                    transition: all 0.2s ease;
+                }
+        }
+    }
+    }
+    .button{ height:44px; line-height: 44px;
+        margin-top: 50px; text-transform: none; width: 100%; font-size: 14px;
+        // @include breakpoint(mac){font-size: 16px;}
+        // @include breakpoint(laptop){font-size: 14px; margin-top: 30px;}
+        // @include breakpoint(tablet){margin-top: 20px;}
+    }
+    .signup_headers{
+      p{font-size: 14px;
+        color: $grey-text-color;
+        font-weight: 400;}
+    }
+  }
+  .text_danger1{ position: relative; color:$danger; font-size:14px;left:0; right:0; margin:auto;
+    text-align: center;top:20px;
+    span{  position: absolute;left: 0;right: 0;word-break: break-word;}
+}  
+  
+.changeNumber{
+    width:100%; min-height:100vh; margin:0 auto; background: #0d0d15; position: fixed; height:100%; overflow: auto;   
+    background: $changenumber-img-bg; 
+    background-size: cover;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;  
+    top: 0;
+    z-index: 2;
+    left: 0;
+    .signup_headers p{
+      margin-bottom: 70px;
+    }
+    .signup_headers h2{
+      margin-bottom: 10px;
+    }
+  }

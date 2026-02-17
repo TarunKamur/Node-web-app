@@ -1,0 +1,342 @@
+@import 'variables.scss';
+
+.error_page{ padding: 226px 0 120px; text-align: center;
+      @include breakpoint(mac) {  padding: 206px 0 100px; }
+      @include breakpoint(tablet) { padding: 100px 0;}
+      @include breakpoint(mobile) {  padding: 30px 0;}
+ .container_fluid{ padding-left: 58px; padding-right: 58px;
+  
+  @include breakpoint(tablet) { margin-top: 60px;}
+   @include breakpoint(mobile){padding-right: 20px; padding-left: 20px; margin-top: 45px;}
+   @include breakpoint( mobile-small){padding-right: 15px; padding-left: 15px; margin-top: 10px;}
+   .no_internt_h5 {
+    font-size: 21px;
+    font-weight: 500;
+    color: #9ea2ac;
+    text-transform: capitalize;
+    margin-bottom: 19px;
+    text-align: center;
+
+    @include breakpoint(mac) {
+      font-size: 18px;
+      margin-bottom: 17px;
+    }
+
+    @include breakpoint(laptop) {
+      font-size: 20px;
+      margin-bottom: 18px;
+    }
+
+    @include breakpoint(desktop-small) {
+      font-size: 18px;
+    }
+
+    @include breakpoint(mobile) {
+      font-size: 14px;
+      margin-bottom: 29px;
+    }
+  }
+
+  .no_internt_h3 {
+    font-size: 29px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    text-align: center;
+
+    @include breakpoint(mac) {
+      font-size: 29px;
+      margin-bottom: 19px;
+    }
+
+    @include breakpoint(laptop) {
+      font-size: 29px;
+      margin-bottom: 14px;
+    }
+
+    @include breakpoint(desktop-small) {
+      font-size: 26px;
+      margin-top: 0;
+    }
+
+    @include breakpoint(mobile) {
+      font-size: 26px;
+      margin-top: 0;
+    }
+  }
+
+  .no_internt_retry {
+    font-size: 18px;
+    height: auto;
+    line-height: inherit;
+    padding: 10px 30px;
+    min-width: inherit;
+    background-color: $primary-color;
+    outline: none;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+
+    @include breakpoint(mobile) {
+      font-size: 16px;
+      width: auto;
+      min-width: auto;
+      padding: 9px 24px;
+      line-height: inherit;
+      height: auto;
+    }
+
+    @include breakpoint(mobile-common-land) {
+      font-size: 14px;
+    }
+  }
+
+
+
+  .noPurchasesCap{
+    font-size: 18px;
+    margin: 50px;
+  }
+  .noCart{
+    @include breakpoint(mac) {  max-width: 280px;}
+    @include breakpoint(tablet) { max-width: 260px;}
+    @include breakpoint(mobile) { max-width: 230px;}
+    @include breakpoint(mobile-common-land) { max-width: 200px;}
+  }
+  .preLoginBtnDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items:center;
+    gap: 10px;
+  }
+  .errorMsg{
+    max-width: 420px;
+    font-size: 24px;
+    @include breakpoint(mac){
+      font-size: 22px;
+      max-width: 390px;
+    }
+  }
+}
+
+  h3{ font-size:28px; line-height: normal; margin:0 auto;  font-weight: 500;
+      @include breakpoint(mac) { font-size:24px;}
+      @include breakpoint(laptop) { font-size:22px;}
+      @include breakpoint(tablet) { font-size:20px;}
+      @include breakpoint(mobile) { font-size:18px;}
+  }
+  .error_image{ margin: 30px 0;
+    img{
+      @include breakpoint(mac) {  max-width: 350px;}
+      @include breakpoint(tablet) { max-width: 400px;}
+      @include breakpoint(mobile) { max-width: 300px;}
+      @include breakpoint(mobile-common-land) { max-width: 220px;}
+    }
+          
+  }
+  p{ font-size: 32px; color:$grey-text-color;
+      @include breakpoint(mac) { font-size:22px;}
+      @include breakpoint(laptop) { font-size: 22px;}
+      @include breakpoint(tablet) { font-size: 22px;padding: 0 70px; }
+      @include breakpoint(mobile) { font-size: 20px;padding: 0 20px; ;}
+      @include breakpoint(mobile-common-land) {font-size: 1.125em;padding: 0 ;}
+  }
+  .btn_wrap{ margin-top: 50px;   
+  }
+
+
+  .no_favourites{
+    @include breakpoint (mobile){margin-top: 70px;}
+    @include breakpoint (mobile-small){margin-top: 90px;padding: 0 40px;}
+    img{ margin-bottom: 40px;
+      @include breakpoint(mac) { width:400px;}
+      @include breakpoint(laptop) { width:420px;}
+      @include breakpoint(tablet) { width:400px;}
+      @include breakpoint(mobile) { width:336px;}
+      @include breakpoint(mobile-small) { width:300px;}
+    }
+    h2{ font-size:36px; color:$grey-text-color; margin-bottom:20px; display: block; font-weight: normal;
+      @include breakpoint(mac) { font-size:30px;}
+      @include breakpoint(laptop) { font-size:26px;}
+      @include breakpoint(tablet) { font-size:24px;}
+      @include breakpoint(mobile) { font-size:20px;}
+    }
+    h3{ font-size:32px; color:$grey-text-color; display: block; font-weight: normal;
+      @include breakpoint(mac) { font-size:24px;}
+      @include breakpoint(laptop) { font-size:24px;}
+      @include breakpoint(tablet) { font-size:22px;}
+      @include breakpoint(mobile) { font-size:18px;margin-top: 40px;}
+    }
+  }         
+  .btn.btn_lg{ 
+    font-size: 18px; height: 50px;  width: 185px; line-height: 50px; border-radius: 4px; background-color: $primary-color; color: $text-color;
+    @include breakpoint(laptop){  font-size: 20px;}
+    @include breakpoint(mobile-common-land) { font-size:14px; min-width: 160px;  }
+    &:hover{ background: $primary-color}
+    &.nobg{
+      background-color: transparent;
+      border: solid 2px #999;
+      color: #999;
+    }
+  }
+  .noPurchseImage{
+    width: 240px;  
+  }
+}
+.purchasePage{
+  padding: 120px 0 120px !important;
+ }
+
+.coming_soon{ 
+   display: flex; align-items: center; justify-content: center; flex-direction: column;
+  h3{font-size: 34px; font-weight: 600; color: #fff; text-transform: uppercase;}
+  .error_img{margin: 30px 0;
+   img{max-width: 350px;}
+  }
+  h5{ font-size: 21px; max-width: 808px; font-weight: 500; color:$grey-text-color; text-transform: uppercase;
+    @include breakpoint(laptop) { font-size:20px;}
+  }
+}
+
+.btn{ position: relative; border-radius: 4px;
+  .main_title{ position: relative; z-index: 1;font-size: 15px;}
+}
+
+  .mobileBack {
+    top: 0;
+    font-size: 16px;
+    color: $text-color;
+    z-index: 11;
+    background: $normalMobile-header-bg;
+    width: 100%;
+    padding: 16px 20px 16px 0;
+    position: fixed;
+    display: none;
+    border-bottom: 1px solid $mobileBack-border;
+    @include breakpoint(mobile) {
+      display: flex;
+    }
+    img {
+      display: inline-block;
+      width: 20px;
+      margin-left: 15px;
+      margin-right: 10px;
+    }
+  }
+
+.backBtn{
+  background-color:$primary-color;
+  color:$black-color;
+  padding: 15px;
+  min-width: 350px;
+  border-radius:4px;
+  margin-top: 30px;
+  font-size: 16px;
+  @include breakpoint(mobile) {
+    min-width: 250px;
+  }
+}
+.more_cont {
+  width: 100%;
+  max-width: 1000px;
+  margin: 10px auto 30px;
+  padding: 20px;
+  display: block;
+  overflow: hidden;
+
+  h2 {
+    text-align: center;
+    font-size: 26px;
+    margin: 0 auto 30px;
+    line-height: normal;
+    @include breakpoint(tablet){ font-size: 20px;}
+    @include breakpoint(mobile-common-land){ font-size: 16px;}
+  }
+
+  .more_cont_inner {
+    padding: 30px;
+    background: #232323;
+    border-radius: 8px;
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    margin-top: 30px;
+
+    ul,
+    li {
+      display: inline-block;
+
+      a {
+        color: $grey-text-color;
+        font-size: 18px;
+        margin: 0 10px;
+        text-decoration: none;
+        transition: all .3s;
+        word-break: break-all;
+
+        @include breakpoint(tablet){ font-size: 15px; }
+
+        &::before {
+          content: "";
+          width: 8px;
+          height: 8px;
+          display: inline-block;
+          border-radius: 50%;
+          background: #ccc;
+          margin-right: 6px;
+        }
+      }
+    }
+    li{ margin-bottom: 15px; }
+  }
+}
+.purchasePage {
+  padding: 120px 0 120px !important;
+  @include breakpoint(mobile) {
+    padding: 50px 0 !important;
+  }
+  .noPurchases {
+    margin-bottom: 20px;
+  }
+  .noPurchasesCap {
+    font-size: 18px;
+    margin: 50px;
+    @include breakpoint(mobile) {
+      margin: 10px !important;
+    }
+  }
+  .noPurchseImage {
+    width: 240px !important;
+    margin: 0;
+  }
+    .btn.btn_lg {
+      font-size: 18px;
+      height: 50px;
+      width: 185px;
+      line-height: 50px;
+      border-radius: 4px;
+      background-color: $primary-color;
+      @include breakpoint(laptop) {
+        font-size: 20px;
+      }
+      @include breakpoint(mobile-common-land) {
+        font-size: 14px;
+        width: 160px;
+      }
+      &:hover {
+        background: $primary-color
+      }
+    }
+}
+
+// @media screen and (max-width:400px){
+//   .error_page{    
+//     padding: 30px 0;
+//     .error_image{
+//       img{ max-width: 300px; }     
+//     }
+//     p{ font-size: 1.125em;padding: 0 ; }
+//   }
+// }

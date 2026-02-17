@@ -1,0 +1,163 @@
+@import 'variables.scss';
+
+
+.promotional_popup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img.banner {
+        margin: 0 auto;
+        max-width: 100%;
+        min-height: 450px;
+        max-height: 90vh;
+
+
+    }
+
+    .close_icon {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: transparent;
+        cursor: pointer;
+        z-index: 3;
+    }
+
+    .confirmation {
+
+        .close {
+            float: right;
+        }
+
+        p {
+            font-weight: 500;
+            color: #666666;
+            font-size: 14px;
+
+            @media screen and (max-width:768px) {
+                font-size: 14px;
+            }
+        }
+
+        .btn_row {
+            margin-top: 20px
+        }
+
+        .btn {
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .btn-border {
+            background: #fff;
+            border-color: #d2d9e5;
+            cursor: pointer;
+        }
+
+        .showimage {
+            padding: 10px 0px 20px 0px;
+            text-align: center;
+
+            i {
+                font-size: 40px;
+            }
+
+            .success {
+                color: green;
+            }
+
+            .failure {
+                color: red;
+            }
+        }
+    }
+
+    #popup-confirm {
+        display: flex;
+        align-items: center;
+        opacity: 1;
+    }
+
+
+    .confirmation {
+        transform: none !important;
+        display: flex;
+        flex-direction: column;
+        vertical-align: middle;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+
+        .close_icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: transparent;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .socialPopup {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+
+            h1 {
+                font-size: 22px;
+
+                @include breakpoint(mobile) {
+                    font-size: 15px;
+                    margin-top: 20px;
+                }
+            }
+
+            h3 {
+                font-size: 15px;
+
+                @include breakpoint(mobile) {
+                    margin-top: 30px;
+                }
+            }
+
+            .social_media {
+                text-align: center;
+
+                img {
+                    margin-top: 30px;
+
+                    @include breakpoint(mobile) {
+                        margin-top: 10px;
+                    }
+                }
+
+                button {
+                    outline: none !important;
+                    border: none;
+                    font-size: 14px;
+                    width: 80%;
+                    border-radius: 2px;
+                    height: 32px;
+                    font-weight: 600;
+                    margin-top: 20px;
+                    cursor: pointer;
+                    display: block;
+                    margin: 20px auto 0 auto;
+                    min-width: 220px;
+
+                    @include breakpoint(mobile) {
+                        margin-top: 15px;
+                    }
+                }
+            }
+        }
+    }
+}

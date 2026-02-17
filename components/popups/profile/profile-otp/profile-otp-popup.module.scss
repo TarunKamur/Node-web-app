@@ -1,0 +1,218 @@
+@import 'variables.scss';
+.sharecontent_modal {
+  // background: rgba(0, 0, 0, 0.6);
+  z-index: 999999;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .cross_icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+  .main_modal {
+    margin: 20px auto;
+    min-height: calc(100% - (1.75rem * 2));
+    transform: translate(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:focus-visible {
+      outline: none !important;
+    }
+    .modal_wrapper {
+      width: 528px;
+      padding: 20px 0px;
+      // height: 510px;
+      @include breakpoint(mobile){max-width: 440px;}
+      @include breakpoint(mobile-common-land){max-width: 100%; padding: 20px 15px;}
+      .modal_content {
+        background: $profile-popup-bg;
+        border-radius: 5px;
+        color: $grey-text-color;
+        padding: 50px;
+        display: block;
+        position: relative;
+        @include breakpoint(mac){padding: 40px 50px;}
+        @include breakpoint(laptop){padding: 30px 40px;}
+        @include breakpoint(tablet){padding: 20px 30px;}
+        @include breakpoint(mobile){padding: 30px 15px; }
+        .modal_content_inner {
+          text-align: center;
+          .profile_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+             width: 120px;
+             height: 120px;
+             margin: 0px auto 20px;
+             @include breakpoint(tablet){float: none;
+              width: 120px;
+              height: 120px;
+              margin: 20px auto;}
+             @include breakpoint(mobile){  width: 100px;
+              height: 100px;
+              margin-bottom: 16px;}
+              @include breakpoint(mobile-common){width: 80px; height: 80px;}
+            img {
+             width: 100%;
+             height: 100%;
+            border-radius: 6px;
+            }
+          }
+          .otp_Txt {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: .5rem;
+            color: $text-color;
+            text-align: center;
+            margin-top: 52px;
+            &.inputfiled_text{margin-top: 0;}
+            @include breakpoint(mac){font-size: 20px;}
+            @include breakpoint(laptop){font-size: 18px;}
+            @include breakpoint(mobile){font-size: 16px;}
+          }
+          .otp_subTxt {
+            margin-top: 17px;
+            font-size: 14px;
+            color: $text-color;
+            opacity: 0.65;
+            word-break: break-word;
+            text-align: center;
+            // &.View_subTxt {
+            //   margin: 0px auto;
+            // }
+          }
+          .otp_block {
+            // margin-top: 40px;
+            .otp_input {
+              position: relative;
+              margin-bottom: 20px;
+              margin-top: 40px;
+              .input_wrapper{
+                position: relative;
+                .showPassord {
+                    position: absolute;
+                    color: #888;
+                    font-size: 14px;
+                    right: 15px;
+                    top: 12px;
+                    cursor: pointer;
+                    background: no-repeat;
+                  }
+                .form_control {
+                  border: none;
+                  color: $text-color;
+                  border: 1px solid #555;
+                  border-radius: 4px;
+                  padding: 11px 15px;
+                  -moz-border-radius: 4px;
+                -webkit-border-radius: 4px;
+                  font-size: 16px;
+                  outline: none;
+                  background: none;
+                  width: 100%;
+                  height: inherit;
+                }
+                .err_txt {
+                  position: absolute;
+                  bottom: -20px;
+                  left: 0;
+                  font-size: 12px;
+                  color: $danger;
+                  display: block;
+                  text-align: left;
+                  margin-top: 5px;
+                }
+              }
+             
+              .toggle {
+                position: absolute;
+                cursor: default;
+                color: $grey-text-color;
+                font-size: 14px;
+                font-weight: 300;
+                right: 15px;
+                top: 12px;
+                cursor: pointer;
+                &:hover{
+                  color: $text-color;
+                }
+              }
+              .text_danger{
+                // height: 60px;
+                margin-top: 30px;
+                position: relative;
+                .otp_sent {
+                  // height: 70px;
+                  position: relative;
+                  margin: 0px auto;
+                  // margin-top: 30px;
+                  color: green;
+                  left: 0;
+                  right: 0;
+                  font-size: 14px;
+                  // display: inline-block;
+                  &.otp_failed{
+                    color: red;
+                  }
+                }
+              }
+              
+            }
+          }
+
+          .footer_actions {
+            margin: 0px auto;
+            margin-top: 25px;
+            display: flex;
+            // align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            gap:10px;
+            &.inputfiled_actions{margin-bottom: 20px;}
+            button {
+              cursor: pointer;
+              padding: 5px 10px;
+              border: none;
+              background: #4f4f4f;
+              font-size: 16px;
+              width: 160px;
+              text-align: center;
+              font-weight: normal;
+              min-height: 40px;;
+              border-radius: 2px;
+              -moz-border-radius: 2px;
+              -webkit-border-radius: 2px;
+              color: $text-color;
+              border-radius: 2px;
+              -moz-border-radius: 2px;
+              -webkit-border-radius: 2px;
+              @include breakpoint(mobile){font-size: 14px;}
+              @include breakpoint(mobile){ 
+                height: auto;
+                line-height: normal; padding: 0;}
+              @include breakpoint(mobile-common){width: 100px; height: 40px; line-height: 40px;}
+              // &:first-child {
+              //   margin-right: 16px;
+              // }
+              &:last-child {
+                background: $primary-color;
+                color: $text-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+@import "variables.scss";
+
+.app_header {
+  background: #222;
+  position: relative;
+  height: 150px;
+  width: 100%;
+  display: none;
+  z-index: 20;
+  @include breakpoint(tablet) {
+    display: block;
+  }
+  @include breakpoint(mobile) {
+    height: inherit;
+  }
+  .close_icon {
+    img {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      opacity: 1;
+      z-index: 1;
+      cursor: pointer;
+
+      @include breakpoint(tablet) {
+        top: 10px;
+        right: 10px;
+        width: 13px;
+      }
+    }
+  }
+  .app_inner {
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 100%;
+    @include breakpoint(mobile) {
+      width: 100%;
+      height: inherit;
+      text-align: center;
+    }
+    .app_left {
+      float: left;
+      @include breakpoint(mobile) {
+        float: none;
+      }
+      h3 {
+        color: $text-color;
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin: 27px 0 5px;
+        line-height: 1.2;
+        @include breakpoint(mobile) {
+          text-transform: inherit;
+        }
+      }
+      p {
+        color: $grey-text-color;
+        font-size: 14px;
+        @include breakpoint(mobile) {
+          display: none;
+        }
+      }
+      a {
+        img {
+          width: 148px;
+          float: left;
+          margin-right: 10px;
+          @include breakpoint(mobile) {
+            display: none;
+          }
+        }
+        .btn{
+          display: none;
+          border-radius: 2px;
+          width: 208px;
+          height: 36px;
+          line-height: 36px;
+          margin: 0 auto;
+          font-size: 16px;
+          @include breakpoint(mobile) {
+            display: inline-block;
+            margin: 10px auto 20px;
+            width: inherit;
+            padding: 0 20px;
+          }
+        }
+      }
+    }
+    .mobile {
+      float: right;
+      width: 157px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      @include breakpoint(mobile) {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,0 +1,222 @@
+<html>
+
+<head>
+    <title>Footer</title>
+    <meta charset="utf-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <link rel="icon" type="image/x-icon"
+        href="https://d2ivesio5kogrp.cloudfront.net/static/suppose/images/supposetv-favicon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+            background: #141414;
+            color: #fff;
+        }
+
+        .footerData {
+            padding: 0 80px;
+            color: #999999;
+        }
+
+        .footerData .para {
+            color: #999999;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .footerData .para .strong {
+            font-weight: bolder;
+            color: #b3b3b3;
+        }
+
+        .footerData .para .strong.link {
+            color: blue;
+        }
+
+        .footerData .List {
+            margin-bottom: 20px;
+        }
+
+        .footerData .List .accordionTitle {
+            font-size: 20px;
+            font-weight: bold;
+            color: #999999;
+            margin-bottom: 20px;
+        }
+
+        .footerData .List .ListData {
+            font-size: 18px;
+
+        }
+
+        .footerData .List .ListData a {
+
+            color: #999999;
+        }
+
+
+        @media screen and (max-device-width: 1440px) {
+            .footerData {
+                padding: 0 60px;
+            }
+
+            .footerData .para {
+                font-size: 13px;
+            }
+
+            .footerData .List .accordionTitle {
+                font-size: 16px;
+            }
+
+            .footerData .List .ListData {
+                font-size: 14px;
+            }
+
+        }
+
+        @media screen and (max-device-width: 767px) {
+            .footerData{padding: 0 30px;}
+            .footerData .List {
+                position: relative;
+            }
+
+            .footerData .List .ListData {
+                font-size: 18px;
+                display: none;
+            }
+
+            .footerData .List .accordionTitle {
+                border-bottom: 2px solid #494949;
+                padding-bottom: 20px;
+            }
+
+            .footerData .List.is-open .ListData {
+                display: block;
+            }
+
+            .footerData .List .accordionTitle::after {
+                border: solid #ccc;
+                border-width: 0 2px 2px 0;
+                display: inline-block;
+                padding: 4px;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                content: "";
+                position: absolute;
+                right: 25px;
+                top: 5px;
+                transition: .2s ease-in-out;
+            }
+
+            .footerData .List.is-open .accordionTitle::after {
+                transform: rotate(-135deg);
+                -webkit-transform: rotate(-135deg);
+                transition: .2s ease-in-out;
+                top: 10px;
+            }
+
+        }
+        @media screen and (max-device-width: 480px){
+            .footerData .List .ListData{
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body id="footer" class="default_theme">
+    <div class="footerData">
+        <p class="para"> <span class="strong">Watcho Live TV </span>is a perfect way to watch all TV channels on the go!
+            Anytime anywhere. All popular TV channels are shown regionally for your convenience and you can select them
+            by genre or language. We have a wide collection of Hindi, Malayalam, Bengali & Punjabi live channels.</p>
+        <p class="para">On the Web or via Watcho app you can watch your favorite shows without any delay with just one
+            click. The most popular TV shows in Hindi, Tamil, Telugu & any language you subscribed to never miss out on
+            your Live TV Entertainment, Popular, Music, or Movies</p>
+        <p class="para">Our Watcho works for the language you choose even if you are not registered. Choose the language
+            you want to check and see what the most popular suggestions are for you. Never miss your favorite shows with
+            this extremely advanced reminder feature of Watcho.</p>
+        <p class="para">All the biggest TV channels available right here like <a class="strong link" href="">9X Jalwa
+            </a>, <a class="strong link" href=""> 9XM </a>, DD Sports, <a class="strong link" href=""> DD National </a>,
+            <a class="strong link" href="">India TV </a> <span class="strong"> etc.</span><br /> Entertainment has never
+            been more complimented with the best sports, movies, kids, and daily soaps streaming online for free. Watch
+            great movies and focus on the most popular music and the most popular entertainment channels in the language
+            of your choice. Browse the music of live TV channels, live TV channels about movies, live TV channels about
+            news, live TV channels about lifestyle, and live TV channels about sports events. Find the fun in your
+            one-stop MX player. Catch the best tv channels in HD for free internet.</p>
+        <div class="parent" id="parent">
+            <div class="List" onclick="accordion(this.id)" id='00'>
+                <h2 class="accordionTitle">Top Category</h2>
+                <div class="ListData">
+                    <span><a href="#">Action Movies</a></span> |
+                    <span><a href="#">English Movies</a></span> |
+                    <span><a href="#">Kids Shows</a></span> |
+                    <span><a href="#">Sports</a></span> |
+                    <span><a href="#">Devotional</a></span> |
+                    <span><a href="#">ShowsExplosive</a></span> |
+                    <span><a href="#">TAJ</a></span> |
+                    <span><a href="#">Masala Family</a></span>
+                </div>
+            </div>
+
+            <div class="List" onclick="accordion(this.id)" id='01'>
+                <h2 class="accordionTitle">Top Web Series</h2>
+                <div class="ListData">
+                    <span><a href="#">Explosive</a></span> |
+                    <span><a href="#">TAJ </a></span> |
+                    <span><a href="#">Masala Family</a></span> |
+                    <span><a href="#">Aviadh</a></span> |
+                    <span><a href="#">Virgin at 27</a></span> |
+                    <span><a href="#">Explosive</a></span> |
+                    <span><a href="#">Pop Kaun</a></span> |
+                    <span><a href="#">Action Movies</a></span> |
+                    <span><a href="#">Horror Movies</a></span>
+                </div>
+            </div>
+
+            <div class="List" onclick="accordion(this.id)" id='02'>
+                <h2 class="accordionTitle">Top Show</h2>
+                <div class="ListData">
+                    <span><a href="#">Kapil Sharma Show</a></span> |
+                    <span><a href="#">Anupama</a></span> |
+                    <span><a href="#">Shark Tank India</a></span> |
+                    <span><a href="#">Koffee with Karan</a></span> |
+                    <span><a href="#">Virgin at 27</a></span> |
+                    <span><a href="#">Manghadant</a></span> |
+                    <span><a href="#">Explosive</a></span> |
+                    <span><a href="#">Pop Kaun</a></span> |
+                    <span><a href="#">English Movies</a></span> |
+                    <span><a href="#">Kids Shows</a></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function accordion(id) {
+            if (window.innerWidth < 767) {
+                if (document.getElementById(id).classList.contains('is-open')) {
+                    document.getElementById(id).classList.remove('is-open');
+                }
+                else {
+                    document.getElementById(id).classList.add('is-open')
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

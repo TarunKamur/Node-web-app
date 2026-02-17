@@ -1,0 +1,90 @@
+@import 'variables.scss';
+.activate_voucher{ 
+  width:100%; min-height:100vh; margin:0 auto; position: fixed; height:100%; overflow: auto;  background:#141414;
+  @include breakpoint(tablet) { height:100%; overflow: auto;  position: relative;text-align: center;}
+  @include breakpoint(mobile) { background: $body-color; }
+  .tablet_logo{  position: fixed; cursor: pointer; max-width: 180px; max-height: 80px;  margin: 40px;
+    @include breakpoint(mac){ margin: 30px;}
+    @include breakpoint(laptop){ max-width: 125px; max-height: 66px;
+        margin: 30px; }
+    @include breakpoint(tablet){  position: relative;  max-width: 130px;  max-height: 60px;
+        margin: 30px 0px 20px; }
+    @include breakpoint(mobile){ max-width: 120px;  max-height: 55px;
+        margin: 20px; }
+}
+    .activate_inner{ padding:50px 50px 70px; display: block; overflow: hidden; width:580px;
+        margin:120px auto 30px auto; background: $signin-bg; text-align: center;
+        @include breakpoint(laptop) { margin-top:60px;}
+        @include breakpoint(tablet) { width:100%; max-width:450px; margin-top:0px; padding:30px;}
+        @include breakpoint(mobile) { background: none; padding:0px 20px 20px; margin:47px auto 0 auto;}
+        h2{ font-size:28px; margin-bottom:10px; font-weight: normal; color: #fff;
+            @include breakpoint(mac) { font-size:26px; }
+            @include breakpoint(laptop) { font-size:24px;}
+            @include breakpoint(tablet) { font-size:22px;}
+            @include breakpoint(mobile) { font-size:20px; }
+        }
+        .msg1{ font-size:14px ; color:#888; margin-bottom: 40px;}
+        .msg2{ font-size:15px ; color:#888; margin-bottom: 20px; }
+        .form_rows{ position: relative; height: 88px; width: 90%; margin: 0 auto 15px;
+            @include breakpoint(mobile){width: 100%;}
+            label{  position: relative; border-radius: 4px; margin-bottom:38px; height:50px; width:100%;
+                .title{ color:#888; font-size:12px; position: absolute; top:-20px; left:10px;  background:$signin-bg; padding:0 5px; z-index: 9;
+                    @include breakpoint(mobile) { background:$body-color;}
+                    }
+                input{ background: none; color:#888;  padding:0px 16px; width:100%;border-radius: 0.25rem;
+                            font-size:15px !important; height:48px; line-height: 48px; display: inline-block;border:solid 1px #52525c;outline: none;
+                    @include breakpoint(mac) {font-size:14px;}
+                }
+            }
+            .text_danger1{ position: absolute; color:#e80000; left:0; font-size:14px;  margin: 0 auto; }
+        }
+        .btn{ background-color: $primary-color; height:44px; line-height: 44px; padding:0; font-size:18px !important;
+            width:200px; margin-bottom:20px; margin-top:15px; color: #fff; border-radius: 2px;
+            @include breakpoint(mac) { font-size:16px;}
+            @include breakpoint(laptop) { margin-top:50px; font-size:14px;}
+            @include breakpoint(tablet) { margin-top:50px; width: 250px; }
+            @include breakpoint(mobile) { width: 100%;}
+            &.disabled{
+                opacity: 0.6; cursor: not-allowed;
+                &:hover{ background-color:$coupon-button;}
+            }
+        }
+        .signin_btn{display: block; margin: 0 auto; margin-bottom: 30px; margin-top:10px;width: 200px; 
+            background-color: $primary-color; height:44px; line-height: 44px; padding:0; font-size:18px !important;
+           color: #fff;border-radius: 2px;
+           @include breakpoint(mac) { font-size:16px;}
+           @include breakpoint(laptop) { font-size:14px;}
+           @include breakpoint(mobile) { width: 100%;}
+        }
+        .msg{ font-size:12px; color:#888;
+            .link{ color:rgba(255, 255, 255, 0.75); text-decoration:underline;
+              &:hover{ color:#fff; opacity: 1;}
+            }
+        }
+    } 
+    .voucher_status_data{ display: flex; flex-direction: column; align-items: center;
+        justify-content: center; height: 100vh;    
+        h2{font-size: 24px; color: #fff; font-weight: 700;
+            @include breakpoint(mac) { font-size:22px; margin-bottom:35px;}
+            @include breakpoint(laptop) { font-size:20px; margin-bottom:30px;}
+            @include breakpoint(desktop-small) { font-size:18px; margin-bottom:25px;}
+            @include breakpoint(mobile-small) { font-size:16px;}
+        }
+        h3{font-size:20px; color:#fff; font-weight: bold; margin-bottom: 10px;
+            @include breakpoint(mobile) { margin:20px; font-size:17px;}
+        }
+        p{font-size:18px; line-height: 22px; color:#ccc; margin-bottom:25px;
+            @include breakpoint(mobile) { font-size:16px;}
+        }
+        a{ width: 250px; margin-top: 10px; font-size: 18px; height:50px; line-height: 46px; background: #329735; text-align: center; 
+            font-size:20px; color:#fff; display: inline-block; border-radius: 3px; 
+            transition: all .2s ease-in;cursor: pointer; display: flex; align-items: center;justify-content: center;
+            @include breakpoint(mac) {height:45px; line-height: 42px; font-size:18px;}
+            @include breakpoint(laptop) {  height:40px; font-size:17px; line-height: 38px;}
+            @include breakpoint(desktop-small) { width:160px;  font-size:16px; font-weight: normal;}
+            &:hover, &:focus{ text-decoration: none; background: #238026;}
+            
+            img{ margin-left:8px; width:8px;}
+        }
+    }
+}

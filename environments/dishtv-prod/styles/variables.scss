@@ -1,0 +1,366 @@
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+  font-family: 'Poppins', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+  font-weight: 1 1000;
+}
+
+// font-family
+$font-family-primary: 'Poppins', sans-serif;
+$font-family-seconday: 'Lato', sans-serif;
+$font-awesome:'FontAwesome';
+
+
+// variable decleration
+$primary-color:#D13066;
+$primary-hover-color: #f73975;
+$white-color: #fff;
+$black-color: #000;
+$body-color: var(--body-color);
+$grey-color:#404040;
+$grey-hover-color:#494949;
+// $font-family-primary: "Poppins, sans-serif" !important; 
+$danger:#c00;
+$secondary-color: #222;
+
+
+
+$primary-button-text-color: #fff;
+$card-background: #2f2f2f;
+$watch-btn-icon-color: #000;
+
+
+
+
+// $navbg: $secondary-color;
+ 
+// variable export
+:export {
+  primaryColor: $primary-color;
+  whiteColor: $white-color;
+  bodyColor:$body-color;
+  bodyColor:$body-color;
+}
+
+
+/* break points */
+@mixin breakpoint($point) {
+  @if $point == below-big {
+    @media (max-width: 1900px) { @content ; }
+  }
+  @else if $point == widescreen {
+    @media (max-width: 1600px) { @content ; }
+  }
+  @else if $point == desktop-big {
+    @media (min-width: 1441px) { @content ; }
+  }
+  @else if $point == mac {
+    @media (max-width: 1440px) { @content ; }
+  }
+  @else if $point == laptop {
+    @media (max-width: 1366px) { @content ; }
+  }
+  @else if $point == desktop-small {
+    @media (max-width: 1199px) { @content ; }
+  }
+  @else if $point == tablet-portrait {
+    @media (max-width: 1024px) { @content ; }
+  }
+  @else if $point == tablet {
+    @media (max-width: 991px) { @content ; }
+  }
+  @else if $point == mobile {
+    @media (max-width: 767px)  { @content ; }
+  }
+  @else if $point == mobile-big-land {
+    @media (max-width: 640px)  { @content ; }
+  }
+  @else if $point == mobile-small {
+    @media (max-width: 576px)  { @content ; }
+  }
+  @else if $point == mobile-common-land {
+    @media (max-width: 480px)  { @content ; }
+  }
+  @else if $point == mobile-common {
+    @media (max-width: 360px)  { @content ; }
+  }
+  @else if $point == mobile-x-small {
+    @media (max-width: 320px)  { @content ; }
+  }
+}
+
+/* card */
+// $card-Radius: 6px;
+// $card-hover-Radius: 6px 6px 0 0;
+// $card-footer-Radius: 0 0 6px 6px;
+$card-Radius: 0px; 
+$card-hover-Radius:0px;
+$card-footer-Radius:0px;
+
+/*header*/
+$header-gradient:linear-gradient(180deg,#141414 0,hsla(0,0%,8%,0));
+$header-border-color:$white-color;
+$mobile-header-bg:$body-color;
+$mobile-header-gradient:linear-gradient(180deg,#141414 0,hsla(0,0%,8%,0));
+$more-menus-hover-bg:#63639521;
+
+/* Navigation */
+$nav-bg: $secondary-color;
+$nav-padding: 0 58px;
+$logo-width: 60px;
+//$header-menu-font-color: rgba(255, 255, 255, 0.4);
+$profile-icon-bg-border-color:#7a7a80;;
+$bottom-menu-bg: #232323;
+$top-nav: #141414;
+
+/* Seach Page */
+$search-input-border-bg: #333;
+$search-input-border-mb: #52525b;
+$search-tabs-border-radius: 4px;
+$tabs-bg: $secondary-color;
+$tab-active-bg: #e7195a;
+$tab-hover-bg: #303030;
+$profile-icon-bg:#7a7a80;;
+$profile-menu-bg:#333;
+$profile-menu-li-hover-bg:#444;
+$search-list-bg:#232323;
+$search-list-hover-bg:#333;
+
+// support pages
+$static-page-bg:#232323;
+$sidebar-list-active:$primary-color;
+$sidebar-header-bg:#282828;
+$static-mobile-header-bg:var(--static-page-bg);
+$static-page-mobile-bg:$body-color;
+$static-sidebar-bg:var(--lang-bg);
+
+//popup
+$popup-bg:var(--lang-bg);
+$popup-mobile-bg:$popup-bg;
+$profile-popup-bg: var( --profile-background);
+// language 
+$lang-tab-bg:var(--lang-tab-bg);
+$lang-tab-bg-mb:#333;
+$radio-btn-bg:$primary-color;
+$lang-tab-bg-border:#444;
+
+// footer
+$footer-bg:rgba(62,62,62,.2);
+$footer-bottom-links-bg:#141414;
+$footer-suggestion-links-bg: #141414;
+$footer-bg-img:url(https://d2ivesio5kogrp.cloudfront.net/static/vesta/images/footer-bg.png);
+$copy-right-color:#25a7a7;
+
+
+
+/*signin, signup, forgotpassword */
+$signin-bg: #262626;
+$sigin-mobile-bg:$body-color;
+$signin-border-radius: 0px;
+$signin-pg-image: url(https://d2ivesio5kogrp.cloudfront.net/static/aastha/images/sign-in-bg.jpg) no-repeat center center fixed; 
+$signin-btn-border:#52525c;
+$sigin-mobileback-bg:#222148;
+$gender-radio-border:$white-color;
+$gender-radio-bg:$white-color;
+
+/*share popup */
+$share-pop-border-radius: 4px;
+
+// banners
+$banners-bg:#222;
+$banners-gradient:  linear-gradient(to bottom, rgba(20, 20, 20, 0) 5%, rgba(20, 20, 20, 0.4) 35%, rgba(20, 20, 20, 0.73) 58%, #141414);
+$banners-btns:rgba(0, 0, 0, 0.4);
+$skeleton-banners-gradient:linear-gradient(180deg, hsla(0, 0%, 8%, 0), hsla(0, 0%, 8%, .45) 47%, #141414);
+//$skeleton-banner-details:#141414;
+$banners-btns:rgba(0, 0, 0, 0.4);
+$banner-active-btn:#FFCB05;
+$card-banners-gradient:  linear-gradient(180deg, rgba(20, 20, 20, 0), rgba(20, 20, 20, .45) 47%, #141414);
+
+// bottom-layout
+$bottom-layout-bg:#292929;
+$layout-img-bg:#212226;;
+$bottom-layout-gradient:rgba(0, 0, 0, 0.16);
+
+// text-color
+$text-color:var(--white-text-color);
+$grey-text-color:var(--text-color);
+$settings-border-color:var(--settings-border-color);
+$sm-title-text-color:#ccc;
+$btn-text-color: #fff;
+$settings-border-color:var(--settings-border-color);
+$text-color1:var(--text-color1);
+
+// cards
+$cards-footer-bg:#000;
+$cards-textscroll-bg: $cards-footer-bg;
+$expand-card-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .15) 24.61%, rgba(0, 0, 0, .3) 38.57%, rgba(0, 0, 0, .75) 64.27%, rgba(0, 0, 0, .92) 90.94%, #000);
+$cards-btns-bg: $white-color;
+$cards-btn-border:#FFFFFFB3;
+$card-overlay-gradient:linear-gradient(180deg, hsla(0, 0%, 8%, 0), hsla(0, 0%, 8%, .45) 47%, #141414);
+$card-live-bg:#06b20c;
+$cards-seek-bg:#333;
+$card-inner-bg:$banners-bg;
+$card-text-bg:$banners-bg;
+$card-gradient: linear-gradient(110deg, #222  8%, #292929 18%, #222 33%);
+$card-img-border:#2a2a2a;
+// $details-banner-bg:$skeleton-banners-gradient;
+$suggetions-bg:#222;
+
+// settings
+$settings-mobileback-bg:var(--setting-mobile-background);
+$settings-accountinfo-bg:var(--setting-header-bg);
+$settings-Udetails-bg:var(--setting-bg);
+$setting-btn-border:var(--setting-btn-border);
+$mobileBack-border:#34343c;
+$settings-link-color:$primary-color;
+$tick-mark:var(--tick-mark);
+$settings-border-color: var( --settings-border-color);
+
+// profile
+$profile-setting-bg:var(--setting-bg);
+$profile-setting-border:var(--settings-border-color);
+$arrow-fill-color:var(--arrow-color);
+$profile-lock-sm-label: var(--profile-lock-sm-label);
+
+// socila logins
+
+// $facebook-bg:#3b5998;
+// $google-bg:#4184f3;
+// $apple-bg:#fff;
+// $apple-text-color:$black-color;
+$changenumber-img-bg:$signin-pg-image;
+$userdeatils-bg:$profile-popup-bg;
+$radio-btn-broder:#ffffff59;
+$profile-border:1px solid hsla(0,0%,100%,.1);
+
+// tvshow details
+$tvshow-details-bg:#141414;
+$tvshow-gradient-mask: linear-gradient(
+  to left,
+  rgba(0, 00, 0, 0),
+  rgba(0, 0, 0, 0.75) 80%,
+  #141414
+);
+$tvshow-gradient-mask2:linear-gradient(180deg, transparent, transparent 80%, #141414);
+$mobile-gradient-mask:linear-gradient(180deg, #141414, hsla(0, 0%, 8%, 0) 71%);
+$fancy-tool-tip-bg:#fff;
+$rental-text-color:#8bc5ff;
+$fancy-tool-text-color: $danger;
+
+// player
+$playerright-bg:#1d1d1d;
+$player-section-bg:#000;
+$playerright-list-hover-bg:#262626;
+
+//transactions
+$transactions-list-header-bg:var(--transactions-list-header-bg);
+$transactions-list-bg:#2a2a2a;
+$normalMobile-header-bg:$primary-color ;
+$parental-control-bg:$playerright-bg;
+
+// packages-page
+$packages-page-bg:$body-color;
+$duration-container-bg:#222;
+$Order-summary-header-bg:#222;
+$duration-container-border:#3c3c3c;
+$Order-summary-border:#444;
+$payment-success-bg:#222;
+$payment-header-bg:#282828;
+
+$border-radius: 0px;
+
+//countrydrop down
+$country-dropdown-bg:#262626;
+$country-dropdown-hover:#2f3034;
+
+//coupon code
+$input-border: #3d2a4d;
+$input-border-focus: #523a66;
+$coupon-button: #523967;
+$coupon-button-hover: #5f4277;
+$coupon-error:#fd3e3e;
+
+// /*share popup */
+// $share-pop-border-radius: 0px;
+
+// /*support popup */
+// $support-page-border-radius: 0px;
+
+$border-radius: 0px;
+
+
+// black and white theme styles
+
+.theme-white {
+//settings Page
+  --setting-mobile-background: #e7195a;
+  --setting-header-bg: #fff;
+  --arrow-color: #000;
+  --setting-bg: #fff;
+  --text-color: #000;
+  --body-color: #fff;
+  --settings-border-color:#ccc;
+  --setting-btn-border:#707272;
+//profiles Page
+  --profile-background: #fff;
+  --profile-lock-sm-label: #707272;
+// language popup
+  --lang-bg: #fff;
+  --lang-tab-bg : #707272;
+
+//support pages 
+  --static-page-bg: #fff;
+
+//transactions
+  --white-text-color:#000; 
+  --transactions-list-header-bg:#e7195a; 
+// view-restrictions  
+--tick-mark:#e7195a;
+  //  freedomtv payment
+  --card-background-freedom:  #fff;
+}
+
+.theme-black {
+//settings Page
+  --setting-mobile-background: #222;
+  --arrow-color: #fff;
+  --setting-header-bg: #282828;
+  --setting-bg: #232323;
+  --text-color: rgba(255, 255, 255, 0.6);
+  --text-color1: #c5c5c5;
+  --body-color: #141414;
+  --settings-border-color:widescreen#333;
+  --setting-btn-border:#dee2e6;
+//profiles Page
+  --profile-background: #262626;
+  --profile-lock-sm-label: #999;
+// language popup
+  --lang-bg: #262626;
+  --lang-tab-bg: #454545;
+//support pages 
+  --static-page-bg: #262626;
+
+//transactions
+  --white-text-color:#fff;
+  --transactions-list-header-bg:#333; 
+
+// view-restrictions  
+--tick-mark:#fff;
+//  freedomtv payment
+--card-background-freedom:  #2f2f2f;
+}
+
+
+
+
+
+.theme-white{
+  .arrowWhiteTeme{
+ img{
+ 
+   filter: invert(1);
+ }
+   }
+ }

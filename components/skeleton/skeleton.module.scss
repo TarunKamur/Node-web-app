@@ -1,0 +1,876 @@
+@import "variables.scss";
+
+.banners_main {
+  padding: 0 48px;
+  display: block;
+  overflow: hidden;
+  margin-top: 25px;
+  @media (max-width: 1440px) {
+    padding: 0 20px;
+  }
+  @media (max-width: 768px) {
+    padding: 0;
+    margin-top: 10px;
+  }
+  .section {
+    margin-bottom: 40px;
+    display: block;
+    overflow: hidden;
+    @media (max-width: 1440px) {
+      white-space: nowrap;
+    }
+    &.banners {
+      padding: 0;
+      margin: 0 -48px;
+      display: block;
+      overflow: hidden;
+      @media (max-width: 768px) {
+        margin: 0;
+      }
+      .card {
+        width: 100%;
+        display: none;
+        padding: 0;
+        &:first-child {
+          display: block;
+        }
+        .card_inner {
+          aspect-ratio: 16/6;
+          width: 100%;
+          background: $card-gradient;
+          border-radius: 8px;
+          position: relative;
+          display: block;
+          overflow: hidden;
+          background-size: 200% 100%;
+          animation: shine 1.5s linear infinite;
+          @media (max-width: 768px) {
+            margin: 0 auto;
+            height: 350px;
+          }
+          @media (max-width: 480px) {
+            height: inherit;
+            aspect-ratio: 1/1;
+          }
+          .banner_Details {
+            margin: 50px;
+            width: 60%;
+            @media (max-width: 480px) {
+              width: 70%;
+            }
+            h1 {
+              width: 40%;
+              height: 30px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              margin-bottom: 20px;
+            }
+            h6 {
+              width: 60%;
+              height: 20px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              margin-bottom: 20px;
+            }
+            p {
+              width: 100%;
+              height: 80px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.section_main {
+  padding: 0 48px;
+  display: block;
+  overflow: hidden;
+  margin-top: 60px;
+  @media (max-width: 1440px) {
+    padding: 0 20px;
+  }
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+  @media (max-width: 480px) {
+    margin: 20px 0 0 0;
+  }
+  .section {
+    margin-bottom: 40px;
+    display: block;
+    overflow: hidden;
+    @media (max-width: 1440px) {
+      white-space: nowrap;
+    }
+    h1 {
+      width: 130px;
+      height: 25px;
+      margin-bottom: 12px;
+      margin-left: 10px;
+      background: $card-gradient;
+      background-size: 200% 100%;
+      animation: shine 1.5s linear infinite;
+      @media (max-width: 480px) {
+        width: 110px;
+      }
+      @media (max-width: 360px) {
+        width: 90px;
+        margin-left: 8px;
+      }
+    }
+    .card {
+      width: 16.66%;
+      float: left;
+      padding: 0 10px;
+      border-radius: 8px;
+      background: none;
+      display: block;
+      overflow: hidden;
+      border: none;
+      @media (max-width: 1366px) {
+        width: 20%;
+      }
+      @media (max-width: 1440px) {
+        width: 22.5%;
+        float: none;
+        display: inline-block;
+        padding: 0 10px;
+      }
+      @media (max-width: 1024px) {
+        width: 23.5%;
+      }
+      @media (max-width: 950px) {
+        width: 28.5%;
+        padding: 0 4px;
+      }
+      @media (max-width: 480px) {
+        width: 43%;
+      }
+      @media (max-width: 360px) {
+        width: 51%;
+      }
+      &:nth-child(6) {
+        @media (max-width: 1366px) {
+          display: none;
+        }
+      }
+      &:nth-child(5) {
+        @media (max-width: 950px) {
+          display: none;
+        }
+      }
+      .card_inner {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: $card-gradient;
+        border-radius: 8px;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        background-size: 200% 100%;
+        animation: shine 1.5s linear infinite;
+      }
+    }
+  }
+}
+
+.tvshow_details {
+  display: block;
+  overflow: hidden;
+  margin-top: 60px;
+  @media (max-width: 1440px) {
+    padding: 0;
+  }
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+  @media (max-width: 480px) {
+    padding: 0;
+  }
+  .section {
+    margin-bottom: 40px;
+    display: block;
+    overflow: hidden;
+    @media (max-width: 1440px) {
+      white-space: nowrap;
+    }
+    &.banners {
+      padding: 0;
+      margin: 0;
+      display: block;
+      overflow: hidden;
+      @media (max-width: 480px) {
+        margin: 0;
+      }
+      .card {
+        width: 100%;
+        display: none;
+        padding: 0;
+        &:first-child {
+          display: block;
+        }
+        .card_inner {
+          aspect-ratio: 16/5;
+          background: $card-gradient;
+          padding: 60px;
+          width: 100%;
+          margin-top: 50px;
+          display: flex;
+          align-items: center;
+          border-radius: 8px;
+          background-size: 200% 100%;
+          animation: shine 1.5s linear infinite;
+          @media (max-width: 1440px) {
+            padding: 30px;
+          }
+          @media (max-width: 480px) {
+            margin-top: 0;
+            padding: 20px 16px;
+          }
+          .banner_Details {
+            width: 60%;
+            @media (max-width: 480px) {
+              width: 100%;
+              margin: 0 auto;
+              padding: 0;
+              box-sizing: border-box;
+            }
+            h1 {
+              width: 40%;
+              height: 28px;
+              margin-bottom: 25px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              @media (max-width: 768px) {
+                height: 26px;
+                margin-bottom: 15px;
+              }
+              @media (max-width: 360px) {
+                width: 50%;
+              }
+            }
+            h6 {
+              width: 60%;
+              height: 25px;
+              margin-bottom: 40px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              @media (max-width: 768px) {
+                height: 22px;
+                margin-bottom: 20px;
+              }
+              @media (max-width: 360px) {
+                width: 80%;
+              }
+            }
+            p {
+              width: 100%;
+              height: 100px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              margin-bottom: 15px;
+              @media (max-width: 768px) {
+                height: 75px;
+              }
+              @media (max-width: 360px) {
+                height: 60px;
+              }
+            }
+            .buttons {
+              display: block;
+              overflow: hidden;
+              margin: 40px 0;
+              @media (max-width: 768px) {
+                display: none;
+              }
+              span {
+                float: left;
+                width: 150px;
+                height: 40px;
+                margin-right: 20px;
+                background: $card-gradient;
+                background-size: 200% 100%;
+                animation: shine 1.5s linear infinite;
+                border-radius: 4px;
+                @media (max-width: 360px) {
+                  width: calc(50% - 20px);
+                  margin-right: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.list {
+  margin-top: 150px;
+}
+
+.skeleton_player {
+  width: calc(100% - 58px);
+  margin-left: 58px;
+  display: block;
+  overflow: hidden;
+  margin-top: 106px;
+  @media (max-width: 1600px) {
+    margin-top: 96px;
+  }
+  @media (max-width: 1366px) {
+    margin-top: 94px;
+    width: calc(100% - 55px);
+    margin-left: 55px;
+  }
+  @media (max-width: 768px) {
+    width: calc(100% - 30px);
+    margin: 15px;
+  }
+  @media (max-width: 360px) {
+    width: calc(100% - 20px);
+    margin: 10px;
+  }
+  .player_left {
+    width: calc(100% - 518px);
+    float: left;
+    margin-top: 27px;
+    @media (max-width: 1600px) {
+      width: calc(100% - 478px);
+      margin-top: 20px;
+    }
+    @media (max-width: 1366px) {
+      width: calc(100% - 440px);
+    }
+    @media (max-width: 1024px) {
+      width: 60%;
+    }
+    @media (max-width: 768px) {
+      padding-right: 0;
+      width: 100%;
+      float: none;
+    }
+    .player {
+      width: 100%;
+      aspect-ratio: 16/8;
+      background: $card-gradient;
+      background-size: 200% 100%;
+      animation: shine 1.5s linear infinite;
+      border-radius: 8px;
+      @media (max-width: 1024px) {
+        height: 340px;
+      }
+      @media (max-width: 768px) {
+        height: 300px;
+      }
+      @media (max-width: 360px) {
+        height: 250px;
+      }
+    }
+    .player_info {
+      margin-top: 20px;
+      display: block;
+      overflow: hidden;
+      margin-bottom: 20px;
+      .player_thumb {
+        width: 64px;
+        height: 64px;
+        float: left;
+        background: $card-gradient;
+        background-size: 200% 100%;
+        animation: shine 1.5s linear infinite;
+        border-radius: 4px;
+        @media (max-width: 360px) {
+          width: 45px;
+          height: 45px;
+        }
+      }
+      .player_right_info {
+        width: calc(100% - 120px);
+        float: left;
+        padding-left: 20px;
+        @media (max-width: 360px) {
+          width: calc(100% - 90px);
+        }
+        h1 {
+          width: 50%;
+          height: 27px;
+          margin-bottom: 15px;
+          background: $card-gradient;
+          background-size: 200% 100%;
+          animation: shine 1.5s linear infinite;
+          @media (max-width: 1024px) {
+            height: 22px;
+            margin-bottom: 10px;
+          }
+          @media (max-width: 768px) {
+            height: 18px;
+            margin-bottom: 8px;
+          }
+          @media (max-width: 360px) {
+            width: 65%;
+          }
+        }
+        h6 {
+          width: 40%;
+          height: 20px;
+          margin-top: 10px;
+          background: $card-gradient;
+          background-size: 200% 100%;
+          animation: shine 1.5s linear infinite;
+          @media (max-width: 1024px) {
+            height: 18px;
+          }
+          @media (max-width: 768px) {
+            height: 14px;
+          }
+          @media (max-width: 360px) {
+            width: 55%;
+          }
+        }
+        p {
+          width: 100%;
+          height: 80px;
+          margin-top: 15px;
+          background: $card-gradient;
+          background-size: 200% 100%;
+          animation: shine 1.5s linear infinite;
+          @media (max-width: 1024px) {
+            height: 60px;
+          }
+          @media (max-width: 768px) {
+            height: 32px;
+          }
+        }
+      }
+    }
+  }
+  .player_right {
+    width: 488px;
+    background: $suggetions-bg;
+    float: right;
+    @media (max-width: 1600px) {
+      width: 448px;
+    }
+    @media (max-width: 1366px) {
+      width: 420px;
+    }
+    @media (max-width: 1024px) {
+      width: 40%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+      float: none;
+    }
+    .suggestions {
+      display: block;
+      overflow: auto;
+      max-height: 100%;
+      .section {
+        margin-bottom: 40px;
+        display: block;
+        overflow: hidden;
+        @media (max-width: 1440px) {
+          white-space: nowrap;
+        }
+        .card_data {
+          display: flex;
+          overflow: hidden;
+          width: 100%;
+          flex-direction: column;
+          align-items: stretch;
+          .tabs {
+            border-bottom: solid 1px $card-img-border;
+            .tab {
+              width: 120px;
+              height: 35px;
+              margin: 10px 10px 5px;
+              display: inline-block;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              border-radius: 4px;
+            }
+          }
+          .card {
+            padding: 0 10px;
+            border-radius: 8px;
+            background: none;
+            display: flex;
+            overflow: hidden;
+            margin: 7px 0;
+            float: left;
+            gap: 10px;
+            width: 100%;
+            .card_inner {
+              width: 100%;
+              aspect-ratio: 16/9;
+              background: $card-gradient;
+              border-radius: 8px;
+              position: relative;
+              flex: 0.9;
+              display: block;
+              overflow: hidden;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+            }
+          }
+          .card_info {
+            float: left;
+            width: 60%;
+            margin-top: 8px;
+            @media (max-width: 1024px) {
+              width: calc(100% - 180px);
+              margin-left: 20px;
+            }
+            @media (max-width: 480px) {
+              width: calc(100% - 150px);
+              margin: 0;
+            }
+            h1 {
+              width: 80%;
+              height: 24px;
+              margin-bottom: 15px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              @media (max-width: 360px) {
+                height: 20px;
+                width: 90%;
+              }
+            }
+            h6 {
+              width: 50%;
+              height: 24px;
+              margin-bottom: 15px;
+              background: $card-gradient;
+              background-size: 200% 100%;
+              animation: shine 1.5s linear infinite;
+              @media (max-width: 360px) {
+                height: 18px;
+                width: 70%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.skeleton_tvguide {
+  padding: 0 48px;
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+  .tvguide {
+    display: flex;
+    height: 65px;
+    margin-bottom: 5px;
+    @media (max-width: 1600px) {
+      height: 50px;
+    }
+    .channel_img {
+      margin-right: 6px;
+      width: 140px;
+      background: $card-gradient;
+      background-size: 200% 100%;
+      animation: shine 1.5s linear infinite;
+      border: 1px solid $card-img-border;
+      border-radius: 4px;
+      @media (max-width: 1600px) {
+        width: 110px;
+      }
+    }
+    .channels {
+      display: flex;
+      width: 100%;
+      .channel_names {
+        margin-right: 5px;
+        width: 33.3%;
+        background: $card-gradient;
+        background-size: 200% 100%;
+        animation: shine 1.5s linear infinite;
+        border: 1px solid $card-img-border;
+        border-radius: 4px;
+        @media (max-width: 360px) {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+.language_skeleton {
+  display: grid;
+  gap: 15px;
+  padding: 16px;
+
+  // Responsive grid layout
+  grid-template-columns: repeat(2, 1fr); // Mobile (default)
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr); // Tablet
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr); // Laptop/Desktop
+  }
+}
+
+.language_item {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+  padding: 10px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.language_item_image {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.language_item_details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.language_item_text,
+.language_item_subtext {
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.language_item_text {
+  width: 80%;
+  height: 20px;
+}
+
+.language_item_subtext {
+  width: 60%;
+  height: 16px;
+}
+
+.genre_skeleton {
+  display: grid;
+  gap: 15px;
+  padding: 16px;
+
+  // Responsive grid
+  grid-template-columns: repeat(2, 1fr); // mobile
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(3, 1fr); // tablet
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr); // laptop
+  }
+}
+
+.genre_item {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 8px;
+  padding: 10px;
+  height: 120px;
+  overflow: hidden;
+}
+
+.genre_item_image {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.genre_item_details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 10px;
+  flex: 1;
+}
+
+.genre_item_text,
+.genre_item_subtext {
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.genre_item_text {
+  width: 80%;
+  height: 20px;
+}
+
+.genre_item_subtext {
+  width: 60%;
+  height: 16px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.rating_skeleton {
+  pointer-events: none;
+  opacity: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 6px;
+  min-height: 60vh;
+  width: 100%;
+  max-width: 700px;
+  margin: 0;
+}
+
+.rating_item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.checkbox_skeleton {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.text_container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.skeleton_head {
+  width: 140px;
+  height: 20px;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton_desc {
+  width: 240px;
+  height: 16px;
+  background: linear-gradient(90deg, #3a3a3a 25%, #4a4a4a 50%, #3a3a3a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .rating_skeleton {
+    padding: 12px;
+    max-width: 100%;
+  }
+
+  .rating_item {
+    gap: 12px;
+  }
+
+  .checkbox_skeleton {
+    width: 24px;
+    height: 24px;
+  }
+
+  .skeleton_head {
+    width: 120px;
+    height: 18px;
+  }
+
+  .skeleton_desc {
+    width: 200px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rating_skeleton {
+    gap: 24px;
+    padding: 10px;
+  }
+
+  .rating_item {
+    gap: 10px;
+  }
+
+  .checkbox_skeleton {
+    width: 20px;
+    height: 20px;
+  }
+
+  .skeleton_head {
+    width: 100px;
+    height: 16px;
+  }
+
+  .skeleton_desc {
+    width: 160px;
+    height: 12px;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}

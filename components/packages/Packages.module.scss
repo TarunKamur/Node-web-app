@@ -1,0 +1,187 @@
+@import "@/styles/variables.scss";
+
+.packages_wrapper {
+  min-height: 100vh;
+  background-color: $packages-page-bg;
+  color: $text-color;
+  padding-top: 50px;
+  line-height: 1.2;
+
+  .packages_container {
+    margin-top: 120px;  position: relative; margin-bottom: 20px;
+    @include breakpoint(mac) { margin-top: 100px; }
+    @include breakpoint(laptop) { }
+    @include breakpoint(mobile) { margin-top: 20px; }
+
+    .packages_header { text-align: center;
+      .heading { font-size: 24px; margin-bottom: 30px; font-weight: 500;
+        @include breakpoint(mobile) { font-size: 20px; }
+        @include breakpoint(mobile-common-land) {  font-size: 17px; }
+      }
+
+      .sub_headings {
+        margin-bottom: 40px;
+        opacity: 0.6;
+        padding: 0 10px;
+
+        .sub_heading {
+          font-size: 22px;
+          margin-bottom: 8px;
+          color: $text-color;
+          font-weight: 400;
+
+          @include breakpoint(tablet) {
+            font-size: 20px;
+          }
+
+          @include breakpoint(mobile) {
+            font-size: 18px;
+          }
+
+          @include breakpoint(mobile-common-land) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .packages_body {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: block;
+      overflow: hidden;
+      padding:0 20px;
+      @include breakpoint(tablet-potrait) {
+        width: 100%;
+        padding: 0 10px;
+      }
+
+      @include breakpoint(tablet) {
+        width: 760px;
+        padding: 0;
+      }
+
+      @include breakpoint(mobile) {
+        width: 100%;
+        height: auto;
+        padding: 0 16px;
+      }
+
+      .packages_left_container {
+        padding: 0;
+        float: left;
+        width: 50%;
+        height: 450px;
+        margin-bottom: 20px;
+        @include breakpoint(tablet) {
+          width: 400px;
+          height:auto;
+        }
+
+        @include breakpoint(mobile) {
+          width: 100%;
+          max-height:80%;
+          height: auto;
+        }
+      }
+
+      .packages_right_container {
+        padding: 0;
+        text-align: left;
+        width: calc(50% - 20px);
+        float: right;
+
+        @include breakpoint(tablet) {
+          width: 330px;
+        }
+
+        @include breakpoint(mobile) {
+          width: 100%;
+          height: auto;
+          // padding-right: 16px;
+        }
+      }
+
+    }
+
+    .active_plans_container{
+      margin-bottom: 40px;
+      .inner{ padding:20px;}
+    }
+  }
+
+  &.mobile {
+    padding: 0px;
+    overflow-y: hidden;
+    height: 100vh;
+    @include breakpoint(mobile) { height: auto;}
+    .packages_container {
+      margin-top: 80px;
+      height: calc(100% - 80px);
+      .packages_body {
+        height: 100%;
+        .mobile_header {
+          display: block;
+          position: fixed;
+          top: 0px;
+          left: 0;
+          background: $normalMobile-header-bg;
+          width: 100%;
+          height: 56px;
+          line-height: 56px;
+          font-size: 16px;
+          padding: 0 20px;
+          text-align: left;
+          z-index: 2;
+          img{
+            margin-right: 10px;
+            vertical-align: middle;
+          }
+        }
+        .mobile_summary_header{
+          display: block;
+            position: fixed;
+            top: 0px;
+            left: 0;
+            background: $Order-summary-header-bg;
+            width: 100%;
+            height: 56px;
+            line-height: 56px;
+            font-size: 16px;
+            padding: 0 20px;
+            text-align: left;
+            z-index: 2;
+            .close{
+                width: 14px;
+                height: 14px;
+                float:right;
+                cursor: pointer;
+            }
+        }
+      }
+    }
+  }
+
+     .tab_header {
+      display: none;
+        @include breakpoint(tablet){
+          display: block;
+        }
+       position: fixed;
+       top: 0px;
+       left: 0;
+       background: $normalMobile-header-bg;
+       width: 100%;
+       height: 56px;
+       line-height: 56px;
+       font-size: 16px;
+       padding: 0 20px;
+       text-align: left;
+       z-index: 2;
+  
+       img {
+         margin-right: 10px;
+         vertical-align: middle;
+       }
+     }
+}

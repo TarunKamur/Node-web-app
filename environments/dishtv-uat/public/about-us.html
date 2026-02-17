@@ -1,0 +1,140 @@
+<html>
+
+<head>
+<title>About</title>
+<meta charset="utf-8">
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+<link rel="icon" type="image/x-icon" href="https://d2ivesio5kogrp.cloudfront.net/static/watcho/images/watcho-favicon.png" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body.default_theme {
+            background: #232323;
+        }
+
+        body.white{
+            background: white;
+        }
+    body.white .html-about {
+      background: white;
+    }
+
+    body.white .html-about.template {
+      color: black;
+    }
+
+
+    /* width */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+      border-radius: 6px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #444;
+      border-radius: 6px;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+     body{background: #232323; font-family: "Poppins",sans-serif; line-height: 20px;}
+     .template-fluid{  height: 99%;  overflow: auto; }
+      @media screen and (max-width: 1024px){
+      .template-fluid {height: 100%;}   
+      } 
+     .html-about.template{ background: #222; font-size:16px; color:#fff;}
+      h1{ font-size:22px;margin-top: 20px; margin-bottom: 10px; font-weight: 400;}
+     .template-fluid .html-about.template{padding: 0 20px 0 0 ;background:#222222}  
+     @media screen and (max-width : 767px) {.template-fluid .html-about.template {padding-right: 10px;}}
+     @media screen and (max-width: 1024px){
+     .template-fluid .html-about.template{background:#232323;}
+     .html-about .temp_inner h1{ font-size:20px;}
+     } 
+     @media screen and (max-device-width: 1024px){ 
+            body.default_theme {background: #141414;}
+            body.default_theme .html-about.template{background: #141414;}
+            body.white {background: white;}
+            body.white .html-about.template{background: #fff;}
+            ::-webkit-scrollbar {
+            display: none;
+            }
+            }
+     .html-about{padding: 0;}
+     .html-about .temp_inner h1{color:#fff; padding:0; margin:0;}
+     .html-about .temp_inner p{font-size:14px; color:#858585; margin-bottom:15px; word-break: break-word;}
+     .html-about .temp_inner .list_item{ margin:25px 0 6px; display: block;}
+     .html-about .temp_inner .lists{ margin-bottom:30px;}
+     .html-about .temp_inner .lists p{ padding-left:20px; margin-bottom:5px;}
+     .html-about .italic_underline{ font-style: italic; text-decoration: underline;}
+     .html-about .sm_heading{ color:#fff;}
+     .html-about .iub{ font-style: italic; font-weight: bold; color:#fff;}
+     .html-about .list_inside1{ color:#858585; margin-bottom:15px;}
+     .html-about .mt10{ margin-top:10px;}
+     .html-about .list_inside1 .lists{ padding-left:40px;}
+     .html-about .ml15{ margin-left:15px;}
+     .html-about .html-about{ color:#0056b3; cursor: pointer;}
+     .html-about .temp_inner .final{text-align: center;}
+    @media screen and (max-width: 480px){
+      .html-about.template h1{ font-size:22px;}
+      .html-about.template h5{ font-size:18px; margin-bottom:30px;}
+      .html-about.template ul li ol{ padding-left:15px;}
+
+
+      .html-about h1{margin-top: 0px;}
+      .html-about .temp_inner p{margin-bottom:8px;}
+      .html-about .temp_inner .list_item{ margin:14px 0 4px; }
+    }
+  </style>
+</head>
+
+<body id="about" class="default_theme">
+  <div class="html-about container-fluid template">
+    <h1 class="title">About</h1>
+    <div class="temp_inner">
+      <p>Watcho, a premium OTT platform from Dish TV that streams videos online, is your best bet in entertainment with
+        hundreds of hours of quality content from leading production houses and publishers. It's a one-stop destination
+        for your distinct entertainment preferences that lets you watch movies online, web series India, comedy shows,
+        Kannada web series, entertainment shows on Live TV channels and Live news apart from handpicked short films.
+      </p>
+      <p>At Watcho App, we believe in everything creative. Upload a video of your creative performance and get featured
+        on the website and Watcho App in 'Watcho Creator Videos' and get an instant kiss of fame. Watcho Originals and
+        Watcho Spotlight offer the consumption of unique content made in-house to quench your thirst for mind-blowing
+        short films, entertainment shows, and web series. Apart from exclusive Watcho original content, we stress on
+        streaming content in other regional languages as Tamil, Telugu, Kannada, and Malayalam too to unite the nation.
+      </p>
+      <p>Watcho app is a great proposition for unique and original web series, short films, and some amazing comedy web
+        series apart from Hindi and regional movies online. Get the Watcho App and unleash the doors to infinite
+        original and entertaining content! </p>
+
+    </div>
+  </div>
+  <script>
+    var params = {};
+    theme = ['white']
+    for (const [key, value] of (new URLSearchParams(location.search))) {
+      params[`${key}`] = `${value}`
+    }
+    console.log("params",params)
+    if (!!params.theme && theme.includes(params.theme)) {
+      document.getElementById("about").classList.add(params.theme);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+@import 'variables.scss';
+
+
+.bg_top_left{position: fixed; top: -150px; left: -160px; width: 550px; pointer-events: none;
+    @include breakpoint(mobile){display: none; z-index: 0;}
+}
+.bg_bottom_right{position: fixed; bottom: -150px; right: -160px; width: 550px; pointer-events: none;
+    @include breakpoint(mobile){display: none; z-index: 0;}
+}

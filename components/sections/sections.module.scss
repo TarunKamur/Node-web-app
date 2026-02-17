@@ -1,0 +1,212 @@
+@import "variables.scss";
+
+.sectionsHome {
+  @include breakpoint(tablet) { top:-30px; position: relative; }
+  &.no_banners{margin-top: 120px;
+    @include breakpoint(mobile) { margin-top: 50px; }
+     &.tvshow_details{ margin-top: 0px; }
+  }
+  &.banners{margin-top: 0px;}
+  &.freedomtv{margin-top: -65px !important;
+    @include breakpoint(mobile) { margin-top: 0px !important; }
+  }
+  .section_wrap {
+    position: relative;
+    z-index: 1; margin-top:30px;
+    &:hover{ z-index: 2;}
+    @include breakpoint(mobile) { margin-top: 0px; margin-bottom:10px; }
+    .section_top {       
+        padding: 0 0px 0 58px; 
+        margin-bottom: 23px;
+        margin-top: 0px;  cursor: pointer;
+        display: inline-block; position: relative; z-index: 4; pointer-events: none;
+        @include breakpoint(desktop-small) { padding: 0 0px 0 30px;}
+        @include breakpoint(tablet) { padding: 0 0px 0 30px; margin-bottom:10px;}
+        @include breakpoint(mobile) { padding: 0 0px 0 20px; pointer-events: inherit; }
+        .section_title{ position: relative; z-index: 5;  font-size: 14px; font-weight: 400;
+          @include breakpoint(laptop) { font-size:22px; font-weight: 500;}
+          @include breakpoint(tablet) { font-size:16px; }
+        }
+        .viewAll { pointer-events: visible;
+          display: inline-block; left: -100px; opacity: 0;
+          font-size: 16px;
+          margin-left: 10px;
+          color: $primary-color;
+          transition: all .3s ease-in-out;
+          position: relative;
+          z-index: 1;
+          font-weight: normal;
+          cursor: pointer;
+          @include breakpoint(mobile){ display: none;} 
+        }
+        .viewAll_arrow {
+          content: "";
+          border: solid var(--text-color);
+          border-width: 0 2px 2px 0;
+          display: inline-block;
+          padding: 5px;
+          transform: rotate(-45deg);
+          -webkit-transform: rotate(-45deg);
+          margin-left: 5px;
+          position: relative;
+          left: -72px;
+          top: 0px;
+          transition: all .3s ease-in-out;
+          // border-color: $primary-color;
+          @include breakpoint(mobile){  position: inherit; left:0;} 
+        }
+        
+        .section_viewall{ color: var(--arrow-color);; text-decoration: none;}
+      }
+      &:hover{
+        .viewAll{ left:0; transition: all .3s ease-in-out; opacity: 1; 
+        @include breakpoint(tablet){display: none;} 
+      }
+        .viewAll_arrow{ left:0; transition: all .3s ease-in-out; border-color: $primary-color;
+          @include breakpoint(mobile){  position: inherit; border-color:#fff} 
+        }
+      }
+    }
+  }
+
+  .swiperClass{ 
+    .cardSwiper { overflow:inherit; overflow-x:clip;
+      padding-right: 116px;
+      @include breakpoint(laptop) { padding-right: 110px; }
+      @include breakpoint(desktop-small) { padding-right: 60px; }
+      @include breakpoint(tablet) { padding-right: 20px; }
+
+      .disable_arrow{
+        // display: none !important;
+        opacity: 0 !important;
+        // transition: all 500ms ease;
+      }
+      .CustomSwiperSlide {
+        position: relative;
+        &:first-child {
+          margin-left: 58px;
+          @include breakpoint(laptop) { margin-left:55px;}
+          @include breakpoint(desktop-small) { margin-left:30px;}
+          @include breakpoint(mobile) { margin-left: 20px; }
+          // @include breakpoint(laptop) {margin-left:51px; }
+          // @media only screen and (max-width: 1199px) and (min-width: 991px){ margin-left:20px;}
+          // @include breakpoint(tablet) { margin-left:10px; }
+          // @include breakpoint(mobile-common-land) { margin-left:15px; }
+        }  
+        &.tag_poster{
+          width: fit-content !important;
+        }   
+        &.grid{
+          &:first-child {
+            margin-left: 0px !important;
+          }
+        } 
+      }
+      
+      .prev,
+      .next {
+        // display: none;
+        opacity: 0;
+        top: 50%;
+        position: absolute;
+        transform: translateY(-50%);
+        // padding: 3px;
+        width: 44px;
+        height: 100%;
+        z-index: 1;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        background: rgba(0, 0, 0, 0.5);
+    
+        &:before {
+          content: "";
+          border: solid #fff;
+          border-width: 0 2px 2px 0;
+          display: inline-block;
+          padding: 0px;
+          margin-left: 5px;
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          top: 0;
+          bottom: 0;
+          transform: rotate(135deg);
+          width: 12px;
+          height: 12px;
+        }
+        @include breakpoint(desktop-small) { width: 30px;}
+        @include breakpoint(tablet) { display: none;}
+
+        &.disable_arrow{ cursor:default; }
+      }
+      .prev {
+        left: 0;
+        @include breakpoint(tablet) { display: none; }
+      }
+      .next {
+        right: 0;
+        @include breakpoint(tablet) { display: none; }
+        &:before {
+          transform: rotate(-45deg);
+        }
+      }
+      &:hover{
+        .prev,
+        .next{
+          @include breakpoint(tablet) { display: none; }
+          // display: block;
+          opacity: 1;
+         }
+       }
+}
+
+&.grid{
+  .cardSwiper{
+    padding-left: 55px;
+  }
+}
+
+
+
+  // &:hover{
+  //   .next, .prev { margin-top:-10px;
+  //     height: calc(100% - 80px);
+  //   }
+  // }
+  }
+
+  .skeleton{
+    background-color: #e5e5e5;
+    height: 120px;
+  }
+
+    .mobileBack {
+    top: 0;
+    font-size: 16px;
+    color: #fff;
+    z-index: 11;
+    background: $settings-mobileback-bg;
+    width: 100%;
+    padding: 16px 20px 16px 0;
+    position: fixed;
+    display: none;
+    border-bottom: 1px solid #34343c;
+    @include breakpoint(mobile) {
+      display: flex;
+    }
+    img {
+      display: inline-block;
+      width: 20px;
+      margin-left: 15px;
+      margin-right: 10px;
+    }
+  }
+
+
+
+
+
+

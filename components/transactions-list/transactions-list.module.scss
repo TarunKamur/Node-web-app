@@ -1,0 +1,157 @@
+@import 'variables.scss';
+
+.eventlist td{
+    border: none;
+    border-collapse: collapse;
+}
+
+.transactionCont{
+    background-color: $body-color;
+    color: $white-color;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding:25px 58px;
+    padding-top: 120px !important;
+    @include breakpoint(tablet){
+        padding: 0px !important;
+    }
+    .tabletHideHead{
+        @include breakpoint(tablet){
+            display: none;
+        }
+    }
+    .NoHistry{margin-top:60px;text-align:center;font-size:20px; color: var(--text-color);}
+    .traHeader_cont{
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+        @include breakpoint(tablet){
+         justify-content: flex-start;   
+         padding: 0px 20px;
+         gap: 10px;
+         height: 56px;
+         line-height: 56px;
+         background: $transactions-list-header-bg;
+         position: sticky;
+         top: 0;
+         width: 100%;
+         margin-top: 0;
+     
+        }
+        h4{ font-size: 20px;
+            @include breakpoint(mobile-common-land){ font-size:16px;}
+        }
+    .backNav_cont{
+        display: flex;
+        cursor: pointer;
+        gap: 10px;
+        color: $text-color;
+        font-size: 16px;
+        align-items: center;        
+        opacity: .65;
+        img{
+            cursor: pointer;
+            width: 20px;
+        }
+        &:hover{opacity: 1;}
+    }
+}
+.transactionList_cont{
+    padding: 10px 0px;
+    @media (max-width: 1200px) {
+        width: 100%; overflow: auto;
+    }
+    .transListHeader{
+        font-size: .875em;
+        color: $grey-text-color;
+        font-weight: 400;
+        background: $transactions-list-bg;
+        @include breakpoint(tablet){      
+        display: flex;
+        flex-direction: column;
+        background-color: transparent !important;
+        padding: 20px 10px ;
+        // border-bottom: 1px solid hsla(0,0%,100%,.1);
+        }
+       
+    }
+    .eventlist{
+        background: $transactions-list-header-bg;
+        width:100%;
+    }
+}
+.orderIdcls{
+   flex: 1;
+   min-width: 147px;
+
+   .order_id{
+    display: flex;
+    img{
+        cursor: pointer;
+        margin-left: 5px;
+    }
+   }
+}
+.statuscls{
+    flex: 0.8;
+}
+.commonStl{
+    padding: 11px 10px 10px 0px;
+    text-align: left;
+    @include breakpoint(tablet){
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.amountcls{
+    flex: .5;
+}
+.commonListStl{
+    color: $text-color;
+    font-size: 14px;
+    padding: 22px 0px 18px;
+    @include breakpoint(tablet){
+        padding: 5px 0px; display: flex; justify-content: space-between;
+    }
+    @include breakpoint(mobile-common-land){ font-size:14px;}
+    &.paymentsucss{
+        
+    color: $primary-color;
+    @include breakpoint(tablet){
+    padding-bottom: 20px;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+    }
+    }
+    &:first-child{
+        padding-left: 22px;
+        @include breakpoint(tablet){padding-left: 0;}
+    }
+}
+.aplyPadLeftplus{
+    margin-left: 22px;
+    &:first-child{
+        padding-left: 22px;
+    }
+}
+.aplyPadLeft{
+    padding-left: 22px;
+
+}
+.mobileViewHead{
+    display: none;
+    color: $text-color;
+    @include breakpoint(tablet){
+        display: block;
+    }
+}
+
+
+}
+.thead{
+    @include breakpoint(tablet){
+        display: none;
+    }
+}
+

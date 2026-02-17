@@ -1,0 +1,226 @@
+@import "variables.scss";
+.app_footer {
+  @include breakpoint(tablet) {
+    margin-bottom: 60px;
+  }
+  .footer {
+    background: $footer-bg-img;
+    padding: 50px 0px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include breakpoint(below-big) {
+      padding: 20px 0px;
+    }
+    .container {
+      @include breakpoint(mobile-big-land) {
+        padding: 0px 15px;
+      }
+      .footer_inner {
+        display: block;
+        align-items: center;
+       
+        // @media screen and (max-width: 1900px) {
+        //   padding: 0 20px;
+        // }
+        @include breakpoint(mobile-common-land) {
+          padding: 0;
+        }
+        .footer_top {
+          display: flex;
+          align-items: center;
+          @include breakpoint(tablet) {
+            flex-direction: column;
+          }
+          .footer_logo {
+            img {
+              margin-right: 70px;
+              @include breakpoint(below-big) {
+                width: 120px;
+              }
+              @include breakpoint(mobile-common-land) {
+                width: 100px;
+                margin: 0 0 10px;
+              }
+            }
+          }
+          p {
+            font-size: 16px;
+            color: $grey-text-color;
+            padding-right: 45px;
+            @include breakpoint(below-big) {
+              font-size: 12px;
+            }
+            @include breakpoint(tablet) {
+              padding: 0;
+            }
+          }
+        }
+        .footer_middle {
+          display: flex;
+          margin: 30px 0px 15px;
+          padding: 25px 0px;
+          border-top: 1px solid $primary-color;
+          border-bottom: 1px solid $primary-color;
+          @include breakpoint(below-big) {
+            padding: 15px 0px;
+            margin: 20px 0px 10px;
+          }
+          @include breakpoint(tablet) {
+            display: flex;
+            flex-direction: column;
+          }
+          @include breakpoint(mobile-common-land) {
+            padding: 15px 20px;
+          }
+          .sub {
+            display: flex;
+            width: 50%;
+            @include breakpoint(tablet) {
+              width: 100%;
+            }
+            @include breakpoint(mobile-common-land) {
+              flex-direction: column;
+            }
+            .object {
+              width: 50%;
+              @include breakpoint(laptop) { width:40%;}
+              @include breakpoint(tablet) {
+                display: flex;
+                text-align: center;
+                flex-direction: column;
+                margin-bottom: 20px;
+              }
+              @include breakpoint(mobile-common-land) {
+                width: 100%;
+                margin-bottom: 15px;
+              }
+              .text {
+                font-size: 16px;
+                color: $primary-color;
+                @include breakpoint(below-big) {
+                  font-size: 12px;
+                }
+                
+              }
+              ul {
+                margin-top: 10px;
+                @include breakpoint(mobile-common-land) {
+                  display: flex;
+                  justify-content: space-between;
+                }
+                li {
+                  a {
+                    color: $grey-text-color;
+                    font-size: 16px;
+                    @include breakpoint(below-big) {
+                      font-size: 12px;
+                    }
+                    &:hover{ text-decoration: underline;}
+                  }
+                }
+              }
+              &.tv {
+                text-align: center;
+                ul {
+                  display: grid;
+                  grid-template-columns: auto auto auto;
+                  gap: 20px;
+                  @include breakpoint(mobile-common-land) {
+                    gap: 15px;
+
+                  }
+                  li {
+                    img {
+                      height: 32px;
+                      @include breakpoint(below-big){height: 28px;}
+                    }
+                  }
+                }
+              }
+              &.mobile{
+                text-align: center;
+                ul {
+                  display: flex;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                  gap: 20px;
+                  li {
+                    img {
+                     
+                      @include breakpoint(below-big){height: 48px;}
+                    }
+                  }
+                }
+              }
+              &.social {
+                text-align: center;
+                ul {
+                  display: flex;
+                  justify-content: center;
+                  flex-wrap: wrap;
+                  gap: 20px;
+                  li {
+                    img {
+                      width: 30px;
+                      height: 30px;
+                    }
+                  }
+                }
+              }
+              &.list{padding-left: 11px;
+               @include breakpoint(tablet){padding: 0;}
+            }
+            }
+          }
+        }
+        .footer_bottom {
+          display: flex;
+          justify-content: space-between;
+          padding: 0px 25px 0 11px;
+            align-items: center;
+          @include breakpoint(tablet) {
+            flex-direction: column;
+            padding: 0px 10px;
+            align-items: normal;
+            text-align: center;
+          }
+          ul {
+            display: flex;
+            justify-content: space-between;
+            @include breakpoint(mobile-common-land) {
+              display: grid;
+              grid-template-columns: auto auto;
+              text-align: left;
+            }
+            li {
+              margin-right: 30px;
+              @include breakpoint(tablet) {
+                margin: 0;
+              }
+              @include breakpoint(mobile-common-land) {
+                margin-bottom: 10px;
+              }
+              a {
+                color: $grey-text-color;
+                font-size: 16px;
+                @include breakpoint(below-big) {
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+          .copy_right {
+            color: $copy-right-color;
+            @include breakpoint(below-big) {
+              font-size: 12px;
+            }
+            @include breakpoint(tablet) {
+              margin-top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,505 @@
+@import "@/styles/variables.scss";
+
+.order_summary_parent {
+  display: flex;
+  justify-content: center;
+  background-color: #131313;
+  width: 100%;
+  flex-direction: column;
+  @include breakpoint(mobile) {
+    background-color: transparent;
+  }
+  .backNav {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding: 25px 0 25px;
+    padding-left: 40px;
+    background-color: $black-color;
+    @include breakpoint(mobile) {
+      background-color: #1e1e1e;
+      padding-left: 25px;
+    }
+    img {
+      cursor: pointer;
+    }
+  }
+  .order_summary_container {
+    // width: 700px;
+    width: 600px;
+    height: 100%;
+    background-color: var(--card-background-freedom);
+    height: auto;
+    margin: 30px auto;
+    @include breakpoint(mobile) {
+      width: auto;
+      margin: 0;
+      margin-top: 10px;
+      height: 100vh;
+    }
+
+    .order_summary_top {
+      font-size: 16px;
+      color: var(--text-color);
+      opacity: .7;
+      padding: 0 24px;
+      height: 55px;
+      line-height: 55px;
+      // border-bottom: 1px solid $Order-summary-border;
+      background-color: #2a2a2a;
+      display: flex;
+      justify-content: space-between;
+
+      @include breakpoint(mobile) {
+        opacity: 1;
+        color: var(--arrow-color);
+        height: 45px;
+        line-height: 45px;
+        font-size: 14px;
+        padding: 0 20px;
+        background-color: transparent;
+      }
+    }
+
+    .order_summary_body {
+      padding-bottom: 20px;
+      
+      & > div:not(:last-child) {
+        border-bottom: 1px solid $grey-color;
+        color: var(--arrow-color);
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      .order_summary_body_first {
+        padding: 10px 28px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        @include breakpoint(mobile) {
+          padding: 10px 20px;
+          padding-top: 0px;
+        }
+.freedomOdSryStcPoi{
+  div{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 5px;
+    align-items: center;
+    span{
+      @include breakpoint(mobile) {
+        font-size: 12px;
+      }
+  }
+  }
+}
+        .label {
+          font-size: 12px;
+          color: $grey-text-color;
+          gap: 10px;
+        
+      @include breakpoint(mobile) {  
+        color: var(--arrow-color);
+      }
+        }
+
+        .plan_info {
+          display: flex;
+          justify-content: space-between;
+          // align-items: center;
+          font-size: 22px;
+          color: $text-color;
+          padding-bottom: 0px;
+
+          @include breakpoint(tablet) {
+            font-size: 15px;
+          }
+
+          @include breakpoint(mobile) {
+            font-size: 16px;
+          }
+          .plan_info_Title{
+            max-width: 80%;
+            // white-space: pre-wrap;
+            
+          @include breakpoint(mobile) {
+          
+              max-width: 600px;
+              white-space: pre-wrap;
+              text-align: start;
+          }
+          }
+          .price {
+            min-width: 50px;
+            position: relative;
+            
+          @include breakpoint(mobile) {
+    text-align: end;
+          }
+              &.afterprice {
+            
+                margin-right: 15px;
+            
+                &::before {
+                  content: '';
+                  position: absolute;
+                  width: 42px;
+                  height: 2px;
+                  background-color: white;
+                  top: 10px;
+                  left: -8px;
+                  @include breakpoint(desktop-big) {
+                    width: 50px;
+                    left: -6px;
+                    top: 13px;
+                  }
+                  @include breakpoint(laptop) {
+                    width: 50px;
+                    left: -4px;
+                    top: 13px;
+                  }
+                  @include breakpoint(tablet) {width: 40px;
+                    left: -4px;
+                    top: 12px;
+                }
+                }
+              }
+            
+            }
+          .rentAmountContainer {
+            display: flex;
+            flex-direction: column;
+            .rentLabel {
+              font-size: 18px;
+              color: $grey-text-color;
+              @include breakpoint(laptop) {
+                font-size: 14px;
+              }
+            }
+            .rentSubLabel {
+              font-size: 14px;
+              color: $grey-text-color;
+              margin-top: 0px;
+              @include breakpoint(laptop) {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+
+      .order_summary_body_second {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        padding: 10px 28px;
+        @include breakpoint(mobile) {
+          padding: 10px 20px;
+        }
+        .plan_info{
+          // background-color: green;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .formSection {
+          border-bottom: 2px solid $grey-color;
+          position: relative;
+          .input_container {
+            display: flex;
+            position: relative;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10px;
+            .plan_info {
+              display: flex;
+              justify-content: space-between;
+              font-size: 16px;
+              color: $text-color;
+              padding-bottom: 0px;
+
+              @include breakpoint(tablet) {
+                font-size: 15px;
+              }
+
+              @include breakpoint(mobile) {
+                font-size: 14px;
+              }
+
+              .price {
+                min-width: 50px;
+              }
+            }
+
+            .input_div {
+              width: calc(100% - 106px);
+              position: relative;
+              border-radius: 3px;
+
+              .label {
+                font-size: 12px;
+                color: $grey-text-color;
+                gap: 10px;
+                transition:
+                  opacity 0.2s ease,
+                  visibility 0.2s ease;
+                position: absolute;
+                font-size: 12px;
+                position: absolute;
+                top: 10px;
+                display: flex;
+                align-items: center;
+              }
+              .couponinput {
+                font-size: 14px;
+                color: $text-color;
+                display: block;
+                width: 100%;
+                height: 40px;
+                outline: none;
+                background: none;
+                border: none;
+                position: relative;
+                z-index: 1;
+                &:focus + .label {
+                  opacity: 0;
+                  visibility: hidden;
+                }
+                &.isCouponAply {
+                  pointer-events: none;
+                }
+              }
+            }
+
+            .apply_btn {
+              width: 96px;
+              height: 40px;
+              border-radius: 3px;
+              border: none;
+              font-size: 12px;
+              cursor: pointer;
+              margin-left: 10px;
+            }
+
+            // left: 33px;
+          }
+          .couponMsg {
+            font-size: 12px;
+            color: red;
+            position: absolute;
+            bottom: 3px;
+            &.sucCouponMsg {
+              color: green;
+            }
+            @include breakpoint (mobile){
+              position: relative;
+              top: -4px;
+            }
+          }
+        }
+      }
+      .order_summary_body_bottom {
+        padding: 10px 28px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        @include breakpoint(mobile) {
+          padding: 10px 20px;
+          // position: absolute;
+          width: 100%;
+          bottom: 15px;
+        }
+
+        .total_amount {
+          display: flex;
+          flex-direction: column;
+          row-gap: 20px;
+          font-size: 16px;
+          color: $text-color;
+          padding-bottom: 24px;
+          line-height: 22px;
+
+          @include breakpoint(tablet) {
+            font-size: 15px;
+          }
+
+          @include breakpoint(mobile) {
+            font-size: 14px;
+          }
+          .paymentOption {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background-color: #2c2c2c;
+            cursor: pointer;
+            gap: 12px;
+            transition: border-color 0.3s ease;
+
+            &:hover {
+              border-color: rgba(255, 255, 255, 0.4);
+            }
+
+            .radioInput {
+              appearance: none;
+              width: 16px;
+              height: 16px;
+              border: 2px solid #4caf50;
+              border-radius: 50%;
+              outline: none;
+              position: relative;
+              cursor: pointer;
+              display: inline-block;
+
+              &:checked::before {
+                content: "";
+                display: block;
+                width: 8px;
+                height: 8px;
+                background-color: #4caf50;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+            }
+
+            .content {
+              display: flex;
+              flex-direction: column;
+              color: #fff;
+
+              .title {
+                font-size: 16px;
+                font-weight: bold;
+              }
+
+              .description {
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.6);
+              }
+            }
+          }
+        }
+
+        .proceed_pay {
+          width: 100%;
+          font-size: 16px;
+          height: 44px;
+          line-height: 44px;
+          border-radius: 2px;
+          cursor: pointer;
+          border: none;
+          margin-top: 8px;
+        }
+     .noteReport{
+      font-size: 14px;
+      // color: #e7195a ;
+      text-align: center;
+      span{
+        color: rgb(249, 237, 14);
+        font-size: 12px;
+        opacity: .7;
+      }
+     }
+      }
+      .checkboxContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 0;
+      }
+
+      .checkboxLabel {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: $grey-text-color;
+        font-size: 16px;
+        pointer-events: none;
+        @include breakpoint(laptop) {
+          font-size: 14px;
+        }
+      }
+
+      .checkbox {
+        width: 16px;
+        height: 16px;
+        accent-color: #ff007f; // Pink checkbox
+        opacity: 0.5;
+      }
+
+      .text {
+        font-size: 14px;
+      }
+
+      .howItWorks {
+        color: #00aaff; // Blue link
+        text-decoration: none;
+        font-size: 16px;
+        @include breakpoint(laptop) {
+          font-size: 14px;
+        }
+      }
+
+      .howItWorks:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .no_packages {
+      padding: 10% 5%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    .haveCoupon {
+      // background-color: red;
+      display: flex;
+      justify-content: space-between;
+    }
+    .viewCoupon {
+      color: #e7195a;
+      font-size: 12px;
+      // border-bottom: 1px solid #e7195a;
+      cursor: pointer;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;
+        width: 100%;
+        height: 1px;
+        background-color: #e7195a;
+      }
+    }
+  }
+}
+
+#iFrameLoaded{
+  padding-top: 55px;
+  border: 0;
+
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.applyLoader{
+  width: 20px;
+  height: 30px;
+}
+

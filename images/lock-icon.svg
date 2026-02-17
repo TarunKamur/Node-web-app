@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14">
+    <g style="opacity:.5">
+        <path data-name="Path 3165" d="M0 0h14v14H0z" style="fill:none;opacity:.87"/>
+        <path data-name="Path 3166" d="M12.75 5.667h-.625V4.333A3.235 3.235 0 0 0 9 1a3.235 3.235 0 0 0-3.125 3.333v1.334H5.25A1.3 1.3 0 0 0 4 7v6.667A1.3 1.3 0 0 0 5.25 15h7.5A1.3 1.3 0 0 0 14 13.667V7a1.3 1.3 0 0 0-1.25-1.333zM7.125 4.333a1.938 1.938 0 0 1 1.875-2 1.938 1.938 0 0 1 1.875 2v1.334h-3.75zm5.625 9.333h-7.5V7h7.5zm-3.75-2A1.336 1.336 0 0 0 9 9a1.336 1.336 0 0 0 0 2.667z" transform="translate(-2 -1)" style="fill:#fff"/>
+    </g>
+</svg>

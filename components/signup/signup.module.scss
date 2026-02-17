@@ -1,0 +1,282 @@
+@import 'variables.scss';
+
+
+
+.signin_cont_page{ width:100%; min-height:100vh; margin:0 auto; background: #0d0d15; position: fixed; height:100%; overflow: auto;   
+    background: $signin-pg-image; 
+    background-size: cover;   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    @include breakpoint(tablet){  position: relative;text-align: center; }   
+    @include breakpoint(mobile){  background: $sigin-mobile-bg; }
+    .tablet_logo{  position: fixed; cursor: pointer; max-width: 180px; max-height: 80px;  margin: 40px;
+        @include breakpoint(mac){ margin: 30px;}
+        @include breakpoint(laptop){ max-width: 125px; max-height: 66px;
+            margin: 30px; }
+        @include breakpoint(tablet){  position: relative;  max-width: 130px;  max-height: 60px;
+            margin: 30px 0px 20px; }
+        @include breakpoint(mobile){ max-width: 120px;  max-height: 55px;
+            margin: 20px; }
+    }
+    .signin_cont{ padding: 50px 40px 70px;
+        display: block; height: fit-content;
+        width: 480px;
+        margin: 80px auto 30px;
+        background: $signin-bg;
+        position: relative;
+        border-radius: $signin-border-radius;
+        // @include breakpoint(mac){ width:450px;}
+        @include breakpoint(laptop){ width:480px;margin: 60px auto 30px; padding: 40px 30px 60px;}
+        @include breakpoint(tablet){width:450px; margin:0 auto 30px;padding: 30px;}
+        @include breakpoint(mobile){ background: $sigin-mobile-bg;  padding:0px 20px; width:100%; max-width: 450px;}
+        .mobile_logo{ display: none;
+            @include breakpoint(tablet){ display: block; margin:10px auto 20px auto; width:65px;}
+        }
+        h1{ font-size:28px; margin-bottom:28px; text-align: center; font-weight: 400;
+            @include breakpoint(mac){font-size: 26px; margin-bottom:50px;}
+            @include breakpoint(laptop){font-size: 24px; margin-bottom:38px;}
+            @include breakpoint(tablet){font-size: 22px; margin-bottom:25px;}
+            @include breakpoint(mobile){font-size: 20px;}
+            @include breakpoint(mobile-common-land ){font-size: 18px;}
+        }
+        form{ 
+            input{ color:$grey-text-color; padding: 14.5px 14px; }
+            label{font-size: 14px; position: absolute;}
+        }
+        .show{  color: $grey-text-color; font-size: 14px; position: absolute; top:32px; right:10px; display: block;
+            cursor: pointer;
+            &:hover{ color:$text-color; transform: all 0.5s;}
+        }
+        .forgot{ position: relative; height: 92px; text-align: left;
+            .datePicker{
+                margin-top: 16px;
+                margin-bottom: 8px;
+            }
+            // @include breakpoint(mac){font-size: 12px;}
+            // input{ padding-right:100px;}
+            //     span, a{
+            //         &:hover{ color:#ccc; transform: all 0.5s;}
+            //     }
+            .valid_error{ bottom: 5px; color: $danger; position: absolute;
+                font-size: 12px;
+                // &.error{
+                //     -webkit-animation: shake .82s cubic-bezier(.36,.07,.19,.97) both;
+                //     animation: shake .82s cubic-bezier(.36,.07,.19,.97) both;
+                //     transform: translateZ(0);
+                //     -webkit-backface-visibility: hidden;
+                //     backface-visibility: hidden;
+                //     perspective: 1000px;
+                //     }
+            }
+            &.inline{display: flex; justify-content: space-between;}
+             .mobileNumber{width: calc(100% - 14px);
+                    &.has_country_code{ padding-left:100px;}
+                }
+        }
+        .forgetpassword{
+            color: $grey-text-color;
+            display: flex;
+            justify-content: flex-end;            
+             a{  color: $grey-text-color; font-size: 12px; 
+                    &:hover{ color:$text-color; transform: all 0.5s;}
+                }
+        }  
+        .button{ height:44px; line-height: 44px; margin-top: 50px; text-transform: none; width: 100%; font-size: 14px;
+            @include breakpoint(mac){font-size: 16px;}
+            @include breakpoint(laptop){font-size: 14px; margin-top: 30px;}
+            @include breakpoint(tablet){margin-top: 35px;}
+            &.signInWithEmail{ margin-top:0 !important}
+            &.guest{background: none; border: 1px solid $signin-btn-border; color: $text-color; margin-top: 20px;}
+        }
+        .text_danger1{ position: relative; color:$danger; font-size:14px; top: 12px;
+            margin-top: 10px;  display: flex;justify-content: center; align-items: center;
+            span{ position: absolute;}
+        }
+        .signInWithEmail{
+            margin-top: 0px;
+        }
+        .links_or{height: 20px;
+            position: relative;
+            border-bottom: 1px solid $signin-btn-border;
+            width: 100%; 
+            margin: 30px 0px 20px;
+            span{    color: $grey-text-color;
+                font-size: 14px;
+                &::after{
+                    content: "OR";
+                    position: absolute;
+                    padding: 0 8px;
+                    background: $signin-bg;
+                    top: 8px;
+                    left: 45%;
+                    @include breakpoint(mobile){
+                        background: $sigin-mobile-bg;}
+                }
+            }
+        }
+        .sm_label{ font-size:12px; color:$grey-text-color; margin:10px auto; text-align: center;
+            a{ color:$text-color; margin:0 5px; text-decoration: underline; opacity: .75;
+                &:hover{opacity: 1;}   
+            } 
+        }
+        .md_label{ color:$grey-text-color; display: block; text-align: center; margin-top: 18px; font-weight: 600;     font-size: 14px;
+            @include breakpoint(mac){margin-top: 20px;}
+            a{ color:$primary-color; margin-left:5px; font-weight: 500; text-decoration: underline;}
+        }
+
+        .signin_footer{ display: flex; flex-direction: column;
+            @include breakpoint(mobile){flex-direction: column-reverse;}
+            .sm_label{ margin-top:40px;}
+        }
+        .genderCont{
+            display: flex;
+            gap: 20px;
+            color: $grey-text-color;
+            line-height: 20px;
+            margin-top: 10px;
+            position: relative;
+            @include breakpoint(mobile-common){gap: 10px;}
+            .valid_error{bottom: -26px; color: $danger; position: absolute; font-size: 12px;}
+            .genderLabel {
+                    position: relative;
+                    display: flex;
+                    gap: 20px;
+                    font-size: 14px;
+                    color: $grey-text-color;
+                    @include breakpoint(mobile-common){gap: 10px;}
+               .loopGender{
+                      .genderradio{
+                        position: relative;
+                        cursor: pointer;
+                        input{opacity: 0;
+                         &.whitebtn{
+                            + .indicator{
+                                border: 2px solid $gender-radio-border;
+                            }
+                        }
+                       
+                        }
+                        .indicator{
+                            position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 18px;
+                                height: 18px;
+                                border: 2px solid $signin-btn-border;
+                                border-radius: 100%;
+                        }
+                        .dotbutton{
+                            width: 8px;
+                            top: 5px;
+                            left: 5px;
+                            height: 8px;
+                            border-radius: 50%;
+                            background-color: $gender-radio-bg;
+                            position: absolute;
+                            margin: 0;
+                        }
+                        .label_text{margin-left: 15px;
+                            @include breakpoint(mobile-common){margin-left: 9px;}}
+                    }
+                   
+                    }
+               
+                    // .genderradio{
+                    //     position: relative;
+                    //     .dotbutton{
+                    //         width: 9px;
+                    //         top: 5px;
+                    //         left: 5.178px;
+                    //         height: 9px;
+                    //         border-radius: 50%;
+                    //         background-color: #fff;
+                    //         position: absolute;
+                    //         margin: 0;
+                    //     }
+                    // }
+            
+                    // label {  min-width: fit-content;
+                    //     margin-left: 25px;
+                    //     position: relative;
+                    // }
+            
+                    // [type="radio"] {
+                    //     position: absolute;
+                    //     cursor: pointer;
+                    //     inset: 0;
+                    // }
+                    // [type="radio"]:before {
+                    //     content: '';
+                    //     position: absolute;
+                    //     left: 0;
+                    //     top: 0;
+                    //     width: 18px;
+                    //     height: 18px;
+                    //     border: 1px solid #ffffff59;
+                    //     border-radius: 100%;
+                    //     background: #ffffff59;
+                    // }
+            
+            // .whitebtn{
+            //     &[type="radio"]:before {
+            //         background: #fff;
+            //     }
+            // }
+                  
+                    // [type="radio"]:after {
+                    //     content: '';
+                    //     width: 16px;
+                    //     height: 16px;
+                    //     background: #262626;
+                    //     position: absolute;
+                    //     top: 2px;
+                    //     left: 2px;
+                    //     border-radius: 100%;
+                    //     -webkit-transition: all 0.2s ease;
+                    //     transition: all 0.2s ease;
+                    // }
+            }
+        }
+      
+    }
+}
+
+
+// @-webkit-keyframes shake {
+//     10%,90% {
+//         transform: translate3d(-1px,0,0)
+//     }
+
+//     20%,80% {
+//         transform: translate3d(2px,0,0)
+//     }
+
+//     30%,50%,70% {
+//         transform: translate3d(-4px,0,0)
+//     }
+
+//     40%,60% {
+//         transform: translate3d(4px,0,0)
+//     }
+// }
+
+// @keyframes shake {
+//     10%,90% {
+//         transform: translate3d(-1px,0,0)
+//     }
+
+//     20%,80% {
+//         transform: translate3d(2px,0,0)
+//     }
+
+//     30%,50%,70% {
+//         transform: translate3d(-4px,0,0)
+//     }
+
+//     40%,60% {
+//         transform: translate3d(4px,0,0)
+//     }
+// }
+
+

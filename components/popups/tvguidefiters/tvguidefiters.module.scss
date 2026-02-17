@@ -1,0 +1,185 @@
+@import "variables.scss";
+
+.guidefilter_modal {
+  .modal_popup {
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999999;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    .main_modal {
+      padding: 20px;
+      width: 100%;
+      max-width: 1000px;
+      min-height: calc(100% - (1.75rem * 2));
+      margin: 0 auto;
+      transform: translate(0);
+      align-items: center;
+      display: flex;
+      @include breakpoint(mac) {
+        max-width: 900px;
+      }
+      @include breakpoint(laptop) {
+        max-width: 600px;
+      }
+      @include breakpoint(mobile) {
+        width: 100%;
+      }
+      @include breakpoint(mobile-common-land) {
+        padding: 0;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+      .modal_wrapper {
+        width: 100%;
+        height: 100%;
+        .modal_content {
+          background: $popup-bg;
+          color: $grey-text-color;
+          padding: 34px 40px 50px;
+          display: block;
+          position: relative;
+          border-radius: 4px;
+          @include breakpoint(mac) {
+            padding: 30px 40px;
+          }
+          @include breakpoint(laptop) {
+            padding: 30px;
+          }
+          @include breakpoint(mobile) {
+            padding: 34px 10px 50px;
+            height: 100%;
+            overflow: auto !important;
+          }
+          @include breakpoint(mobile-common-land) {
+            padding: 31px 0 32px;
+          }
+          .close_icon {
+            position: absolute;
+            right: 20px;
+            top: 22px;
+            color: $text-color;
+            cursor: pointer;
+            background-color: transparent !important;
+            border: transparent !important;
+            border-color: transparent !important;
+
+            img {
+              transition: all 0.2s ease;
+
+              &:hover {
+                transform: rotate(90deg);
+              }
+            }
+          }
+          .modal_content_inner {
+            position: relative;
+            @include breakpoint(mobile) {
+              padding: 0 20px;
+            }
+            .modal_header {
+              position: relative;
+              .modal_title {
+                color: $text-color;
+                text-align: center;
+                font-size: 26px;
+                font-weight: 300;
+                margin: 16px 0 10px;
+
+                @include breakpoint(mac) {
+                  font-size: 22px;
+                }
+                @include breakpoint(laptop) {
+                  font-size: 20px;
+                  margin: 16px 0 8px;
+                }
+                @include breakpoint(tablet) {
+                  font-size: 18px;
+                }
+                @include breakpoint(mobile-small) {
+                  font-size: 16px;
+                }
+                @include breakpoint(mobile) {
+                  margin-bottom: 6px;
+                }
+                @include breakpoint(mobile-x-small) {
+                  font-size: 18px;
+                }
+              }
+
+              .modal_description {
+                color: $text-color;
+                opacity: 0.65;
+                margin: 0 0 40px;
+                font-size: 14px;
+                font-weight: 300;
+                text-align: center;
+
+                @include breakpoint(mac) {
+                  margin: 0 0 30px;
+                }
+                @include breakpoint(laptop) {
+                  margin: 0 0 25px;
+                  font-size: 15px;
+                }
+                @include breakpoint(tablet) {
+                  font-size: 14px;
+                }
+                @include breakpoint(mobile-common-land) {
+                  margin-bottom: 20px;
+                }
+              }
+            }
+            .modal_footer {
+              .modal_footer_btns {
+                margin: 50px auto auto;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .btn {
+                  border-radius: 2px;
+                  height: 44px;
+                  width: 247px;
+                  font-size: 16px;
+                  text-align: center;
+                  color: #fff;
+                  border: none;
+                  background: hsla(0, 0%, 100%, 0.15);
+                  outline: none;
+                  margin: 0px 8px;
+                  background: $primary-color;
+                  &:nth-child(2) {
+                    background: $primary-color;
+                    color: #fff;
+                    &:disabled {
+                      opacity: 0.5;
+                      cursor: not-allowed;
+                    }
+                  }
+                  @include breakpoint(mac) {
+                    font-size: 14px;
+                  }
+                  @include breakpoint(mobile-common-land){width: 100%;}
+                }
+              }
+              .modal_error_text {
+                color: red;
+                text-align: center;
+                font-size: 14px;
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

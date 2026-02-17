@@ -1,0 +1,230 @@
+@import "variables.scss";
+
+.modal_size {
+  padding: 20px 20px 30px !important;
+  max-width: 400px;
+  height: 463px;
+  background-color: #262626;
+  // .popup_topImg{
+  //     text-align: center;
+  //     img{width: 50px; height: 50px;}
+  // }
+  // .title{
+  //     .cross_icon{ cursor: pointer; position: absolute; top:10px; right: 10px;
+  //         &:hover{text-decoration: none !important; }
+  //     }
+
+  //     .popup_title{
+  //         width: 100%; padding: 0px 50px 30px; margin-top: 10px; font-size: 10px;
+  //         letter-spacing: .14px; font-weight: 100; color: $text-color; line-height: normal; text-align: center;
+  //         @include breakpoint(desktop-small) {  padding: 0px 15px 35px; }
+  //         h2{ font-size:18px; font-weight: normal; max-width: 80%; margin:0 auto;
+  //             @include breakpoint(mobile) { font-size:16px;}
+  //             @include breakpoint(mobile-common) { max-width: 100%;}
+  //         }
+  //     }
+  //     .popup_title2{width: 100%; padding: 0px 50px 30px; margin-top: -21px; font-size: 12px;
+  //         letter-spacing: .14px; font-weight: normal; color: $text-color; opacity: 0.8; line-height: normal; text-align: center;}
+  //         h3{font-weight: normal;}
+  // }
+
+  // .btn{
+  //     margin: 0;
+  //     text-align: center;
+  //     width: 100%;
+  //     margin-top: 18px;
+  //     display: flex;
+  //     justify-content: center;
+  //     gap: 13px;
+  //     flex-direction: column-reverse;
+  //     button{     border-radius: 2px;
+  //         font-size: 16px;
+  //         border: none;
+  //         margin: 0 20px !important;
+  //         text-align: center;
+  //         color: #ffffff;
+  //         background: none;
+  //         width: auto;
+  //     }
+  // }
+
+  .modal_inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    color: #9ea2ac;
+    @include breakpoint(tablet) {
+      width: 100%;
+      padding: 0;
+      text-align: center;
+    }
+
+    .modal_content {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .image_container {
+        display: flex;
+        justify-content: center;
+        img {
+          width: 100px;
+        }
+      }
+
+      .msg1_container {
+        .message {
+          white-space: normal;
+          font-size: 18px;
+          color: #fff;
+          font-weight: normal;
+          opacity: 0.9;
+          margin-top: 13px;
+          @include breakpoint(mobile-common-land) {
+            font-size: 16px;
+          }
+          text-align: center;
+        }
+      }
+
+      .msg2_container {
+        .message {
+          font-size: 14px;
+          letter-spacing: 0.14px;
+          color: #c4c4c4;
+          line-height: normal;
+          margin-top: 10px;
+          font-weight: normal;
+          text-align: center;
+          @include breakpoint(mobile) {
+            font-weight: normal;
+            white-space: initial;
+          }
+          @include breakpoint(mobile-common-land) {
+            font-size: 12px;
+            margin-top: 0;
+            line-height: inherit;
+          }
+        }
+      }
+
+      .checkbox_container {
+        display: flex;
+        gap: 10px;
+        border: none;
+        position: absolute;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        position: relative;
+        .check_box {
+          margin-right: 20px;
+          position: relative;
+          position: relative;
+          top: 0;
+          box-sizing: border-box;
+          margin-left: 20px;
+          padding: 0;
+          input {
+            position: absolute;
+            opacity: 0 !important;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            height: 20px;
+            left: 0;
+            width: 20px !important;
+            z-index: 8;
+            cursor: pointer;
+          }
+
+          label {
+            border: 2px solid #555 !important;
+            position: absolute !important;
+            height: 20px !important;
+            width: 20px !important;
+            border-radius: 2px !important;
+            background-color: #2c2b2b;
+            cursor: pointer;
+            margin: 0 !important;
+            font-size: 22px;
+
+            @include breakpoint(tablet) {
+              font-size: 20px;
+            }
+            @include breakpoint(mobile-common-land) {
+              font-size: 18px;
+            }
+
+            &.checked {
+              background-color: $primary-color;
+              position: relative;
+              &::after {
+                position: absolute;
+                content: "";
+                left: 5px;
+              //  bottom: 6px;
+                top: 2px;
+                width: 6px;
+                height: 10px;
+                border: solid #fff;
+                border-width: 0 2px 2px 0;
+                transform: rotate(45deg) !important;
+                -webkit-transform: rotate(45deg);
+                box-sizing: border-box;
+              }
+            }
+          }
+        }
+        .check_box_text {
+          // margin-top: -5px;
+          font-size: 12px;
+          color: #c4c4c4;
+          @include breakpoint(mobile-common-land){
+            margin-top: -3px;
+          }
+
+        }
+      }
+    }
+    .modal_buttons {
+      margin: 0;
+      text-align: center;
+      width: 100%;
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 13px;
+      flex-direction: column-reverse;
+
+      @include breakpoint(mobile-common-land) {
+        margin-top: 30px;
+      }
+
+      .modal_button {
+        border-radius: 2px;
+        font-size: 14px;
+        border: none;
+        margin: 0 20px !important;
+        text-align: center;
+        color: #ffffff;
+        background: none;
+        width: auto;
+        text-align: center;
+        padding: 10px 20px;
+        @include breakpoint(mobile-big-land) {
+          font-size: 12px;
+        }
+        @include breakpoint(mobile-common-land) {
+          height: 40px;
+          margin: 0 9px !important;
+        }
+        &.primary {
+          background-color: $primary-color;
+        }
+      }
+    }
+  }
+}

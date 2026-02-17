@@ -1,0 +1,10 @@
+@import 'variables.scss';
+
+.network_details{ display: flex; position: relative; top : 94px; margin: 0 0 30px;
+    // @include breakpoint(tablet) { top: 0;}
+    img{ margin-right:20px;
+        width: 100%;       
+        @include breakpoint(mobile) { margin-right:15px;}
+        @include breakpoint(mobile-common-land) { margin-right:10px}
+    }
+}

@@ -1,0 +1,45 @@
+@import "variables.scss";
+
+.listHome {
+  .listTitle, h1 {
+    color: #e5e5e5;
+    font-size: 22px;
+    font-weight: 400;
+    display: block;  
+    margin: 130px 0 10px 0;
+    @include breakpoint(mac){font-size: 20px; margin-top:130px;}
+    @include breakpoint(mobile){margin: 20px 0 10px 0; font-size: 16px; }
+    h1{ font-size: 22px;
+      @include breakpoint(mac){font-size: 20px; }
+      @include breakpoint(mobile){font-size: 16px; }
+    }
+  }
+
+  .listItems {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 20px 0;
+    .cardItem {
+      display: inline-block;
+      position: relative;
+    }
+  }
+  // .listTitle+.listItems{
+  //   @include breakpoint(mobile){ 
+  //     margin-top: 60px;
+  //   }
+  // }
+  .listTitleBox{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    
+    @include breakpoint(tablet){ padding: 16px 20px 16px 10px; top: 0; position: fixed; top: 0; 
+      right: 0; z-index: 11; background: #232323; font-size: 16px; width: 100%;
+    } @include breakpoint(mobile){ padding: 16px 20px 16px 6px; 
+    }
+    .back{ cursor:pointer;}
+  } 
+}

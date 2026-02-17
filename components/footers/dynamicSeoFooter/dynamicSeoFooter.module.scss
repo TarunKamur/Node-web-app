@@ -1,0 +1,184 @@
+@import 'variables.scss';
+
+.dynamicSeoFooter {
+  padding: 20px 0;
+
+  .container {
+    .header {
+      font-size: 20px;
+      color: #999999;
+      font-weight: 600;
+      margin-bottom: 5px;
+
+      @include breakpoint(mac) {
+        font-size: 16px;
+      }
+    }
+
+    .details {
+      color: #999999;
+      margin-bottom: 15px;
+      font-size: 18px;
+
+      @include breakpoint(mac) {
+        font-size: 14px;
+      }
+
+    }
+
+    .staticLinks {
+      padding-top: 30px;
+      .name {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .staticBlock {
+        .section {
+          margin-bottom: 10px;
+
+          .title {
+            padding: 5px 0;
+             text-transform: capitalize;
+            cursor: pointer;
+            font-weight: 600;
+            // color: #a3a7ae;
+          }
+
+          .linkList {
+            display: flex;
+            flex-wrap: wrap;
+
+            li {
+              // margin-right: 5px;
+
+              a {
+                color:#a3a7ae !important;
+                text-decoration: underline;
+                text-transform: capitalize;
+                font-size: 13px;
+              }
+
+              &::after {
+                content: "|";
+                margin: 0 3px;
+                color: #999999;
+                font-size: 13px;
+              }
+
+              &:last-child::after {
+                content: none;
+              }
+            }
+
+            @include breakpoint(mobile) {
+              display: none;
+            }
+          }
+
+          &.isOpen {
+            .linkList {
+              @include breakpoint(mobile) {
+                display: flex;
+              }
+            }
+
+          }
+
+          @include breakpoint(mobile) {
+            .title {
+              border-bottom: 1px solid #ccc;
+              padding: 10px 0;
+              margin-bottom: 15px;
+              position: relative;
+
+              &::after {
+                border: solid #ccc;
+                border-width: 0 2px 2px 0;
+                display: inline-block;
+                padding: 4px;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                content: "";
+                position: absolute;
+                right: 25px;
+                top: 15px;
+                transition: .2s ease-in-out;
+              }
+            }
+
+            &.isOpen {
+              .title {
+                &::after {
+                  transform: rotate(-135deg);
+                  -webkit-transform: rotate(-135deg);
+                  transition: .2s ease-in-out;
+                  top: 15px;
+                }
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+
+    .movie_details {
+      color: #999999;
+      margin-bottom: 15px;
+  .readMoreLink{
+        font-weight: bold;
+    background: none;
+    border: none;
+    outline: none;
+    color: $primary-color;
+    cursor: pointer;
+  }
+      h1 {
+        font-size: 21px;
+        font-weight: 600;
+
+        @include breakpoint(mac) {
+          font-size: 17px;
+        }
+      }
+
+      h3 {
+        font-size: 20px;
+
+        @include breakpoint(mac) {
+          font-size: 16px;
+        }
+      }
+
+      p {
+        font-size: 18px;
+        margin-bottom: 3px;
+
+        @include breakpoint(mac) {
+          font-size: 14px;
+        }
+        a{
+          color:#007aff;
+        }
+      }
+
+      footer {
+        font-size: 18px;
+        margin-bottom: 3px;
+
+        @include breakpoint(mac) {
+          font-size: 14px;
+        }
+      }
+    }
+    .morebtn{
+    font-weight: bold;
+    background: none;
+    border: none;
+    outline: none;
+    color: $primary-color;
+      }
+  }
+}

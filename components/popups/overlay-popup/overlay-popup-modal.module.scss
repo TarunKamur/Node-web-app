@@ -1,0 +1,567 @@
+@import "variables.scss";
+
+.modal_size {
+  max-width: 520px;
+  background: $popup-mobile-bg;
+  color: $grey-text-color;
+  padding: 40px 0 40px 0px;
+  @include breakpoint(mobile) {
+    max-width: 100%;
+    max-height: 90vh;
+  }
+  @include breakpoint(mobile-common-land) {
+    padding: 20px 0 20px 0px;
+    max-height: 460px;
+    overflow: auto;
+    max-height: 90vh;
+  }
+
+  .popup_topImg {
+    text-align: center;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .title {
+    .cross_icon {
+      cursor: pointer;
+      position: absolute;
+      top: 18px;
+      right: 26px;
+      &:hover {
+        text-decoration: none !important;
+      }
+    }
+
+    .popup_title {
+      width: 100%;
+      padding: 0px 25px 30px;
+      margin-top: 10px;
+      font-size: 10px;
+      letter-spacing: 0.14px;
+      font-weight: 100;
+      color: $text-color;
+      line-height: normal;
+      text-align: center;
+      // @include breakpoint(desktop-small) {  padding: 0px 15px 35px; }
+      h2 {
+        font-size: 24px;
+        font-weight: 600;
+        max-width: 80%;
+        margin: 0 auto;
+        @include breakpoint(mobile) {
+          font-size: 18px;
+        }
+        @include breakpoint(mobile-common) {
+          max-width: 100%;
+        }
+      }
+    }
+    .popup_title2 {
+      width: 100%;
+      padding: 0px 50px 30px;
+      margin-top: -21px;
+      font-size: 16px;
+      letter-spacing: 0.14px;
+      font-weight: 400;
+      color: $text-color;
+      opacity: 0.8;
+      line-height: normal;
+      text-align: center;
+      @include breakpoint(mobile-common-land) {
+        padding: 0px 20px 15px;
+      }
+      @include breakpoint(mobile){
+        font-size: 14px;
+        font-weight: 400;
+      }
+      &.sub {
+        text-align: left;
+      }
+    }
+
+    h3 {
+      font-weight: normal;
+    }
+    .subtitle1 {
+      font-size: 14px;
+      padding: 0px 50px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      @include breakpoint(mobile-common-land) {
+        padding: 0px 20px 15px;
+      }
+      .delActpoints {
+        display: flex;
+        font-size: 14px;
+        gap: 4px;
+      }
+    }
+  }
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
+    @include breakpoint(mobile-common-land) {
+      padding: 10px 20px;
+    }
+    button {
+      min-width: 120px;
+      border-radius: 2px;
+      font-size: 14px;
+      height: 40px;
+      padding: 10px;
+      gap: 10px;
+      margin: 0;
+      @include breakpoint(mobile-big-land) {
+        width: 100%;
+      }
+    }
+  }
+
+  .form_group {
+    padding: 20px 30px;
+    background: $popup-bg;
+    @include breakpoint(mobile) {
+      padding: 20px;
+    }
+    .quality_list {
+      width: calc(100% - 70px);
+      label {
+        cursor: pointer;
+        font-size: 14px;
+        display: block !important;
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: var(--arrow-color);
+        font-weight: 400;
+        line-height: 18px;
+        padding-bottom: 10px;
+        &:last-child {
+          border: none;
+        }
+        @include breakpoint(mobile) {
+          padding: 10px 5px;
+        }
+        .radio {
+          width: 20px;
+          height: 20px;
+          // border: 1px solid #fff;
+          background: #000;
+          display: none;
+          border-radius: 50%;
+          width: 100%;
+          &.selected ~ .check_radio {
+            border-color: var(--arrow-color);
+            opacity: 1;
+            .check_radio_Seleted {
+              transform: scale(1);
+              transition: all 0.2s cubic-bezier(0.35, 0.9, 0.4, 0.9);
+              opacity: 1;
+            }
+          }
+        }
+        .check_radio {
+          position: relative;
+          display: flex;    
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          border: 2px solid var(--arrow-color);
+          border-radius: 100%;
+          -webkit-tap-highlight-color: transparent;
+          &.selected{
+            border: 2px solid  #e7195a !important;
+          }
+          @include breakpoint(mobile) {
+            border-width: 2px;
+          }
+         .check_radio_Seleted {
+            // content: "";
+            // position: absolute;
+            width: 10px;
+            height: 10px;
+            // top: 3px;
+            // left: 3px;
+            // margin-right: 10px;
+            border-radius: 100%;
+            background:#e7195a;
+            transform: scale(0);
+            transition: all 0.2s ease;
+            opacity: 0.08;
+            pointer-events: none;
+            box-sizing: border-box;
+            // @include breakpoint(desktop-big) {
+            //   width: 9px;
+            //   height: 9px;
+            //   top: 5px;
+            //   left: 5px;
+            // }
+          }
+        }
+        .sm_label {
+          opacity: 0.8;
+          font-size: 16px;
+          @include breakpoint(mobile) {
+            font-size: 14px;
+          }
+        }
+      }
+      &.check_box_radio {
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        @include breakpoint(mobile) {
+          padding: 15px 20px;
+        }
+        label {
+          display: flex !important;
+          gap: 10px;
+          margin: 0;
+          padding: 0;
+        }
+      }
+    }
+  }
+  &.paymentHistory {
+    width: 565px;
+    padding: 0;
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
+    .popup_title {
+      border-bottom: 1px solid #434343;
+      padding-bottom: 10px;
+      h2 {
+        margin: 0;
+        text-align: left;
+        padding: 5px;
+        font-size: 20px;
+        @include breakpoint(laptop) {
+          font-size: 18px;
+        }
+      }
+    }
+    .quality_list {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .paymentList {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+        @include breakpoint(laptop) {
+          font-size: 14px;
+        }
+        .sm_label {
+          color: var(--arrow-color);
+          opacity: 0.8;
+        }
+        span {
+          color: var(--arrow-color);
+          &.status {
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 32px;
+          }
+          &.success {
+            color: #5dc486;
+            background-color: #00ff9433;
+            font-size: 12px;
+            @include breakpoint(laptop) {
+              font-size: 10px;
+            }
+          }
+          &.canceled {
+            color: #f54b5f;
+            background-color: #553333;
+            font-size: 12px;
+            @include breakpoint(laptop) {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+    .btn {
+      padding-bottom: 20px;
+      justify-content: flex-end;
+      button {
+        border-radius: 12px;
+        @include breakpoint(mobile) {
+          width: fit-content;
+          border-radius: 6px;
+        }
+        &.cancel {
+          border: none !important;
+        }
+        &.continue_btn {
+          padding: 10px 30px;
+          @include breakpoint(mobile) {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.addToFavourite {
+  overflow: hidden;
+  .popup_title {
+    padding: 0 !important;
+    h2 {
+      font-size: 22px !important;
+      line-height: 32px;
+      margin: 16px 0 4px;
+      max-width: 99%;
+      @include breakpoint(desktop-big) {
+        font-size: 24px !important;
+      }
+      @include breakpoint(mac) {
+        font-size: 22px !important;
+        line-height: 32px;
+        margin: 16px 0px 4px 0;
+      }
+      @include breakpoint(tablet) {
+        font-size: 20px !important;
+        line-height: 28px;
+      }
+      @include breakpoint(mobile) {
+        margin-bottom: 6px;
+      }
+      @include breakpoint(mobile-common-land) {
+        font-size: 18px !important;
+        line-height: 26px;
+      }
+      @media only screen and (max-width: 550px) and (min-width: 481px) {
+        font-size: 16px !important;
+        line-height: 24px;
+      }
+      @include breakpoint(mobile-common) {
+        font-size: 15px !important;
+      }
+      @media only screen and (max-width: 375px) {
+        font-size: 15px !important;
+      }
+      @include breakpoint(mobile-x-small) {
+        font-size: 13px !important;
+      }
+    }
+  }
+  .btn {
+    button {
+      @include breakpoint(mobile) {
+        width: fit-content;
+      }
+    }
+  }
+}
+.freedomTvSubscribe,
+.reportPopUp {
+  overflow: hidden;
+  @include breakpoint(mobile) {
+    .modal_size_before {
+      content: "";
+      cursor: pointer;
+      position: absolute;
+      top: 8px;
+      height: 4px;
+      width: 52px;
+      background-color: #ffffff8c;
+      border-radius: 50px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+  }
+  .MuiPaper-root {
+    margin: 0;
+  }
+  .popup_title {
+    padding: 0 0 30px !important;
+    h2 {
+      font-size: 22px !important;
+      line-height: 32px;
+      margin: 16px 0 4px;
+      max-width: 100% !important;
+      @include breakpoint(mobile) {
+        font-size: 18px !important;
+        margin: 0 20px !important;
+      }
+    }
+  }
+  .btn {
+    flex-wrap: nowrap !important;
+    @include breakpoint(mobile) {
+      padding: 0 40px !important;
+    }
+    button {
+      min-width: 50%;
+      border-radius: 6px;
+      @include breakpoint(mobile) {
+        width: fit-content;
+        border-radius: 10px;
+      }
+    }
+  }
+  .popup_title2 {
+    padding: 0px 20px 20px !important;
+    text-align: center !important;
+    h3 {
+      @include breakpoint(mobile) {
+        font-size: 14px !important;
+      }
+    }
+  }
+  .popup_topImg {
+    @include breakpoint(mobile) {
+      padding-top: 20px;
+    }
+    img {
+      width: 97px !important;
+      height: 97px !important;
+      @include breakpoint(mobile) {
+        width: 58px !important;
+        height: 58px !important;
+      }
+    }
+  }
+}
+.reportPopUp {
+  // overflow: auto !important;
+  max-width: none;
+  padding: 10px 0 20px 0px;
+  // min-height: 600px;
+  // height: 65vh;
+  .cross_icon {
+    top: 15px !important;
+    right: 20px !important;
+
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+  .MuiPaper-root {
+    width: 50%;
+  }
+  .form_group {
+    overflow: auto;
+    padding: 20px 22px;
+    &::-webkit-scrollbar {
+      width: 8px; // Scrollbar width
+      @include breakpoint(mobile){
+        width: 0px;
+      }
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #121212; // Scroll thumb color
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: $popup-bg; // Scroll track color
+      border-radius: 6px;
+    }
+    @include breakpoint(mac) {
+      height: 310px;
+    }
+    @include breakpoint(mobile) {
+      padding: 0;
+      height: 410px;
+    }
+  }
+  .popup_title {
+    margin: 0;
+    padding: 0;
+    text-align: left !important;
+
+    padding: 0 15px !important;
+
+    @include breakpoint(mobile) {
+      padding: 10px 10px 14px 0 !important;
+      border-bottom: 1px solid #434343;
+    }
+
+    h2 {
+      margin: 0 0 0 20px;
+      font-size: 20px !important;
+      font-weight: 600 !important;
+    }
+  }
+
+  .btn {
+    justify-content: flex-end;
+    padding: 10px 15px 0px !important;
+    button {
+      min-width: fit-content;
+      border-radius: 6px;
+      padding: 10px 30px;
+      &.cancel {
+        border: none;
+      }
+      @include breakpoint(mobile) {
+        min-width: inherit;
+        padding: 10px 20px;
+        &.continue_btn {
+          padding: 10px 30px;
+        }
+      }
+    }
+
+    @include breakpoint(mobile) {
+      padding: 10px 15px 0px !important;
+      border-top: 1px solid #434343;
+    }
+  }
+}
+.noOptSelected {
+  opacity: 0.5;
+}
+.how_It_Works{
+  background-color: #d1d1f7;
+  max-width: 800px;
+  .popup_title{
+    padding-bottom: 25px !important;
+    color: #000 !important;
+    
+    
+    @include breakpoint(mobile) {
+      
+    padding-bottom: 5px !important;
+    }
+  }
+  button{
+    border-radius: 4px !important;
+  }
+  .form_group{
+    background-color: #d1d1f7;
+    margin-bottom: 10px;
+    
+    @include breakpoint(mobile) {
+      margin-bottom: 0;
+      padding: 10px 0;
+    }
+    label{
+
+      font-size: 18px !important;
+      color: #000 !important;
+      
+    @include breakpoint(mobile) {
+      font-size: 14px !important;
+
+    }
+    }
+  }
+}

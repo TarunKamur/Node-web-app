@@ -1,0 +1,820 @@
+@import "variables.scss";
+
+.language_modal {
+  .modal_popup {
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999999;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    .main_modal {
+      padding: 20px;
+      width: 100%;
+      max-width: 1000px;
+      min-height: calc(100% - (1.75rem * 2));
+      margin: 0 auto;
+      transform: translate(0);
+      align-items: center;
+      display: flex;
+      @include breakpoint(mac) {
+        max-width: 900px;
+      }
+      @include breakpoint(laptop) {
+        max-width: 800px;
+      }
+      @include breakpoint(mobile) {
+        width: 100%;
+      }
+      @include breakpoint(mobile-common-land) {
+        padding: 0;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+      &:focus-visible {
+        outline: none !important;
+      }
+      &.partners {
+        max-width: 800px;
+
+        @include breakpoint(mac) {
+          width: 700px;
+        }
+        @include breakpoint(laptop) {
+          width: 600px;
+        }
+        @include breakpoint(mobile-small) {
+          padding: 0;
+          width: 100%;
+        }
+        .select_clear_button {
+          @include breakpoint(mobile-small) {
+            display: none;
+          }
+        }
+        .modal_wrapper {
+          .select_partners {
+            padding: 0 60px;
+            @include breakpoint(laptop) {
+              padding: 0 30px;
+            }
+            @include breakpoint(desktop-small) {
+              padding: 0 20px;
+            }
+            @include breakpoint(mobile-common) {
+              padding: 0;
+            }
+            h5 {
+              text-align: left;
+              color: $text-color;
+              opacity: 0.8;
+              font-size: 20px;
+              font-weight: 400;
+              margin-bottom: 0.5rem;
+              @include breakpoint(mac) {
+                font-size: 18px;
+              }
+              @include breakpoint(laptop) {
+                font-size: 16px;
+              }
+              @include breakpoint(mobile-small) {
+                display: none;
+              }
+            }
+            ul {
+              padding: 0;
+              list-style: none;
+              margin: 0px;
+              display: flex;
+              flex-wrap: wrap;
+              width: 100%;
+
+              li {
+                float: left;
+                padding: 7px;
+                list-style-type: none;
+                flex: 0 0 50%;
+                max-width: 16.66%;
+                margin: 0;
+
+                &:hover {
+                  .checkmark:after {
+                    display: block;
+                  }
+                }
+                @include breakpoint(mac) {
+                  max-width: 20%;
+                }
+                @include breakpoint(mobile-common-land) {
+                  max-width: 25%;
+                  flex: 0 0 50%;
+                  padding: 10px;
+                }
+                @include breakpoint(mobile-x-small) {
+                  flex: 0 0 100%;
+                }
+            
+                .custom_partner {
+                  width: 100%;
+                  background: #232323;
+                  border-radius: 2px;
+                  font-size: 14px;
+                  text-align: left;
+                  cursor: pointer;
+                  float: left;
+                  display: block;
+                  position: relative;
+                  margin: 0 !important;
+                  border-radius: 8px;
+                  padding: 0;
+                }
+                  img {
+                    width: 100%;
+                    border-radius: 7px;
+                  }
+
+                  input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                    &:checked ~ .checkmark {
+                      background: $radio-btn-bg;
+                      border: 2px solid $radio-btn-bg !important;
+                      @include breakpoint(mobile-common-land) {
+                        opacity: 1;
+                      }
+                    }
+                    &:checked ~ .checkmark {
+                      &:after {
+                        display: block;
+                        position: absolute;
+                        content: "";
+                        left: 3px;
+                        top: 1px;
+                        width: 5px;
+                        height: 8px;
+                        border: solid #fff;
+                        border-width: 0 2px 2px 0;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                        box-sizing: border-box;
+                      }
+                    }
+                  }
+
+                  .checkmark {
+                    border: 2px solid #767676;
+                    position: absolute;
+                    top: 5px;
+                    right: 5px;
+                    height: 16px;
+                    width: 16px;
+                    border-radius: 50px;
+                    
+                    &:after {
+                      display: none;
+                      position: absolute;
+                      content: " ";
+                      left: 3px;
+                      top: 1px;
+                      width: 5px;
+                      height: 8px;
+                      border: solid #fff;
+                      border-width: 0 2px 2px 0;
+                      -webkit-transform: rotate(45deg);
+                      -ms-transform: rotate(45deg);
+                      transform: rotate(45deg);
+                      box-sizing: border-box;
+                    }
+                    @include breakpoint(mobile-common-land) {
+                      top: 1px;
+                      right: 1px;
+                      width: 15px;
+                      height: 15px;
+                      opacity: 0;
+                    }
+
+                  
+
+                    &:hover input ~ & {
+                      background-color: #444;
+                    }
+
+                    input:checked ~ & {
+                      background: $radio-btn-bg;
+                      border: 2px solid $radio-btn-bg !important;
+                    }
+
+                    input:checked ~ & ~ .language_maintext {
+                      color: $text-color;
+                    }
+
+              
+                  }
+                
+              }
+            }
+          }
+          ul {
+            margin: 30px auto 20px;
+            li {
+              button {
+                @include breakpoint(mobile-small) {
+                  width: 100%;
+                }
+                @include breakpoint(mobile-big-land) {
+                  font-size: 18px;
+                }
+                @include breakpoint(mobile-common-land) {
+                  font-size: 16px;
+                }
+                &.applybtn {
+                  margin-bottom: 0;
+                }
+              }
+            }
+          }
+        }
+        .error{
+          color: $danger;
+          position: absolute;
+          margin: 0 auto;
+          width: 100%;
+          bottom: -33px;
+          left: 0;
+          font-size: 14px;
+          text-align: center;
+         
+        }
+      }
+      .modal_wrapper {
+        width: 100%;
+        height: 100%;
+        .modal_content {
+          background: $popup-bg;
+          color: $grey-text-color;
+          padding: 34px 40px 50px;
+          display: block;
+          position: relative;
+          border-radius: 4px;
+          @include breakpoint(mac) {
+            padding: 30px 40px;
+          }
+          @include breakpoint(laptop) {
+            padding: 30px;
+          }
+          @include breakpoint(mobile) {
+            padding: 34px 10px 50px;
+            height: 100%;
+            overflow: auto !important;
+          }
+          @include breakpoint(mobile-common-land) {
+            padding: 31px 0 32px;
+          }
+          .close_icon {
+            position: absolute;
+            right: 20px;
+            top: 22px;
+            color: $text-color;
+            cursor: pointer;
+            background-color: transparent !important;
+            border: transparent !important;
+            border-color: transparent !important;
+  
+            img {
+              transition: all 0.2s ease;
+  
+              &:hover {
+                transform: rotate(90deg);
+              }
+            }
+          }
+          .modal_content_inner {
+            position: relative;
+            @include breakpoint(mobile) {
+              padding: 0 20px;
+            }
+            .modal_header{
+              position: relative;
+            .modal_title {
+              color: $text-color;
+              text-align: center;
+              font-size: 26px;
+              font-weight: 300;
+              margin: 16px 0 10px;
+  
+              @include breakpoint(mac) {
+                font-size: 22px;
+              }
+              @include breakpoint(laptop) {
+                font-size: 20px;
+                margin: 16px 0 8px;
+              }
+              @include breakpoint(tablet) {
+                font-size: 18px;
+              }
+              @include breakpoint(mobile-small) {
+                font-size: 16px;
+              }
+              @include breakpoint(mobile) {
+                margin-bottom: 6px;
+              }
+              @include breakpoint(mobile-x-small){font-size: 18px;}
+            }
+  
+            .modal_description {
+              color: $text-color;
+              opacity: 0.65;
+              margin: 0 0 40px;
+              font-size: 14px;
+              font-weight: 300;
+              text-align: center;
+  
+              @include breakpoint(mac) {
+                margin: 0 0 30px;
+              }
+              @include breakpoint(laptop) {
+                margin: 0 0 25px;
+                font-size: 15px;
+              }
+              @include breakpoint(tablet) {
+                font-size: 14px;
+              }
+              @include breakpoint(mobile-common-land) {
+                margin-bottom: 20px;
+              }
+            }
+          }
+            .select_clear_button {
+              width: 100%;
+              text-align: right;
+              padding: 0 0 12px;
+              border-bottom: 1px solid #333;
+              font-size: 14px;
+              margin: 0 0 14px;
+              @include breakpoint(mobile) {
+                font-size: 12px;
+                margin-top: 30px;
+              }
+              @include breakpoint(mobile-common-land) {
+                display: none;
+              }
+  
+              .button {
+                background-color: transparent;
+                border-color: transparent;
+                cursor: pointer;
+                color: $text-color;
+                opacity: 0.65;
+  
+                &:hover {
+                  color: $primary-color;
+                  opacity: 1;
+                }
+              }
+  
+              span {
+                color: #3a3543;
+                margin-left: 16px;
+                margin-right: 16px;
+              }
+            }
+
+            .select_language {
+              ul {
+                margin: 0;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0;
+    
+                li {
+                  width: 25%;
+                  flex: 0 0 25%;
+                  display: block;
+                  float: left;
+                  padding: 7px;
+                  margin: 0;
+                  &:hover {
+                    .checkmark:after {
+                      display: block;
+                    }
+                  }
+    
+                  @include breakpoint(tablet) {
+                    width: 33.333%;
+                    flex: 0 0 33.33%;
+                  }
+                  @include breakpoint(mobile-small) {
+                    width: 50%;
+                    flex: 0 0 50%;
+                    padding: 10px;
+                  }
+                  .custom_language {
+                    background-color: $lang-tab-bg;
+                    display: block;
+                    position: relative;
+                    padding: 25px 10px 8px;
+                    width: 100%;
+                    text-align: left;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    @include breakpoint(mac) {
+                      padding: 25px 12px 9px;
+                    }
+                    @include breakpoint(laptop) {
+                      padding: 25px 10px 8px;
+                    }
+                    @include breakpoint(mobile) {
+                      padding: 10px;
+                      text-align: center;
+                      background: $lang-tab-bg-mb;
+                      border: 1px solid $lang-tab-bg-border;
+                    }                  
+    
+                    .language_maintext {
+                      font-size: 18px;
+                      color: $text-color;
+                      display: block;
+                      overflow: hidden;
+                      text-overflow: ellipsis;
+                      white-space: nowrap;
+    
+                      @include breakpoint(mac) {
+                        font-size: 17px;
+                      }
+                      @include breakpoint(laptop) {
+                        font-size: 16px;
+                      }
+                      @include breakpoint(desktop-small) {
+                        font-size: 15px;
+                      }
+                    }
+                    .language_subtext {
+                      font-size: 14px;
+                      color: $grey-text-color;
+                      height:20px; display: block; overflow: hidden;
+                      @include breakpoint(mac) {
+                        font-size: 15px;
+                      }
+                      @include breakpoint(laptop) {
+                        font-size: 14px;
+                      }
+                      @include breakpoint(desktop-small) {
+                        font-size: 13px;
+                      }
+                    }
+                    &.active {
+                      background: none;
+                    }
+                  }
+                }
+    
+                input {
+                  position: absolute;
+                  opacity: 0;
+                  cursor: pointer;
+                  height: 0;
+                  width: 0;
+    
+                  &:checked ~ .checkmark {
+                    background: $radio-btn-bg;
+                    border: 2px solid $radio-btn-bg !important;
+                    @include breakpoint(mobile-common-land) {
+                      opacity: 1;
+                    }
+                  }
+                  &:checked ~ .checkmark {
+                    &:after {
+                      content: "";
+                      left: 6px;
+                      top: 3px;
+                      width: 6px;
+                      height: 10px;
+                      border: solid #fff;
+                      border-width: 0 2px 2px 0;
+                      transform: rotate(45deg);
+                      -webkit-transform: rotate(45deg);
+                      position: absolute;
+                      display: block;
+                      box-sizing: border-box;
+    
+                      @include breakpoint(mac) {
+                        left: 5px;
+                        top: 2px;
+                      }
+                      @include breakpoint(laptop) {
+                        width: 5px;
+                        height: 9px;
+                       
+                      }
+                      @include breakpoint(mobile) {
+                        left: 4px;
+                      }
+                      @include breakpoint(mobile-common-land) {
+                        left: 3px;
+                        top: 0;
+                        border-width: 0 2px 2px 0;
+                        width: 5px;
+                        height: 9px;
+                      }
+                    }
+                  }
+                }
+    
+                .checkmark {
+                  position: absolute;
+                  top: 10px;
+                  right: 10px;
+                  height: 22px;
+                  width: 22px;
+                  border-radius: 50px;
+                  border: 2px solid #767676;
+                  border-radius: 15px;
+    
+                  @include breakpoint(mac) {
+                    height: 20px;
+                    width: 20px;
+                    top: 8px;
+                    right: 8px;
+                  }
+                  @include breakpoint(laptop) {
+                    height: 18px;
+                    width: 18px;
+                    top: 6px;
+                    right: 6px;
+                  }
+                  @include breakpoint(mobile-common-land) {
+                    height: 15px;
+                    width: 15px;
+                    top: -7px;
+                    right: -7px;
+                    opacity: 0;
+                  }
+    
+    
+                  &:hover input ~ & {
+                    background-color: #444;
+                  }
+    
+                  input:checked ~ & {
+                    background: $radio-btn-bg;
+                    border: 2px solid $radio-btn-bg !important;
+                  }
+    
+                  input:checked ~ & ~ .language_maintext {
+                    color: $text-color;
+                  }
+    
+                  &:after {
+                    display: none;
+                    position: absolute;
+                    content: "";
+                    left: 6px;
+                    top: 3px;
+                    width: 6px;
+                    height: 10px;
+                    border: solid #fff;
+                    border-width: 0 2px 2px 0;
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                    box-sizing: border-box;
+                    @include breakpoint(mac) {
+                      left: 5px;
+                      top: 2px;
+                    }
+                    @include breakpoint(laptop) {
+                      width: 5px;
+                      height: 9px;
+                    }
+                    @include breakpoint(mobile){left: 4px;}
+                  }
+                }
+              }
+            }
+            .error_msg{
+            color: $danger;
+            position: absolute;
+            margin: 0 auto;
+            width: 100%;
+            bottom: -15px;
+            left: 0;
+            font-size: 14px;
+            text-align: center;
+          
+            @include breakpoint(mobile){display: none;}
+            &.mobile{
+              display: none;
+              bottom: -26px;
+              margin: 0 auto;
+              left: 0;
+              width: 100%;
+              @include breakpoint(mobile){display: block;}
+            }
+          }
+          }
+          .language_toggle{margin-bottom: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            .toggle{
+              cursor: pointer;
+              box-shadow: 0 1px 3px rgba(0,0,0,.3);
+              border-radius:30px;
+              min-width: 270px;
+              height: 40px;
+              align-items: center;
+              border: 1px solid #444;
+              @include breakpoint(mobile){min-width: 230px;}
+              .toggle_child{width: 134px; height: 38px; float: left; border-radius: 0;
+                @include breakpoint(mobile){width: 115px;}
+                &:first-child{border-radius: 30px 0 0px 30px;}
+                &:last-child{border-radius: 0 30px 30px 0;} 
+               button{ width: 100%; height: 100%; border: 1px solid transparent; background: none; outline: none; color: #fff;  
+              }
+              // &.two{ border-radius: 0 30px 30px 0;
+              //   button{border-radius: 0 30px 30px 0;}
+              // }
+               &.active{
+                background: $primary-color; height: calc(40px - 2px);  transition: all .1s ease-in-out;  
+                &:last-child{
+                  border-radius: 0 30px 30px 0;
+                }
+               }
+              }
+             
+            }
+          }
+        }
+        
+        ul {
+          list-style: none;
+          text-align: center;
+          margin: 50px auto auto;
+          position: relative;
+          @include breakpoint(mobile-common-land) {
+            padding: 0 10px;
+          }
+          li {
+            display: inline;
+            margin-right: 20px;
+            @include breakpoint(mobile-common-land) {
+              margin-right: 0;
+            }
+
+            button {
+              border-radius: 4px;
+              margin: 0;
+              height: 44px;
+              width: 160px;
+              font-size: 16px;
+              text-align: center;
+              color: $text-color;
+              border: none;
+              @include breakpoint(mac) {
+                font-size: 14px;
+              }
+              @include breakpoint(mobile-big-land) {
+                font-size: 12px;
+              }
+              @include breakpoint(mobile-small) {
+                width: 140px;
+              }
+
+              @include breakpoint(mobile-common-land) {
+                width: 100%;
+              }
+
+              &.cancelbtn {
+                background: hsla(0, 0%, 100%, 0.15);
+                @include breakpoint(mobile-common-land) {
+                  display: none;
+                }
+                cursor: pointer;
+
+                &:hover {
+                  background: hsla(0, 0%, 100%, 0.2);
+                }
+              }
+
+              &.applybtn {
+                background: $primary-color;
+                @include breakpoint(mobile-common-land) {
+                  margin-bottom: 40px;
+                }
+                &:hover {
+                  cursor: pointer;
+                  background: $primary-color;
+                }
+              }
+
+              &.no_language_selected.applybtn:hover {
+                cursor: not-allowed;
+                background: $primary-color;
+              }
+              
+            }
+            &:last-child{
+              button{
+                color: $primary-button-text-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// @media only screen and (min-width: 320px) and (max-width: 480px) {
+//   .modal_popup {
+//     .main_modal {
+//       padding: 0px !important;
+//       width: 100% !important;
+
+//       .modal_wrapper {
+//         .modal_content {
+//           padding: 10px;
+//         }
+
+//         .modal_title {
+//           font-size: 14px !important;
+//         }
+
+//         .modal_description {
+//           font-size: 12px;
+//         }
+
+//         .select_language {
+//           .custom_language {
+//             width: 45%;
+//             margin: 3px;
+
+//             .language_maintext {
+//               font-size: 14px;
+//             }
+
+//             .language_subtext {
+//               font-size: 12px;
+//             }
+//           }
+//         }
+
+//         ul li .commonbtn {
+//           width: 95px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 481px) and (max-width: 767px) {
+//   .modal_popup {
+//     .modal_wrapper {
+//       .modal_title {
+//         font-size: 14px !important;
+//       }
+
+//       .modal_description {
+//         font-size: 12px;
+//       }
+
+//       .select_language {
+//         .custom_language {
+//           width: 40%;
+//           margin: 3px;
+//         }
+
+//         ul li .commonbtn {
+//           width: 120px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media (min-width: 768px) and (max-width: 1024px) {
+//   .language_modal {
+//     .modal_popup {
+//       .modal_wrapper {
+//         ul li .commonbtn {
+//           width: 100px;
+//         }
+//       }
+//     }
+//   }
+// }

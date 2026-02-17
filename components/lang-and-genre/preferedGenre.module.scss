@@ -1,0 +1,283 @@
+@import 'variables.scss';
+
+.languageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 48px;
+
+    .logoImg {
+        width: 119px;
+        height: 20px;
+        margin-bottom: 33px;
+
+        @include breakpoint(mobile) {
+            display: none;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .selectLang {
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        // text-align: center;
+        // text-transform: capitalize;
+        color: #FFFFFF;
+
+        @include breakpoint(mobile) {
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 0px;
+        }
+    }
+
+    .TellUs {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        // text-align: center;
+        // text-transform: capitalize;
+        color: #d0d0d0;
+        margin-top: 12px;
+
+        @include breakpoint(mobile) {
+            font-size: 12px;
+        }
+    }
+
+    .gridContainer {
+        display: grid;
+        grid-template-columns: 206px 206px 206px 206px;
+        gap: 40px;
+        margin: 20px 5px;
+        // padding: 0px 10px;
+        margin-bottom: 145px;
+
+        @include breakpoint(tablet-portrait) {
+            grid-template-columns: 156px 156px 156px;
+        }
+
+        @include breakpoint(mobile) {
+            margin-bottom: 10px;
+            gap: 16px;
+            padding: 0 15px;
+        }
+
+        @include breakpoint(mobile-small) {
+            grid-template-columns: auto auto;
+            margin-bottom: 10px;
+        }
+
+
+        .gridComponent {
+            position: relative;
+            cursor: pointer;
+            @include breakpoint(mobile) {
+                cursor: none;
+            }
+            img {
+                aspect-ratio: 16/9;
+                max-width: 100%;
+                width: 100%;
+
+                @include breakpoint(mobile-big-land) {
+                    max-width: 100%;
+                    width: 100%;
+                }
+            }
+
+            .detailContainer {
+                position: absolute;
+                top: 0px;
+                left: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 95%;
+                padding: 10px 0px;
+
+                .displayTxt {
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 120%;
+                    letter-spacing: 0%;
+                    // text-transform: capitalize;
+                }
+
+                // .engTxt {
+                //     font-weight: 500;
+                //     font-size: 14px;
+                //     line-height: 130%;
+                //     letter-spacing: 0%;
+                // }
+            }
+        }
+    }
+
+    .profileGridCon {
+        grid-template-columns: 206px 206px 206px;
+        padding: 0px;
+        max-height: 45%;
+        overflow: auto;
+        scrollbar-width: none;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: 1694px) {
+            grid-template-columns: 206px 206px 206px 206px;
+        }
+
+        @include breakpoint(laptop) {
+            grid-template-columns: auto auto auto;
+            margin-bottom: 60px;
+        }
+
+        @include breakpoint(tablet) {
+            grid-template-columns: auto auto;
+            // margin-bottom: 0px;
+        }
+
+        @include breakpoint(mobile) {
+            margin-bottom: 0px;
+        }
+
+    }
+
+
+    .conBtn {
+        background-color: #1e1e1e;
+        width: 100%;
+        height: 17%;
+        display: flex;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+
+        @include breakpoint(mobile) {
+            height: 65px;
+        }
+
+        .continueBtn {
+            background-color: #D13066;
+            width: 382px;
+            height: 54px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 25px;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 120%;
+            letter-spacing: 0%;
+            text-transform: capitalize;
+            color: #FFFFFF;
+            margin-bottom: 20px;
+            max-width: calc(100% - 16px);
+            margin: auto;
+
+            @include breakpoint(mobile) {
+                height: 42px;
+            }
+
+            @include breakpoint(mobile-common) {
+                width: 300px;
+            }
+        }
+
+        .continueBtnDisable {
+            opacity: 0.5;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+}
+
+.langContPro {
+    padding-top: 0px;
+    align-items: start;
+
+     .selectLang{font-size: 20px; font-weight: 500;
+          @include breakpoint(laptop){font-size: 18px;}
+        }
+        .TellUs{font-size: 14px; 
+         @include breakpoint(laptop){font-size: 12px;}
+        }
+        .gridContainer{
+              gap: 26px;
+         @include breakpoint(laptop){gap: 20px;}
+         @include breakpoint(mobile){gap: 12px;}
+        }
+}
+
+.profilesLangContainer {
+    .gridContainer {
+        display: grid;
+        grid-template-columns: 206px 206px 206px;
+        gap: 10px;
+        margin: 20px 5px;
+        padding: 0px 10px;
+        margin-bottom: 125px;
+
+        @include breakpoint(tablet-portrait) {
+            grid-template-columns: 156px 156px 156px;
+        }
+
+        @include breakpoint(mobile) {
+            margin-bottom: 10px;
+        }
+
+        @include breakpoint(mobile-small) {
+            grid-template-columns: auto auto;
+            margin-bottom: 10px;
+        }
+
+
+        .gridComponent {
+            position: relative;
+
+            img {
+                aspect-ratio: 16/9;
+                max-width: 100%;
+                width: 100%;
+
+                @include breakpoint(mobile-big-land) {
+                    max-width: 100%;
+                    width: 100%;
+                }
+            }
+
+            .detailContainer {
+                position: absolute;
+                top: 0px;
+                left: 15px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                height: 95%;
+                padding: 10px 0px;
+
+                .displayTxt {
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 120%;
+                    letter-spacing: 0%;
+                }
+
+                .engTxt {
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 130%;
+                    letter-spacing: 0%;
+                }
+            }
+        }
+    }
+}

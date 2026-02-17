@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+  <g id="Volume_Mute" data-name="Volume Mute" transform="translate(5951 4726)">
+    <path id="Icon_awesome-volume-mute" data-name="Icon awesome-volume-mute" d="M13.439,4.941,7.879,10.5H1.5A1.5,1.5,0,0,0,0,12v9a1.5,1.5,0,0,0,1.5,1.5H7.879l5.561,5.559A1.5,1.5,0,0,0,16,27V6A1.5,1.5,0,0,0,13.439,4.941ZM28.852,16.5,31.7,13.647a1.009,1.009,0,0,0,0-1.426l-1.426-1.426a1.009,1.009,0,0,0-1.426,0L26,13.647l-2.852-2.852a1.009,1.009,0,0,0-1.426,0l-1.426,1.426a1.009,1.009,0,0,0,0,1.426L23.147,16.5,20.3,19.352a1.009,1.009,0,0,0,0,1.426L21.722,22.2a1.009,1.009,0,0,0,1.426,0L26,19.352,28.852,22.2a1.009,1.009,0,0,0,1.426,0L31.7,20.779a1.009,1.009,0,0,0,0-1.426Z" transform="translate(-5942 -4717.5)" fill="#fff"/>
+    <g id="Ellipse_740" data-name="Ellipse 740" transform="translate(-5951 -4726)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="25" cy="25" r="25" stroke="none"/>
+      <circle cx="25" cy="25" r="24.5" fill="none"/>
+    </g>
+  </g>
+</svg>

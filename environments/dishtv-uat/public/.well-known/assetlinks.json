@@ -1,0 +1,1 @@
+[{"target":{"package_name":"com.watcho","sha256_cert_fingerprints":["1A:A2:36:9C:CB:0C:50:2D:A4:E8:D3:CD:F6:8C:96:0E:E3:3F:38:9B:B8:19:28:7C:F6:0A:4E:FC:74:00:DF:5B"],"namespace":"android_app"},"relation":["delegate_permission/common.handle_all_urls"]}]

@@ -1,0 +1,143 @@
+@import 'variables.scss';
+.sharecontent_modal {
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999999;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .cross_icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+  .main_modal {
+    padding: 0px;
+    width: 100%;
+    max-width: 660px;
+    margin: 0 auto;
+    transform: translate(0);
+    display: flex;
+    align-items: center;
+    top: 25%;
+    position: relative;
+    @include breakpoint(laptop){width: 550px;}
+    @include breakpoint(tablet-portrait){ padding: 0 30px;}
+    @include breakpoint(mobile-common-land){margin: 0 auto;
+      padding: 0 20px; width: 100%;}
+    &:focus-visible {
+      outline: none !important;
+    }
+    .modal_wrapper {
+      width: 100%;
+      @include breakpoint(mobile-common-land){argin: 0 auto 30px;
+        display: block;
+        height: 100%;
+    }
+      .modal_content {
+        background: $profile-popup-bg;
+        border-radius: 5px;
+        color: $grey-text-color;
+        padding: 60px 40px;
+        display: block;
+        position: relative;
+        max-height: 90%;
+        border-radius: $border-radius;
+        @include breakpoint(mac){padding: 25px 36px;}
+        @include breakpoint(laptop){padding: 20px 25px; }
+        @include breakpoint(mobile){padding: 31px 15px 32px; border-radius: 4px;}
+        .modal_title {
+          font-size: 32px;
+          margin: 20px 0;
+          color: $text-color;
+          font-weight: 400;
+          @include breakpoint(mac){font-size: 28px;}
+          @include breakpoint(laptop){font-size: 26px;}
+          @include breakpoint(tablet-portrait){font-size: 22px;}
+        }
+        .share_via_text {
+            margin: 20px 0 10px;
+            color: $grey-text-color;
+            font-size: 16px;
+            @include breakpoint(mobile){  margin: 40px 0 20px;}
+          } 
+        .sharing_content {
+          display: flex;
+          height: 55px;
+          width: 100%;
+          border: 1px solid hsla(0,0%,100%,.5);
+          border-radius: $border-radius;
+          position: relative;
+          @include breakpoint(mac){ height: 56px;}
+          @include breakpoint(laptop){height: 50px;}
+          .url_text {
+            width: calc(100% - 170px);
+            border-right: 0;
+            display: flex;
+            align-items: center;
+            @include breakpoint(laptop){width: calc(100% - 140px);}
+            @include breakpoint(mobile){width: calc(100% - 90px);}
+            @include breakpoint(mobile-common-land){width: calc(100% - 70px);}
+            input {
+              font-size: inherit;
+              padding-left: 15px;
+              background: none;
+              border: none;
+              color: $text-color;
+              cursor: text;
+              width: 100%;
+              &:focus-visible {
+                outline: none !important;
+              }
+            }
+          }
+          .copy_content {
+            height: calc(100% + 2px);
+            border: none;
+            width: 150px;
+            background: $primary-color;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border-radius: 0 $border-radius $border-radius 0;
+            position: absolute;
+            right: -1px;
+            top: -1px;
+            button {
+              margin: 0 auto;
+              text-decoration: none;
+              background: none;
+              border: none;
+              span {
+                color: $primary-button-text-color;
+                text-decoration: none;
+              }
+            }
+            @include breakpoint(laptop){width: 120px;}
+            @include breakpoint(mobile){width: 90px; height: 50px;}
+            @include breakpoint(mobile-common-land){min-width:70px;  font-size: 14px;}
+          }                  
+        }
+        .social_sharing{
+            ul{
+                padding: 0px;
+                margin: 0px;
+                li{
+                    display: inline-block;
+                    margin-right: 10px;
+                    img{width: 32px;}
+                  }
+            }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import "variables.scss";
+
+.subscriptions_list{
+    .details_hd{
+        display: flex;
+        color: $text-color;
+        font-size: 16px;
+        opacity: 0.8;
+        padding: 20px 25px 30px;
+        justify-content: space-between;
+        @include breakpoint(mobile){padding: 0 15px 30px;}
+        @include breakpoint(mobile-common){font-size: 14px;}
+        .plan_btn{
+          padding: 4px 10px;
+          border-radius: 2px;
+          border: solid 1px $primary-hover-color;
+          background-color: $signin-bg;
+          color: $primary-color;
+        }
+    }
+      .packageInfo { 
+        padding: 20px;
+    @include breakpoint(mobile) { padding: 30px 25px;}
+    .pack_block{ border-bottom:solid 1px $profile-menu-bg; margin-bottom:20px; padding-bottom:25px; position: relative; margin-left:45px; padding-bottom: 25px;
+        @include breakpoint(tablet) { margin-bottom: 10px; }
+        .info{ font-size: 14px; color:$text-color; width:100%; opacity:0.6;
+          @include breakpoint(mobile) {font-size:14px; opacity:0.6; width:calc(100% - 70px);}
+      }
+        .no_of_pack{ border:solid 1px $profile-icon-bg; background: $profile-icon-bg; width:30px; height:30px; line-height: 30px; text-align: center; 
+            border-radius: 50%; font-size:15px; display: inline-block; position: absolute; left:-45px; top:0;
+            @include breakpoint(tablet) { top: -4px; }
+            // @include breakpoint(mobile) { left: -30px; top: 6px; }
+        }
+        &:last-child{ border:none; padding-bottom:0; padding-bottom: 25px; }
+        .mobile_link { background: none;
+         color: $danger;position: absolute; font-size: 14px; right: 18px; cursor: pointer;
+         @include breakpoint(mobile) { bottom: 0; right: 0; text-align: left; left: 0;}
+        }
+
+        .unsubscribe_btn{
+          position: absolute;
+          right: 55px;
+          top: 15px;
+          background: none;
+          color: $text-color;
+          border: 1px solid #dee2e6;
+          border-radius: 3px;
+          padding: 0 20px;
+          font-size: 14px;
+          height: 30px;
+          line-height: 24px;
+          @include breakpoint(mobile-big-land){
+            position: unset;
+            width: 100px;
+            color: $primary-color;
+            border: none;
+            padding: 0;
+            height: auto;
+            text-align: left;
+          }
+        }
+    }
+    .pl_name{ font-size: 18px; color:$text-color; width:100%; display: block; margin-bottom:7px;
+      .plan_status{ font-size:12px; color:$text-color; opacity: 0.6; font-style: italic; }
+      @include breakpoint(mac) {font-size:16px;}
+  }
+
+     }
+    .trans_history {
+        padding: 15px 20px;
+        display: block;
+        overflow: hidden;
+        border-top: 1px solid #333;
+        .trans_text {
+          float: right;
+          color: #adadad;
+          font-size: 16px;
+          cursor: pointer;
+          @include breakpoint(mobile-common-land){font-size: 14px;}
+        }
+      }
+    .packs_list{
+      
+    }
+}

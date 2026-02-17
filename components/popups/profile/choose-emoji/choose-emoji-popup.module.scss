@@ -1,0 +1,194 @@
+@import 'variables.scss';
+.sharecontent_modal {
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999999;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .cross_icon {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 15px;
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+  .main_modal {
+    min-height: calc(100% - (1.75rem * 2));
+    width: 680px !important;
+    max-width: 680px !important;
+    margin: 0 auto;
+    transform: translate(0);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    top: 40px;
+    position: relative;
+    @include breakpoint(mobile) {
+      max-width: 600px !important;
+      width: 100% !important;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    &:focus-visible {
+      outline: none !important;
+    }
+    .modal_wrapper {
+      width: 100%;
+      @include breakpoint(mobile) {
+        min-width: 100%;
+      }
+      .modal_content {
+        background: $profile-popup-bg;
+        border-radius: 5px;
+        color: $grey-text-color;
+        padding: 50px 40px;
+        display: block;
+        position: relative;
+        margin-bottom: 50px;
+        @include breakpoint(mobile) {
+          padding: 30px 20px;
+        }
+        .modal_header {
+          margin-bottom: 20px;
+          text-align: center;
+          .modal_title {
+            font-size: 22px;
+            font-weight: 400;
+            word-break: break-all;
+            margin-bottom: 4px;
+            color: $grey-text-color;
+            @include breakpoint(mobile) {
+              font-size: 18px;
+            }
+          }
+          .modal_subtitle {
+            font-size: 14px;
+            color: $grey-text-color;
+          }
+        }
+        .profileIcon_block {
+          border-top: 1px solid hsla(0, 0%, 100%, 0.1);
+
+          .profileIcon_list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-left: -6px;
+            margin-right: -6px;
+            margin-top: 15px;
+            justify-content: center;
+            @include breakpoint(mobile) {
+              text-align: center;
+              max-width: 450px;
+              margin: 0 auto;
+            }
+            @include breakpoint(mobile-small) {
+              max-width: 366px;
+            }
+            @include breakpoint(mobile-common-land) {
+              // display: block;
+              overflow: hidden;
+              text-align: center;
+            }
+            .profileIcon {
+              max-width: 110px;
+              max-height: 110px;
+              float: left;
+              margin: 25px 6px 0;
+              position: relative;
+              cursor: pointer;
+              text-align: center;
+              @include breakpoint(mobile) {
+                float: none;
+                max-height: inherit;
+              }
+              @include breakpoint(mobile-common-land) {
+                width: 100px;
+                // height: 100px;
+                display: inline-block;
+              }
+              .profileSelected_box{
+                min-height: 40px;
+                display: block;
+                .profileSelected {
+                  bottom: -25px;
+                  // position: absolute;
+                  left: 0;
+                  right: 0;
+                  margin: 0 auto;
+                  color: $text-color;
+                  font-size: 14px;
+                  text-align: center;
+                 // display: block;
+               }
+              }
+           
+              .profileImg {
+                width: 110px;
+                height: 110px;
+                border-radius: 8px;
+                border: 2px solid  transparent;
+                @include breakpoint(mobile-common-land) {
+                  width: 100px;
+                  height: 100px;
+                }
+                &:hover {
+                  border: 2px solid $danger;
+                }
+              }
+              .profileselect_Img {
+                position: absolute;
+                top: -5px;
+                right: -5px;
+                width: 24px;
+                height: 24px;
+                border: 1px solid $danger;
+                border-radius: 50%;
+              }
+            }
+          }
+          .footer_actions {
+            padding-top: 60px;
+            display: flex;
+            // align-items: center;
+            justify-content: center;
+            overflow: hidden;
+           .btns{
+              padding: 12px 0px;
+              border: none;
+              // background: rgba(255, 255, 255, 0.1);
+              font-size: 16px;
+              width: 160px;
+              text-align: center;
+              border-radius: 2px;
+              -moz-border-radius: 2px;
+              -webkit-border-radius: 2px;
+              // color: $text-color;
+              border-radius: 2px;
+              -moz-border-radius: 2px;
+              -webkit-border-radius: 2px;
+              @include breakpoint(mobile) {
+                font-size: 14px;
+                width: 110px;
+              }
+              &:first-child {
+                margin-right: 16px;
+              }
+              &:last-child {
+                background: $primary-color;
+                color: $primary-button-text-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

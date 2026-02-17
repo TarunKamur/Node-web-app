@@ -1,0 +1,142 @@
+@import 'variables.scss';
+
+
+    .signin_cont{ padding: 50px 40px 70px;
+        display: block; height: fit-content;
+        width: 480px;
+        margin: 80px auto 30px;
+        background: $signin-bg;
+        position: relative;
+        @include breakpoint(mac){ width:450px;}
+        @include breakpoint(laptop){ width:480px;margin: 60px auto 30px; padding: 40px 30px 60px;}
+        @include breakpoint(tablet){width:450px; margin:0 auto 30px;padding: 30px;}
+        @include breakpoint(mobile){ background: $sigin-mobile-bg; padding:0px 20px; width:100%; max-width: 450px;}
+      
+        h1{ font-size:28px; margin-bottom:8px; text-align: center; font-weight: 400;
+        @include breakpoint(mac){font-size: 26px; }
+        @include breakpoint(laptop){font-size: 24px; }
+        @include breakpoint(tablet){font-size: 22px; }
+        @include breakpoint(mobile){font-size: 20px;}
+        @include breakpoint(mobile-common-land ){font-size: 18px;}
+        }
+      p{ margin-bottom: 70px;font-size: 14px;color: #898b95;
+        font-weight: 400; text-align: center;
+         @include breakpoint(mac){ margin-bottom:50px;}
+        @include breakpoint(laptop){ margin-bottom:38px;}
+        @include breakpoint(tablet){margin-bottom:25px;}
+    }
+        form{ 
+            input{ color:rgba(255,255,255, 0.6); padding: 14.5px 14px; }
+            label{font-size: 14px; position: absolute;}
+        }
+        .show{  color: #898b93; font-size: 14px; position: absolute; top:32px; right:10px; display: block;
+            cursor: pointer;
+            &:hover{ color:#ccc; transform: all 0.5s;}
+        }
+        .forgot{ position: relative; height: 92px; text-align: left;
+            .datePicker{
+                margin-top: 16px;
+                margin-bottom: 8px;
+            }
+            // @include breakpoint(mac){font-size: 12px;}
+            // input{ padding-right:100px;}
+            //     span, a{
+            //         &:hover{ color:#ccc; transform: all 0.5s;}
+            //     }
+            .valid_error{bottom: 5px; color: $danger; position: absolute;
+                font-size: 12px;}
+            &.inline{display: flex; justify-content: space-between;}
+             .mobileNumber{width: calc(100% - 14px);
+                    &.has_country_code{ padding-left:100px;}
+                }
+        }
+        .button{ height:44px; line-height: 44px; margin-top: 50px; text-transform: none; width: 100%; font-size: 14px;
+            @include breakpoint(mac){font-size: 16px;}
+            @include breakpoint(laptop){font-size: 14px; margin-top: 30px;}
+            @include breakpoint(tablet){margin-top: 20px;}
+        }
+        .text_danger1{ position: relative; color:#e80000; font-size:14px; 
+            margin-top: 10px;  display: flex;justify-content: center; align-items: center;
+            span{ position: absolute;}
+        }
+        .genderList{
+            position: relative;
+            .valid_error{ color: $danger; position: absolute; 
+                font-size: 12px;}
+            .genderCont{
+                display: flex;
+                gap: 20px;
+                color: hsla(0,0%,100%,.6);
+                line-height: 20px;
+                margin-top: 10px;
+                .genderLabel {
+                        position: relative;
+                        display: flex;
+                        gap: 20px;
+                        font-size: 14px;
+                        color: #898b95;
+                        .loopGender{
+                            width: fit-content;
+                         label{   cursor: pointer;}
+                        }
+                        .genderradio{
+                            position: relative;
+                            .dotbutton{
+                                width: 9px;
+                                top: 5px;
+                                left: 5.178px;
+                                height: 9px;
+                                border-radius: 50%;
+                                background-color: #fff;
+                                position: absolute;
+                                margin: 0;
+                            }
+                        }
+                
+                        label {  min-width: fit-content;
+                            margin-left: 25px;
+                            position: relative;
+                        }
+                
+                        [type="radio"] {
+                            position: absolute;
+                            cursor: pointer;
+                            inset: 0;
+                        }
+                        [type="radio"]:before {
+                            content: '';
+                            position: absolute;
+                            left: 0;
+                            top: 0;
+                            width: 18px;
+                            height: 18px;
+                            border: 1px solid #ffffff59;
+                            border-radius: 100%;
+                            background: #ffffff59;
+                        }
+                
+                .whitebtn{
+                    &[type="radio"]:before {
+                        background: #fff;
+                    }
+                }
+                      
+                        [type="radio"]:after {
+                            content: '';
+                            width: 16px;
+                            height: 16px;
+                            background: #262626;
+                            position: absolute;
+                            top: 2px;
+                            left: 2px;
+                            border-radius: 100%;
+                            -webkit-transition: all 0.2s ease;
+                            transition: all 0.2s ease;
+                        }
+                }
+            }
+          
+        }
+    }
+
+

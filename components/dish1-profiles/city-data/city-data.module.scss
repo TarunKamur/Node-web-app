@@ -1,0 +1,441 @@
+@import 'variables.scss';
+ 
+.container {
+  background-color: transparent;
+  height: 63vh;
+  display: flex;
+  flex-direction: column;
+  transition: height 0.3s ease;
+ 
+  &.dropdownOpenContainer {
+    height: auto;
+    min-height: 63vh;
+  }
+ 
+  .SelectContent {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+   
+    @include breakpoint(laptop) {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+   
+    @include breakpoint(tablet) {
+      font-size: 16px;
+    }
+ 
+    @include breakpoint(mobile) {
+      font-size: 16px;
+      display: none;
+    }
+   
+    &.mobile {
+      display: none;
+      @include breakpoint(mobile) {
+        display: flex;
+        margin-bottom: 14px;
+      }
+    }
+  }
+ 
+  .dropdown {
+    position: relative;
+    margin-top: 0;
+    max-width: 400px;
+    margin-bottom: 0;
+ 
+    &.dropdownExpanded {
+      margin-bottom: 20px;
+    }
+ 
+    @include breakpoint(laptop) {
+      max-width: 350px;
+    }
+ 
+    @include breakpoint(tablet) {
+      max-width: 100%;
+    }
+ 
+    .dropdownInput {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #666;
+      border-radius: 4px;
+      background-color: #2D2B2B;
+      color: #FFFFFF;
+      font-size: 14px;
+      cursor: pointer;
+      appearance: none;
+      outline: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+ 
+      &:focus {
+        border-color: #666;
+      }
+ 
+      @include breakpoint(laptop) {
+        padding: 10px 14px;
+        font-size: 13px;
+        height: 42px;
+        box-sizing: border-box;
+      }
+ 
+      @include breakpoint(tablet) {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+ 
+      @include breakpoint(mobile) {
+        padding: 8px 12px;
+        font-size: 12px;
+        display: none;
+      }
+    }
+ 
+    .dropdownArrow {
+      transition: transform 0.2s ease;
+ 
+      &.open {
+        transform: rotate(180deg);
+      }
+ 
+      @include breakpoint(laptop) {
+        width: 10px;
+        height: 6px;
+      }
+    }
+ 
+    .dropdownPanel {
+      position: static;
+      background-color: black;
+      border-radius: 6px;
+      margin-top: 10px;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      max-height: 350px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+ 
+      @include breakpoint(laptop) {
+        max-height: 280px;
+        margin-top: 8px;
+        border-radius: 4px;
+      }
+ 
+      @include breakpoint(tablet) {
+        max-height: 300px;
+      }
+ 
+      @include breakpoint(mobile) {
+        max-height: none;
+        background: none;
+        box-shadow: none;
+        margin-top: 0;
+        overflow: visible;
+      }
+ 
+      &.mobilePanel {
+        position: static;
+        box-shadow: none;
+        border: none;
+        max-height: none;
+        margin-top: 0;
+        overflow: visible;
+      }
+    }
+ 
+    .searchContainer {
+      padding: 12px;
+      background-color: #161616;
+      flex-shrink: 0;
+ 
+      @include breakpoint(laptop) {
+        padding: 10px;
+      }
+ 
+      @include breakpoint(mobile) {
+        padding: 0px;
+        background: none;
+        flex-shrink: 0;
+      }
+    }
+ 
+    .searchInputWrapper {
+      position: relative;
+     
+      @include breakpoint(mobile) {
+        margin-bottom: 12px;
+      }
+    }
+ 
+    .searchIcon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+ 
+      @include breakpoint(laptop) {
+        left: 10px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+ 
+    .searchInput {
+      width: 100%;
+      height: 46px;
+      padding: 8px 12px 8px 40px;
+      border: 1px solid #4a4848 !important;
+      border-radius: 8px;
+      background-color: #161616;
+      color: #FFFFFF;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+ 
+      &::placeholder {
+        color: #FFFFFF99;
+      }
+ 
+      @include breakpoint(laptop) {
+        height: 40px;
+        padding: 6px 10px 6px 32px;
+        font-size: 12px;
+        border-radius: 6px;
+      }
+ 
+      @include breakpoint(tablet) {
+        padding: 6px 10px 6px 35px;
+        font-size: 13px;
+      }
+ 
+      @include breakpoint(mobile) {
+        padding: 6px 8px 6px 32px;
+        font-size: 12px;
+        background: none;
+      }
+    }
+ 
+    .dropdownList {
+      background-color: #161616;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow-y: auto;
+      flex: 1;
+ 
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+ 
+      &::-webkit-scrollbar-track,
+      &::-webkit-scrollbar-thumb,
+      &::-webkit-scrollbar-thumb:hover {
+        background: transparent;
+        border-radius: 3px;
+      }
+ 
+      @include breakpoint(laptop) {
+        &::-webkit-scrollbar {
+          width: 4px;
+        }
+      }
+ 
+      @include breakpoint(mobile) {
+        background: none;
+        max-height: 280px;
+        overflow-y: auto;
+        flex: none;
+      }
+    }
+ 
+    .dropdownItem {
+      padding: 12px 16px;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 48px;
+      box-sizing: border-box;
+ 
+      &:hover {
+        background-color: #44444428;
+        @include breakpoint(mobile) {
+          background: none;
+        }
+      }
+      
+      &.selected {
+        // background-color: #444;
+        @include breakpoint(mobile) {
+          background: none;
+        }
+      }
+ 
+      .tick {
+        color: #FFFFFF;
+        font-size: 16px;
+ 
+        @include breakpoint(laptop) {
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+        }
+      }
+ 
+      @include breakpoint(laptop) {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-height: 36px;
+      }
+ 
+      @include breakpoint(tablet) {
+        padding: 10px 14px;
+        font-size: 14px;
+        min-height: 44px;
+      }
+ 
+      @include breakpoint(mobile) {
+        padding: 6px 0px 6px 0px;
+        font-size: 14px;
+        min-height: 32px;
+        margin-bottom: 3px;
+      }
+    }
+  }
+ 
+  .saveBtn {
+    width: 212px;
+    height: 54px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D13066;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    margin-top: 20px;
+ 
+    &:hover {
+      background-color: #b8285a;
+    }
+ 
+    &.disabled {
+      background-color: #666;
+      cursor: not-allowed;
+     
+      &:hover {
+        background-color: #666;
+      }
+    }
+ 
+    @include breakpoint(laptop) {
+      width: 180px;
+      height: 46px;
+      font-size: 14px;
+      margin-top: 16px;
+      border-radius: 6px;
+    }
+ 
+    @include breakpoint(tablet) {
+      width: 150px;
+      height: 45px;
+      font-size: 14px;
+    }
+ 
+    @include breakpoint(mobile) {
+      width: 130px;
+      height: 40px;
+      font-size: 12px;
+    }
+  }
+ 
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+  }
+ 
+  @include breakpoint(laptop) {
+    height: auto;
+    min-height: 55vh;
+    padding: 12px;
+  }
+ 
+  @include breakpoint(tablet) {
+    height: auto;
+    padding: 15px;
+  }
+ 
+  @include breakpoint(mobile) {
+    padding: 18px 0 0 0;
+  }
+}
+ 
+.skeletonItem {
+  --skeleton-height: 1rem;
+  --skeleton-radius: 0.4rem;
+  --skeleton-base: #2a2a2a;
+  --skeleton-highlight: #3a3a3a;
+ 
+  height: var(--skeleton-height);
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--skeleton-radius);
+ 
+  background: linear-gradient(
+    90deg,
+    var(--skeleton-base) 25%,
+    var(--skeleton-highlight) 37%,
+    var(--skeleton-base) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  margin: 0.5rem 0;
+}
+ 
+.skeletonItem:nth-child(1) { width: 90%; }
+.skeletonItem:nth-child(2) { width: 75%; }
+.skeletonItem:nth-child(3) { width: 85%; }
+.skeletonItem:nth-child(4) { width: 65%; }
+.skeletonItem:nth-child(5) { width: 80%; }
+.skeletonItem:nth-child(6) { width: 70%; }
+ 
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+ 
+@media (max-width: 768px) {
+  .skeletonItem {
+    --skeleton-height: 0.9rem;
+  }
+}
+ 
+@media (max-width: 480px) {
+  .skeletonItem {
+    --skeleton-height: 0.8rem;
+    --skeleton-radius: 0.3rem;
+  }
+}
+ 

@@ -1,0 +1,227 @@
+@import 'variables.scss';
+
+.MaxDeviceLimit {
+    .MaxDeviceLimit_inner {
+        padding: 66px 0px;
+
+        @include breakpoint(widescreen) {
+            padding: 50px 0px;
+        }
+
+        @include breakpoint(laptop) {
+            padding: 40px 0;
+        }
+        @include breakpoint(mobile){
+            padding: 40px 16px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 53px;
+        
+            @include breakpoint(widescreen) {
+                margin-bottom: 40px;
+            }
+
+            @include breakpoint(laptop) {
+                margin-bottom: 32px;
+            }
+
+            img {
+                width: 158px;
+
+                @include breakpoint(widescreen) {
+                    width: 119px;
+                }
+            }
+            @include breakpoint(mobile){display: none;}
+        }
+
+        .MaxDevice_data {
+            max-width: 709px;
+            margin: 0 auto;
+
+            @include breakpoint(widescreen) {
+                max-width: 532px;
+            }
+
+            @include breakpoint(laptop) {
+                max-width: 425px;
+            }
+
+            .MaxDevice_Text {
+                margin-bottom: 34px;
+                text-align: center;
+
+                .headerText {
+                    font-size: 37px;
+                    font-weight: 600;
+                    font-family: Poppins;
+                    margin-bottom: 15px;
+
+                    @include breakpoint(widescreen) {
+                        font-size: 28px;
+                        margin-bottom: 11px;
+                    }
+
+                    @include breakpoint(laptop) {
+                        font-size: 22px;
+                        margin-bottom: 8px;
+                    }
+                    @include breakpoint(mobile){font-size: 16px;}
+                }
+
+                .subText {
+
+                    font-size: 26px;
+                    color: #FFFFFFB2;
+                    opacity: 0.8;
+                    font-weight: 400;
+                    margin-bottom: 15px;
+
+                    @include breakpoint(widescreen) {
+                        font-size: 20px;
+                        margin-bottom: 11px;
+                    }
+
+                    @include breakpoint(laptop) {
+                        font-size: 16px;
+                        margin-bottom: 8px;
+                    }
+                    @include breakpoint(mobile){font-size: 14px;}
+                }
+
+                .subText2 {
+                    font-size: 26px;
+
+                    @include breakpoint(widescreen) {
+                        font-size: 20px;
+                    }
+
+                    @include breakpoint(laptop) {
+                        font-size: 16px;
+                    }
+                    @include breakpoint(mobile){font-size: 14px;}
+                }
+            }
+
+            .deviceLisit {
+                .list_item {
+                    background: #2D2B2B;
+                    height: 122px;
+                    width: 100%;
+                    border-radius: 12px;
+                    padding: 16px;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 21px;
+
+                    @include breakpoint(widescreen) {
+                        height: 90px;
+                       
+                    }
+
+                    @include breakpoint(laptop) {
+                        height: 72px;
+                        border-radius: 8px;
+                    }
+                    @include breakpoint(mobile){
+                        height: 76px;
+                    }
+
+                    .item_left {
+                        width: 61px;
+                        height: 61px;
+                        border-radius: 50%;
+                        background: #767373;
+
+                        @include breakpoint(widescreen) {
+                            width: 46px;
+                            height: 46px;
+                        }
+
+                        @include breakpoint(laptop) {
+                            height: 36px;
+                            width: 36px;
+                        }
+                        @include breakpoint(mobile) {
+                            width: 46px;
+                            height: 46px;
+                        }
+
+                    }
+
+                    .item_middle {
+                        padding-left: 16px;
+
+                        @include breakpoint(widescreen) {
+                            padding-left: 12px;
+                        }
+
+                        @include breakpoint(laptop) {
+                            padding-left: 9px;
+                        }
+
+                        .deviceName {
+                            font-size: 21px;
+                            font-weight: 600;
+
+                            @include breakpoint(widescreen) {
+                                font-size: 16px;
+                            }
+
+                            @include breakpoint(laptop) {
+                                font-size: 12px;
+                            }
+                            @include breakpoint(mobile){font-size: 14px;}
+                        }
+
+                        .lastActive {
+                            font-size: 18px;
+                            font-weight: 300;
+                            opacity: 0.6;
+
+                            @include breakpoint(widescreen) {
+                                font-size: 14px;
+                            }
+
+                            @include breakpoint(laptop) {
+                                font-size: 11px;
+                            }
+                        }
+                    }
+
+                    .item_right {
+                        margin-left: auto;
+
+                        button {
+                            background: none;
+                            border: 1px solid #FFFFFF99;
+                            border-radius: 4px;
+                            padding: 9px 36px;
+                            color: #fff;
+                            font-size: 16px;
+
+                            @include breakpoint(widescreen) {
+                                padding: 7px 27px;
+                                font-size: 12px;
+                            }
+
+                            @include breakpoint(laptop) {
+                                font-size: 9px;
+                                padding: 5px 21px;
+                            }
+                            @include breakpoint(mobile){
+                                font-size: 12px;
+                                padding: 12px 17px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

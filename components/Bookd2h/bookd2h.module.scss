@@ -1,0 +1,52 @@
+@import 'variables.scss';
+
+
+.book_dth{background: transparent; max-width: 1220px;width: 100%;margin:0 auto; margin-top: 150px;
+  @include breakpoint(mac) {max-width: 1040px; }
+  @include breakpoint(laptop){ max-width: 950px;}
+  @include breakpoint(tablet-portrait){ max-width: inherit; padding:0 20px; }
+  @include breakpoint(tablet){margin-top: 100px;}
+  @include breakpoint(mobile) {margin:60px 0 30px 0;}
+
+  .go_back{position: fixed;top: 0; left:0; width: 100%;z-index: 5;display:none;
+    @media (max-width: 950px){ display: block;}
+    a{color:#fff;
+      img{position: absolute; top: 28px; left: 20px;
+        @media (max-width: 950px){ top: 20px;}
+        @include breakpoint(mobile) { width: 22px;top: 19px;}
+      }
+      h1{ font-size: 26px; font-weight: normal; background: #262626; height: 78px; line-height: 78px; padding: 0 20px 0 85px; 
+        text-transform: uppercase; margin-top: 0px; position: relative; margin-bottom: 0px;
+        @media (max-width: 950px){ height:65px; line-height: 65px;}
+        @include breakpoint(tablet) {font-size: 20px;}
+        @include breakpoint(mobile) { font-size: 18px; height: 56px; line-height: 56px; padding-left: 60px; }
+        @include breakpoint(mobile-common) { font-size: 16px;}
+    }
+    }
+  }
+  .img_container { display: flex; margin: 60px -28px;
+    @include breakpoint(mac) { margin:0 -20px}
+    @include breakpoint(laptop) { margin:0 -15px}
+    @media (max-width: 950px){ max-width: 100%; margin:100px auto 0;}
+    @include breakpoint(mobile) {display: block; margin-top:65px; margin:0;}
+      .left_section, .right_section { width: 50%; background-size: cover; padding:0 28px; position: relative;
+        @include breakpoint(mac) { padding:0 20px}
+        @include breakpoint(laptop) { padding:0 15px}
+        .btn_loader{ top: 0; bottom: 0; }
+            img{width:100%}
+            @include breakpoint(mac) { padding:0 20px}
+            @include breakpoint(laptop) { padding:0 15px}
+            @include breakpoint(mobile) {width: 100%; padding:12px 15px}
+          }
+  }
+  .btm_section{text-align:center;margin:0px auto 50px;padding:15px 0;background-color:#1D1D1D;
+    color:#FFFFFF;font-size: normal;font-size: 16px;
+    @include breakpoint(mac) {font-size: 14px;margin-top: 25px;}
+    @include breakpoint(laptop){ font-size: 12px; margin: 25px 10px 50px;}
+    @include breakpoint(mobile) {margin: 0px 20px; background: none;;}
+    h2{font-size: 18px; font-weight: 500; color: $text-color;
+      @include breakpoint(mac) {font-size: 16px;}
+    }
+  }
+}
+

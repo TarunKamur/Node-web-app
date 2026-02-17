@@ -1,0 +1,129 @@
+@import 'variables.scss';
+
+$color-primary: #D13066;
+$color-primary-light: #E94F82;
+$color-primary-dark: #A3224D;
+$color-text-white: #FFF;
+$color-separator: #E5E7EB;
+
+$transition-speed: 0.25s;
+$radius-sm: 0.375rem;
+
+.breadcrumbContainer {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem 0;
+  font-size: 0.9375rem;
+  background: transparent;
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+
+  &:not(:first-child)::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid #D13066;
+    border-top: 2px solid #D13066;
+    transform: rotate(45deg);
+    opacity: 0.9;
+    margin-right: 0.1rem;
+    transition: transform $transition-speed ease;
+  }
+}
+
+.homeLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFF;
+  background: transparent;
+  padding: 5px;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all $transition-speed ease;
+
+  .homeIcon {
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: #FFF;
+    transition: fill $transition-speed ease;
+  }
+
+  &:hover {
+    color: #D13066;
+    background: rgba(209, 48, 102, 0.08);
+    .homeIcon {
+      fill: #D13066;
+    }
+  }
+}
+
+.link {
+  color: #FFF;
+  background: transparent;
+  padding: 5px;
+  border-radius: $radius-sm;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all $transition-speed ease;
+
+  &:hover {
+    color: #D13066;
+    background: rgba(209, 48, 102, 0.08);
+  }
+
+  &.current {
+    color: #D13066;
+    background: transparent;
+    font-weight: 600;
+    box-sizing: border-box;
+    cursor: default;
+  }
+}
+
+.singleSegment {
+  margin-left: 0.375rem;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbContainer {
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+  }
+
+  .breadcrumbItem {
+    gap: 0.1rem;
+
+    &:not(:first-child)::before {
+      width: 0.375rem;
+      height: 0.375rem;
+      margin-right: 0.375rem;
+    }
+  }
+
+  .homeLink,
+  .link {
+    padding: 0.25rem 0.5rem;
+  }
+
+  .homeLink .homeIcon {
+    width: 1rem;
+    height: 1rem;
+  }
+}

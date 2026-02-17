@@ -1,0 +1,256 @@
+@import "variables.scss";
+
+.app_footer {
+    overflow: hidden;
+    margin-bottom: 30px;
+
+    .footer {
+        .container {
+            .data {
+                .content {
+                    h5 {
+                        font-size: 16px;
+                        color: $grey-text-color;
+                        font-weight: 500;
+                        margin-top: 32px;
+                        line-height: 18px;
+                        margin-bottom: 18px;
+                        @include breakpoint(tablet){font-size: 14px;}
+                        @include breakpoint(mobile){
+                            font-size: 12px;
+    margin-top: 18px;
+                        }
+                    }
+
+                    p {
+                        font-size: 14px;
+                        color: $grey-text-color;
+                    }
+                }
+            }
+
+            .grid {
+                margin: 20px -31px 0;
+                display: block;
+                overflow: hidden;
+                display: flex;
+                flex-wrap: wrap;
+                @include breakpoint(mobile){margin: 0 -10px;}
+                .items {
+                    padding: 0 31px;
+                    float: left;
+                    width: 16.66%;
+                    @include breakpoint(desktop-small){width: 20%;}
+                    @include breakpoint(tablet){width: 33%;}
+                    @include breakpoint(mobile){    width: 20%;
+                        padding: 0 10px;
+                    }
+                    @include breakpoint(mobile-big-land){
+                        width: 25%;
+    padding: 0 10px;
+                    }
+                    @include breakpoint(mobile-common-land){
+                        width: 50%;
+    padding: 0 10px;
+                    }
+                    h5 {
+                        font-size: 16px;
+                        color: $grey-text-color;
+                        font-weight: 500;
+                        margin-top: 32px;
+                        line-height: 18px;
+                        margin-bottom: 18px;
+                        @include breakpoint(mobile){font-size: 12px;}
+                    }
+
+                    ul {
+                        li {
+                            a {
+                                text-decoration: none;
+                                color: $grey-text-color;
+                                font-size: 14px;
+                                margin-bottom: 5px;
+                                display: inline-block;
+                                @include breakpoint(mobile){    font-size: 12px;
+                                    margin-bottom: 0;}
+                                &:hover {
+                                    color: $text-color;
+                                }
+                            }
+                        }
+                    }
+
+                    .show_btn {
+                        button {
+                            background: none;
+                            color: $primary-color;
+                            font-size: 16px;
+                            position: relative;
+                            padding-right: 30px;
+                            margin-top: 10px;
+                            @include breakpoint(mobile){
+                                font-size: 12px;
+                                    padding-right: 25px;
+                            }
+                            &.show_less::after {
+                                content: "";
+                                transform: rotate(-45deg);
+                                -webkit-transform: rotate(222deg);
+                                display: inline-block;
+                                border: solid #eb3495;
+                                border-width: 0 2px 2px 0;
+                                padding: 3px;
+                                position: absolute;
+                                right: 10px;
+                                top: 10px;
+                            }
+
+                            &.show_more::after {
+                                content: "";
+                                transform: rotate(-45deg);
+                                -webkit-transform: rotate(45deg);
+                                display: inline-block;
+                                border: solid #eb3495;
+                                border-width: 0 2px 2px 0;
+                                padding: 3px;
+                                position: absolute;
+                                right: 10px;
+                                top: 6px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .footer_end {
+                margin: 50px -24px 0;
+                display: block;
+
+                .left {
+                    float: left;
+                    width: 70%;
+                    @include breakpoint(mobile){width: 100%;  padding-left: 20px;
+                        margin-bottom: 20px;}
+                    .left_item {
+                        float: left;
+                        font-size: 14px;
+                        margin: 0 20px;
+                        @include breakpoint(tablet-portrait){margin: 0 10px;}
+                        &.logo_section {
+                            width: 220px;
+                            padding-left: 15px;
+                            @include breakpoint(tablet){width: 200px;}
+                            img {
+                                width: 82px;
+                            }
+
+                            .copy_right {
+                                display: block;
+                                overflow: hidden;
+                                font-size: 13px;
+                                width: 200px;
+                                color: #9ea2ac;
+                                margin-top: 10px;
+                            }
+                            @include breakpoint(mobile){display: none;}
+                        }
+
+                        &.menu {
+                            width: 200px;
+                            @include breakpoint(tablet){width: 90px;}
+                            @include breakpoint(mobile-small){width: 50px;}
+                            ul {
+                                li {
+                                    float: left;
+                                    margin-right: 15px;
+                                    @include breakpoint(tablet){float: none;}
+                                    a {
+                                        color: $text-color;
+                                        opacity: .6;
+                                        margin-bottom: 5px;
+                                        display: inline-block;
+                                      
+
+                                        &:hover {
+                                            opacity: 1;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.company {
+                            width: 90px;
+                        }
+                        &.legal{
+                            @include breakpoint(tablet){width: 21%;}
+                        }
+                        h5 {
+                            font-size: 16px;
+                            font-weight: 500;
+                            color: $text-color;
+                            margin: 0 0 16px;
+                            line-height: 18px;
+                            @include breakpoint(mobile){font-size: 12px; margin-bottom: 5px;}
+                        }
+
+                        ul {
+                            li {
+                                text-transform: uppercase;
+
+                                a {
+                                    color: $text-color;
+                                    opacity: .6;
+                                    margin-bottom: 5px;
+                                    display: inline-block;
+                                    font-size: 14px;
+                                    @include breakpoint(mobile){
+                                        font-size: 10px;
+    margin-bottom: 0;
+                                    }
+                                    &:hover {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+
+                .right {
+                    width: 30%;
+                    float: left;
+                    padding-left: 31px;
+                    @include breakpoint(mobile){    width: 100%;
+                        padding-left: 0;
+                        text-align: center;}
+                    h5 {
+                        margin: 0 0 15px;
+                        font-size: 16px;
+                        font-weight: 500;
+                        line-height: 18px;
+                    }
+
+                    .links {
+                        a {
+                            margin-right: 15px;
+                            img{ @include breakpoint(tablet){width: 25px;}}
+                           
+                        }
+                    }
+                    .right_item{display: none;
+                     @include breakpoint(mobile){display: block;}
+                      a{img{display: block;
+                        overflow: hidden;
+                        margin: 24px auto 8px}}
+                        .copy_right{
+    font-size: 10px;
+    color: $grey-text-color;
+                        }
+                     }
+                }
+            }
+        }
+    }
+}

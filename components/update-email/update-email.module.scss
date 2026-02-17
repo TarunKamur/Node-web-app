@@ -1,0 +1,132 @@
+@import "variables.scss";
+
+
+  .modal_popup {
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999999;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    .main_modal {
+      padding: 20px;
+      transform: translate(0);
+      align-items: center;
+      min-height: calc(100% - (1.75rem * 2));
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      top: 40px;
+      justify-content: center;
+
+      @include breakpoint(mac) {
+      }
+      @include breakpoint(laptop) {
+      }
+      @include breakpoint(mobile) {
+        width: 100%; padding:20px;
+      }
+      @include breakpoint(mobile-common-land) {
+        padding: 10px;
+        margin: 0 auto;
+      }
+
+      .modal_size {
+        background: $secondary-color;
+        color: $grey-text-color;
+        padding: 65px 40px 50px;
+        display: block;
+        position: relative; width:560px; max-width: 100%;
+        @include breakpoint(mac) {
+          padding: 60px 36px 50px;
+        }
+        @include breakpoint(mobile){padding: 31px 15px 32px; overflow: inherit; background: $body-color;}
+        .title {
+          padding: 0;
+          .cross_icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            &:hover {
+              text-decoration: none !important;
+            }
+            @include breakpoint(mobile){right: 17px; top: 17px;}
+          }      
+        }
+      }
+
+    
+      .updateEmail_cont {   
+        .title_inner {
+          padding: 0;
+        }
+        .popup_title {
+          width: 100%;
+          text-align: center;
+          .p_title {
+            color: $text-color;
+            font-size: 28px;
+            font-weight: 400;
+            margin: 0px 0 4px;
+            @include breakpoint(mac) {
+              font-size: 22px;
+              margin: 16px 0 4px;
+            }
+            @include breakpoint(tablet){font-size: 20px;}
+            @include breakpoint(mobile){margin-bottom: 6px;}
+            @include breakpoint(mobile-common-land){font-size: 18px;}
+            @include breakpoint(mobile-common){font-size: 15px;}
+            @include breakpoint(mobile-x-small){font-size: 13px;}
+          }
+          .sub_heading {
+            font-size: 16px;
+            margin: 10px 0 50px;
+            color: $text-color;
+            opacity: 0.65;
+            @include breakpoint(mac) {
+              font-size: 16px;
+              margin-bottom: 50px;
+            }
+            @include breakpoint(desktop-small){font-size: 14px;}
+            @include breakpoint(tablet){font-size: 13px;}
+            @include breakpoint(mobile){margin: 0 0 20px;}
+          }
+        }  
+        form{ 
+          input{ color:$grey-text-color; padding: 14.5px 14px; }           
+          label{font-size: 14px; position: absolute; user-select: none;}
+        }
+        .forgot{ position: relative; height: 92px; text-align: left;            
+          .valid_error{bottom: 5px; color: $danger; position: absolute;
+              font-size: 12px;}    
+              &.inline{display: flex; justify-content: space-between;}
+              .mobileNumber{width: calc(100% - 14px);
+                  &.has_country_code{ padding-left:110px;
+                      @include breakpoint(mobile){ padding-left:100px;}
+                  }
+              }       
+        }
+        .text_danger1{ position: relative; color:$danger; font-size:14px;left:0; right:0; margin:auto;
+          text-align: center;
+          span{ text-align: center; margin:0 auto;word-break: break-word;     position: absolute;
+              left: 0;
+              right: 0;}
+        }
+        .button {
+          margin: 50px auto auto;
+          text-align: center;
+          width: 100%;
+          border: none;
+          line-height: 44px;
+          height: 44px;
+          position: relative;      
+        }
+      }
+    }
+    }

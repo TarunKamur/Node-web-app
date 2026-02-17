@@ -1,0 +1,1518 @@
+
+<!-- Crome Cast receiver application using CAF (Cast Application Framework) sdk version V3 developed by shivakumar nomula /***  app version : 0.01 ***/ -->
+<!-- 0.9   21-05-2021 --> 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="https://facebookapp.yupptv.com/ccast/player.css">
+
+   <!-- adding app logos -->
+  <style>
+    #media-player{
+        --theme-hue: 210;
+        --splash-image: url("assets/logo.png");         
+    }
+  </style>
+  
+  <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js" type="text/javascript"> </script>
+  <script src="//www.gstatic.com/cast/sdk/libs/mediaplayer/1.0.0/media_player.js" type="text/javascript"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+
+  <cast-media-player id="media-player"></cast-media-player>
+
+  <script>
+
+    // variable declaration block.
+    var _self;
+    var applicationData = {};
+    var mediaInformation = {};
+    var videoPlugin;
+    //var serviceInfo = "http://119.81.201.168:8081/auth/v1/serviceinfo";   // Staging
+    var serviceInfo = "https://location.api.yuppcdn.net/auth/v1/serviceinfo"  // Live
+    var analyticsInfo = {};
+    var locationData = {};
+    var player = {
+      'sessionStart': false,
+      'isBuffer': false,
+      'isPause': false,
+      'isPlaying': false,
+      'startTime': '',
+      'maxFastForward' : 0,
+    };
+
+    var playerMetaData = {};
+    var clientMetaData = {};
+    var contentMetaData = {};
+    var userMetaData = {};
+    var videoMetaData = {};
+  /**
+   * added preview duraion variable.
+   * @private {?number}
+   */  
+    var previewDuration = 0;
+
+
+    //events    
+    const context = cast.framework.CastReceiverContext.getInstance();
+    const senderInfo = context.getSender();
+    const playerManager = context.getPlayerManager();
+    const playbackConfig = new cast.framework.PlaybackConfig();
+    const receiverOpt = new cast.framework.CastReceiverOptions();
+  
+	
+    // adding ready state.  
+    context.addEventListener(
+      cast.framework.system.EventType.READY, (event) => {
+        try {
+          console.log('ready');
+          applicationData = context.getApplicationData();    //Represents the data of the launched application.      
+          console.log(applicationData);
+
+          deviceCapabilities = context.getDeviceCapabilities();    //Represents the data of the launched application.      
+          console.log(deviceCapabilities);
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    context.addEventListener(
+      cast.framework.system.EventType.SHUTDOWN, (event) => {  //Fired when the application is terminated.
+        try {
+          console.log('SHUTDOWN: ' + player.sessionStart + ', ' + !!player.sessionStart);
+          updatePlayerInfo(event);   // updating pp and ps         
+          if (!!player.sessionStart && !!mediaInformation && !!mediaInformation.customData && (mediaInformation.customData.deviceId == "11")) {  //stop casting andriod 11, iOS 6,7
+            videoPlugin.streamSessionEnd();
+            videoPlugin.handlePlayEndedByUser();
+            //context.stop();   // stopping casting.  
+            resetAppData();   // resetting app variable data.  
+          }
+          console.log(player);
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    context.addEventListener(
+      cast.framework.system.EventType.SENDER_DISCONNECTED, (event) => {   //Fired when a sender has disconnected.
+        try {
+          console.log('SENDER_DISCONNECTED: ' + player.sessionStart + ', ' + !!player.sessionStart);
+          updatePlayerInfo(event);   // updating pp and ps         
+          if (!!player.sessionStart && !!mediaInformation && !!mediaInformation.customData && (mediaInformation.customData.deviceId == "11")) {
+            //videoPlugin.streamSessionEnd();
+            //videoPlugin.handlePlayCompleted();
+           // context.stop();   // stopping casting.  
+           // resetAppData();   // resetting app variable data.  
+          }
+          console.log(player);
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });            
+
+    // adding event listeners to player    
+
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.LOADED_METADATA, (event) => {
+        console.log('LOADED_METADATA');
+        console.log(event)
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.LOAD_START, (event) => {
+        console.log('LOAD_START');
+        try {
+
+          var currPollKey = localStorage.getItem("currPollKey");
+          mediaInformation = playerManager.getMediaInformation();
+          console.log("mediaInformation = ",mediaInformation);
+          console.log(player)
+          localStorage.setItem("currPollKey", mediaInformation.customData.pollKey);
+          console.log("currPollKey", currPollKey);          
+          console.log("pollKey", mediaInformation.customData.pollKey);          
+          if (!!player.sessionStart) {
+            updatePlayerInfo(event);   // updating pp and ps        
+            (currPollKey !== mediaInformation.customData.pollKey) && videoPlugin.streamSessionEnd();    
+            videoPlugin.handlePlayEndedByUser();
+            resetAppData();   // resetting app variable data.
+            
+            mediaInformation = playerManager.getMediaInformation();  // added for ios issue
+          }
+          
+          console.log(mediaInformation);          
+          console.log(mediaInformation.customData.maxBitRateValue);
+          (!!mediaInformation) && initAnalyticsMetaData(mediaInformation);                      
+          (!!videoPlugin) && (!!mediaInformation) && setAnalyticsMetaData();
+          
+           // setting meta data here.   
+          if (!!videoPlugin)  {  //&& !player.sessionStart
+            player = {
+              'sessionStart': true,
+              'isBuffer': false,
+              'isPause': false,
+              'isPlaying': false,
+            };
+            videoPlugin.thumbnailVideoClick();
+            videoPlugin.handlePlayerLoad();           
+            
+            //stopping player if previewduraion is greater then 0.
+            //this.previewDuration_ = 10;
+            if(previewDuration > 0){                      
+              var count = 0;
+              var interval = setInterval(function(){              
+              count += 1;
+              if(count >= previewDuration){
+                console.log('stoped');
+                context.stop();
+                clearInterval(interval);
+              }
+              }, 1000);
+            }
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.LOADED_DATA, (event) => {
+        console.log('LOADED_DATA');
+      });
+      
+      
+    playerManager.addEventListener(
+      cast.framework.events.EventType.PLAYER_LOAD_COMPLETE, () => {
+
+        console.log("isCCEnabled :",mediaInformation.customData.isCCEnabled);
+
+      if(!!mediaInformation.customData.isCCEnabled){
+        const textTracksManager = playerManager.getTextTracksManager();
+        const closeCaptionsInfo = (!!mediaInformation.customData.closeCaptions ? mediaInformation.customData.closeCaptions : '');
+        // Get all text tracks
+        const tracks = textTracksManager.getTracks();
+        console.log("closeCaptions :", closeCaptionsInfo);                          
+            
+        if(!!closeCaptionsInfo && !!closeCaptionsInfo.trackFilePath){ // if we get closed caption object from sender                                                         
+          let track1;                                                                                     
+          track1 = textTracksManager.createTrack();
+          track1.trackContentType = 'text/'+closeCaptionsInfo.trackType;
+          track1.trackContentId = closeCaptionsInfo.trackFilePath;
+          track1.language = closeCaptionsInfo.trackLanguage;                                                                          
+          textTracksManager.addTracks([track1]); // Add tracks
+          // Set the first matching language text track to be active
+          textTracksManager.setActiveByLanguage(closeCaptionsInfo.trackLanguage);          
+        }
+        else if(!!tracks && !!tracks.length){    // if tracks are avialable in stream --embedded tracks              
+          console.log('tracks', tracks);
+          //Choose the first text track to be active by its ID
+          (!!tracks.length) && textTracksManager.setActiveByIds([tracks[0].trackId]);                     
+        }        
+      }
+      else if(!!mediaInformation.customData.closeCaptions){
+        const textTracksManager = playerManager.getTextTracksManager();
+        const closeCaptionsInfo = (!!mediaInformation.customData.closeCaptions ? mediaInformation.customData.closeCaptions : '');                    
+        if(!!closeCaptionsInfo && !!closeCaptionsInfo.trackFilePath){ // if we get closed caption object from sender                                                         
+          let track1;                                                                                     
+          track1 = textTracksManager.createTrack();
+          track1.trackContentType = 'text/'+closeCaptionsInfo.trackType;
+          track1.trackContentId = closeCaptionsInfo.trackFilePath;
+          track1.language = closeCaptionsInfo.trackLanguage;                                                                          
+          textTracksManager.addTracks([track1]); // Add tracks                   
+        }
+        
+        // Get all text tracks
+        const tracks = textTracksManager.getTracks();
+        console.log("closeCaptions on off :", tracks);                          
+
+      }          
+  });   
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.PLAY, (event) => {
+        try {
+          console.log('play new: ' + player.isPause + ', ' + !!player.isPause);
+          console.log(event);
+          if (!!player.sessionStart) {
+            updatePlayerInfo(event);   // updating pp and ps
+//             if (!!player.isPlaying && !!player.isPause) {
+            if (!!player.isPause) {
+            	console.log('will fire resume')
+              	player.isPause = false,
+                videoPlugin.handleResume();
+            }
+            else {
+              	player.isPlaying = true,
+                videoPlugin.handlePlayStarted();
+                videoPlugin.startStreamPoll(); 
+
+                // hide seek bar when live and non recorded programs
+                if((mediaInformation.customData.contentType == "vod" && !mediaInformation.customData.isRecorded)){
+                  
+                  if((typeof(mediaInformation.customData.isRecordingAllowed) !="undefined" && !!mediaInformation.customData.isRecordingAllowed) || (typeof(mediaInformation.customData.isRecordingDisabled) !="undefined" && !mediaInformation.customData.isRecordingDisabled)){                  
+                    player.maxFastForward = event.currentMediaTime;                                                      
+                    this.seekBackTimer = setInterval(t => {            
+                        console.log(playerManager.getCurrentTimeSec() , playerManager.getPlayerState(), player.maxFastForward);      
+                        if(playerManager.getPlayerState() == "PLAYING"){ 
+                            console.log(playerManager.getCurrentTimeSec());                                                                                                                  
+                            (Math.round(playerManager.getCurrentTimeSec()) >= Math.round(player.maxFastForward)) && (player.maxFastForward += 1);                                                                           
+                        }        
+                    },1000);
+                  }
+                                           
+                }
+                else if(mediaInformation.customData.contentType == "live"){                  
+                  if(!!mediaInformation.customData.liveStartOver){ 
+                    console.log('liveStartOver:' , mediaInformation.customData.liveStartOver);   
+                    let remainTime = (new Date().getTime() - mediaInformation.customData.programStartTime); 
+                    let liveSeekableRange = playerManager.getLiveSeekableRange();
+                    console.log("getLiveSeekableRange: ",liveSeekableRange);    
+                    let liveTotalDuration = liveSeekableRange.end - liveSeekableRange.start;                                                                                                                                                                                         
+                    console.log("liveTotalDuration: ",liveTotalDuration);                     
+                    console.log("remainTime", liveTotalDuration-(remainTime/1000));                                                                              
+                    playerManager.seek((liveTotalDuration-(remainTime/1000)));
+                  }
+                  else if(mediaInformation.customData.seekPositionInMillis == 0){
+                    playerManager.seek(360000);   //watch live.  adding seconds (max time set) more then an hour
+                  }                   
+                  
+                  console.log(mediaInformation.customData.seekPositionInMillis);
+                }
+            }
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.PLAYING, (event) => {
+        console.log('playing')
+        console.log(event)
+      });
+
+     /* playerManager.addEventListener(
+        cast.framework.events.EventType.BITRATE_CHANGED, (event) => {
+            console.log('[mediacast:events:BITRATE_CHANGED - ' + event.totalBitrate);
+            //stats.bitrate = event.totalBitrate;
+            //console.log(playerManager.getStats());
+      });  */
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.PROGRESS, (event) => {
+        console.log('progress')
+        console.log(event);
+        try {
+          updatePlayerInfo(event);   // updating pp and ps
+          var  streamPollStatus = videoPlugin.checkStreamPoll()
+          if(!!videoPlugin && !!streamPollStatus){            
+            if (!!player.sessionStart) {
+              videoPlugin.handleError({ 'errorMsg': streamPollStatus.error.message });
+              resetAppData();   // resetting app variable data.              
+              var stop = setTimeout(function(){
+                clearTimeout(stop);
+                context.stop();   // stopping casting.    
+              },20000);              
+            }
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.PAUSE, (event) => {
+        try {
+          console.log('paused')
+          console.log(event);
+          if (!player.isPause) {
+            player.isPause = true;
+            updatePlayerInfo(event);   // updating pp and ps
+            videoPlugin.handlePause();
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.ENDED, (event) => {
+        try {
+          console.log('ended')
+          console.log(event);
+          if (!!player.sessionStart) {
+            updatePlayerInfo(event);   // updating pp and ps
+            resetAppData();   // resetting app variable data.
+            videoPlugin.handlePlayCompleted();
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    /* playerManager.addEventListener(
+      cast.framework.events.EventType.SUSPEND, (event) => {
+        try {
+          console.log('SUSPEND')
+          console.log(event)
+          if (!!player.sessionStart) {
+            updatePlayerInfo(event);   // updating pp and ps
+            resetAppData();   // resetting app variable data.
+            videoPlugin.handlePlayEndedByUser();
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      }); */
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.ABORT, (event) => {
+        try {
+          console.log('ABORT')
+          console.log(event);
+          if (!!player.sessionStart) {
+            updatePlayerInfo(event);   // updating pp and ps
+            resetAppData();   // resetting app variable data.
+            videoPlugin.streamSessionEnd();
+            videoPlugin.handlePlayEndedByUser();
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.WAITING, (event) => {
+        console.log('waiting')
+        console.log(event)
+        try {
+          updatePlayerInfo(event);   // updating pp and ps
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.BUFFERING, (event) => {
+        try {
+          console.log('buffering')
+          console.log(event)
+          if (!!player.isPlaying) {
+            if (!!event.isBuffering && !player.isBuffer) { //type:"BUFFERING"
+              player.isBuffer = true;
+              updatePlayerInfo(event);   // updating pp and ps
+              videoPlugin.handleBufferStart();
+            }
+            else if (!event.isBuffering && !!player.isBuffer) {
+              player.isBuffer = false;
+              updatePlayerInfo(event);   // updating pp and ps
+              videoPlugin.handleBufferEnd();
+            }
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.REQUEST_STOP, (event) => {
+        try {
+          console.log('REQUEST_STOP');
+          console.log(event);
+          if (!!player.sessionStart) {
+            updatePlayerInfo(event);   // updating pp and ps
+            resetAppData();   // resetting app variable data.
+            videoPlugin.streamSessionEnd();
+            videoPlugin.handlePlayEndedByUser();
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.SEEKED, (event) => {
+        console.log('SEEKED');
+        console.log(event);       
+         if (!player.isPause) {
+        try {
+          videoPlugin.handleSeek({ 'STPosition': player.startTime, 'ETPosition': event.currentMediaTime * 1000 });
+        }
+        catch (err) {
+          console.log(err);
+        }
+        }
+
+        // prevent seek if program has not recorded, handling in both seeking and seeked because in pause state seeked event wont trigger       
+        let playerState = playerManager.getPlayerState();
+        console.log(event.currentMediaTime, player.startTime, mediaInformation.customData.isRecordingDisabled, mediaInformation.customData.isRecorded, playerState); 
+        if(!mediaInformation.customData.isRecordingDisabled && !mediaInformation.customData.isRecorded){
+          //playerManager.seek(player.startTime/1000); // convert millis to seconds
+        }
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.SEEKING, (event) => {
+        console.log('SEEKING');
+        console.log(event);   
+        if (!player.isPause) {
+          try {
+            videoPlugin.handleSeek({ 'STPosition': player.startTime, 'ETPosition': event.currentMediaTime * 1000 });
+          }
+          catch (err) {
+            console.log(err);
+          }
+        }
+        //currentMediaTime :5.9424 type:"SEEKING"     
+
+        // prevent seek if program has not recorded, handling in both seeking and seeked because in pause state seeked event wont trigger               
+
+        let playerState = playerManager.getPlayerState();
+        console.log(event.currentMediaTime, player.startTime, mediaInformation.customData.isRecordingDisabled, mediaInformation.customData.isRecorded, playerState); 
+        if(mediaInformation.customData.contentType == "vod" && !mediaInformation.customData.isRecorded){ //playerState == "PAUSED"
+          
+          if((typeof(mediaInformation.customData.isRecordingAllowed) !="undefined" && !!mediaInformation.customData.isRecordingAllowed) || (typeof(mediaInformation.customData.isRecordingDisabled) !="undefined" && !mediaInformation.customData.isRecordingDisabled)){                  
+            if(!!player.maxFastForward && (player.maxFastForward < event.currentMediaTime)) {
+              playerManager.seek(player.maxFastForward); // convert millis to seconds
+            } 
+          }   
+                    
+        }
+
+      });
+
+    playerManager.addEventListener(
+      cast.framework.events.EventType.ERROR, (event) => {
+
+        try {
+          console.log(event);
+          console.log(player.sessionStart);
+          if (event.detailedErrorCode == 900 && (event.error.type == 'LOAD_FAILED' || event.error.type == 'LOAD_CANCELLED')) {
+            console.log('inside');
+            updatePlayerInfo(event);   // updating pp and ps
+            if (!player.sessionStart && !player.isPlaying) {
+              mediaInformation = playerManager.getMediaInformation();
+              (!!mediaInformation) && initAnalyticsMetaData(mediaInformation);
+              if (!!videoPlugin && !!mediaInformation) {
+                setAnalyticsMetaData();  // setting meta data here.
+                //handle thumbnail click event
+                videoPlugin.thumbnailVideoClick();
+                //handle player load event.
+                videoPlugin.handlePlayerLoad();
+              }
+            }
+            resetAppData();   // resetting app variable data.
+            (!!videoPlugin) && videoPlugin.handleError({ 'errorMsg': event.error.type });
+            setTimeout(() => {
+              console.log('LOAD_FAILED');
+              context.setApplicationState('LOADED_DATA'); // context.stop();   // stopping casting.              
+              console.log(context.getSystemState());
+              //context.stop();   // stopping casting.
+            }, 1000);
+            console.log('stoped');
+          }
+        }
+        catch (err) {
+          console.log(err);
+        }
+
+      });
+    // event listeners block ends
+
+    // reset application local variables data 
+    function resetAppData() {
+      mediaInformation = {};
+      player = {
+        'sessionStart': false,
+        'isBuffer': false,
+        'isPause': false,
+        'isPlaying': false,
+        'startTime': '',
+        'maxFastForward' : 0,
+      };
+    }
+
+    // function to set video analytics dependency data. 
+    function setAnalyticsMetaData() {
+
+     
+      console.log('setAnalyticsMetaData');
+      console.log(mediaInformation);
+      
+      //setting content meta data
+      contentMetaData = {                
+        'CDNetwork': (Object.keys(mediaInformation).length != 0) ? videoPlugin.getCDNetwork(mediaInformation.contentId.split('?')[0]) : '',
+        'navigationFrom': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.navigationfrom : ''),   
+        'metaId' : ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.metaDataId : ''),        
+        'metaMap' : ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.metaMap : ''), 
+        'pollKey' : ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.pollKey : ''), 
+        'pollTime' : ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.pollTime : ''),        
+        'environment': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.environment : ''),  
+      }
+
+      //setting user meta data        
+      userMetaData = {
+        'userId': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.userId : ''),
+        'boxId': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.boxId : ''),
+        'deviceType': 'smarttvapp',
+        'deviceClient': 'chromecast',       
+        'deviceOS': videoPlugin.getPlatForm(),     
+        'isSubscribed': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.isSubscribed : ''),                
+        'analytics_id': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.analytics_id : ''),
+        'session_id' : ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.session_id : ''),
+      };
+
+      //setting video meta data
+      videoMetaData = {
+        'autoplay': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.autoPlay : ''),       
+        'productName': ((Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.tenantCode : ''),  // // new requirement send tenant code
+        'streamURL': (Object.keys(mediaInformation).length != 0) ? mediaInformation.contentId.split('?')[0] : '',        
+        'contentType': ((Object.keys(mediaInformation).length != 0) ?(mediaInformation.customData.contentType) :''),
+        'totalDuration' : ((Object.keys(mediaInformation).length != 0) ?(mediaInformation.customData.totalDuration) :''),
+      };    
+                                        
+      console.log("contentMetaData: " , contentMetaData)
+      console.log("userMetaData: " , userMetaData)
+      console.log("videoMetaData: " , videoMetaData)
+      videoPlugin.setContentMetaData(contentMetaData);
+      videoPlugin.setUserMetaData(userMetaData);
+      videoPlugin.setVideoMetaData(videoMetaData);
+    }
+
+    // preparing video list 
+    function getVideoList() {
+      var vl = [];
+      if (Object.keys(mediaInformation).length != 0) {
+        mediaInformation.customData.data.forEach(element => {
+          vl.push(element.id);
+        });
+        return vl.toString();
+      }
+    }
+
+    // updatin player state and position.
+    function updatePlayerInfo(event) {
+      //var pp = playerManager.getCurrentTimeSec() * 1000;
+      console.log("event",event)
+      if (event.type == "ENDED" || event.type == "ABORT" || event.type == "PAUSE") {
+        (!!videoPlugin) && (videoPlugin.setPlayerMediaInfo({ 'position': event.currentMediaTime * 1000, 'state': (event.type.toLowerCase()=='abort'||event.type.toLowerCase()=='ended')?'idle':event.type.toLowerCase() }));      //playerManager.getPlayerState()
+      }
+      else {
+        (!!videoPlugin) && (videoPlugin.setPlayerMediaInfo({ 'position': event.currentMediaTime * 1000, 'state': playerManager.getPlayerState().toLowerCase() }));      //playerManager.getPlayerState()
+      }
+      (event.type == "PROGRESS") && (player.startTime = event.currentMediaTime * 1000);
+    }
+
+    function initAnalyticsMetaData(mediaInformation) {
+      console.log("initAnalyticsMetaData",mediaInformation)
+      locationData = mediaInformation.customData.locationinfo;
+      locationData['pollKey'] = mediaInformation.customData.pollKey;
+      locationData['analytics_id'] = mediaInformation.customData.analytics_id;
+      locationData['session_id'] = mediaInformation.customData.session_id;
+
+      console.log(locationData,'locationData');
+      var videoAnalyticsPlugin;
+
+        videoAnalyticsPlugin = new VideoAnalyticsPlugin();
+        videoPlugin = videoAnalyticsPlugin.load(locationData);
+
+        console.log(videoPlugin);
+        
+        
+      previewDuration = mediaInformation.customData.previewDuration;
+      console.log(previewDuration + " = previewDuration");
+      if (mediaInformation.customData.licenseUrl) {
+        console.log(mediaInformation.customData.licenseUrl + " = licenseUrl 1");
+        //playbackConfig.licenseUrl = mediaInformation.customData.licenseUrl;
+        //host.licenseUrl = mediaInformation.customData.licenseUrl;
+      }
+
+        //setting player meta data
+        playerMetaData = {
+          'playerName': 'google mediaplayer',
+          'playerVersion': '1.0.0',
+        };
+        videoPlugin.setPlayerMetaData(playerMetaData);
+
+        //setting client meta data
+        clientMetaData = {
+          'appVersion': (Object.keys(mediaInformation).length != 0) ? mediaInformation.customData.appversion:'',
+          'connectionType': 'wi-fi',
+          'clientIP': locationData.true_ip,
+          'NWProvider': '-1',        
+        }
+        videoPlugin.setClientMetaData(clientMetaData);       
+
+    }  
+//
+
+
+    // playbackConfig.licenseRequestHandler = requestInfo => {
+    //   requestInfo.withCredentials = true;
+    // };
+    
+    //playbackConfig.licenseUrl = "<licecence server key>/";
+    playbackConfig.protectionSystem = cast.framework.ContentProtection.WIDEVINE;
+    playbackConfig.licenseRequestHandler = requestInfo => {
+
+      console.log("licenseRequestHandler : ");
+
+      /*requestInfo.headers = {
+        "Content-Type": "application/dash+xml",
+        customdata:
+          "<custom data>"
+      };*/
+      return playbackConfig;
+    };
+
+    context.getPlayerManager().setMediaPlaybackInfoHandler((loadRequest, playbackConfig) => {
+
+      // console.log("setMediaPlaybackInfoHandler : ",loadRequest.media.customData.licenseUrl);
+
+      if (loadRequest.media.customData && loadRequest.media.customData.licenseUrl) {
+        playbackConfig.licenseUrl = loadRequest.media.customData.licenseUrl;
+      }
+      return playbackConfig;
+    });
+    context.start({ playbackConfig: playbackConfig });
+//
+
+    /* ----- initiate casting ------ */
+   // receiverOpt.maxInactivity = 60*60*24; //Development only set one day
+   // console.log("receiverOpt " , receiverOpt);
+   // context.start(receiverOpt);
+    /* ---------- */
+    
+    // Update playback config licenseUrl according to provided value in load request.
+	/*playerManager.setMediaPlaybackInfoHandler((loadRequest, playbackConfig) => {
+		console.log("licenseUrl 2");
+	  if (loadRequest.media.customData && loadRequest.media.customData.licenseUrl) {
+		  console.log("licenseUrl 3");
+		playbackConfig.licenseUrl = loadRequest.media.customData.licenseUrl;
+    host.licenseUrl = loadRequest.media.customData.licenseUrl;
+	  }
+	  return playbackConfig;
+	}); */
+    /* ---------- */
+
+  </script>
+
+
+  <script>
+
+    /**
+     * Utility method to check whether the given value is a string and non empty.
+     */
+    var isNonEmptyValue = function(value){
+      return typeof value != undefined && value != null && value != "";
+    };
+
+     /**
+         * The object maintaining the Collector end point details.
+         */
+         var Configuration = function () {
+
+          this.setConfig = function (analytics_id) {
+            let collector_api = localStorage.getItem("collector_api");
+            console.log("collector_api",collector_api);
+              if (!collector_api || collector_api == "undefined") {
+                  $.ajax({
+                      dataType: "json",
+                      url: "http://119.81.201.168:8081/sdk/validation?analytics_id=" + analytics_id,  // test
+                      //url: "https://location.api.yuppcdn.net/sdk/validation?analytics_id="+analytics_id,    //   live     
+                  }).done(function (response) {
+                      console.log(response);
+                        localStorage.setItem("hb_rate", response.hb_rate);
+                        localStorage.setItem("collector_api", response.collector_api);
+                        localStorage.setItem("analytics_id", analytics_id);
+                  });
+              }
+          }
+
+        };
+        
+
+    /**
+     * A simple implementation of the a QUEUE using a Java Script Array.
+     * The methods are offer and poll in sync (name wise) with Linked Blocking Queue of Java.
+     */
+    var Queue = function(){
+      var _queue = [];
+
+      return {
+        /**
+         * @param element to be pushed to the Queue.
+         */
+        offer: (element) => { _queue.push(element); },
+
+        /**
+         * @returns element next in the Queue.
+         */
+        poll: () => {
+          var element = _queue.shift();
+          if (element) {
+            return element;
+          }
+        }
+      };
+    };
+
+    /**
+     * The factory for the events.
+     */
+    var EventFactory = function(){
+      /**
+       * @param eventData the Json map holding the details for the map.
+       * @param responseKey the response key to be tracked.
+       * @return the event instance.
+       */
+      this.create = function(eventData){ return new Event(eventData); };
+    };
+
+    /**
+     * The Event Data object, has two parts, parameterMap which holds the event details.
+     * The other part is the response key tracker not used for now but will be used.
+     */
+    var Event = function(pParameterMap){
+      this.parameterMap = pParameterMap;
+    };
+
+    /**
+     * A simple Event Queue implementation for Java Script.
+     * This class is responsible for managing the event queue, polling and sending them to the server.
+     */
+    var EventQueueManager = function(hbRate, clientId){
+      var configuration = new Configuration(); // Configuration of the end points.
+      var eventQueue = new Queue(); // The Queue Data structure.
+      var $ = {}; // The handle to the JQuery instance for making AJAX.
+      var _this = this; // Self reference.
+      //  this.eventCounter = 1;
+      // Determine where to retrieve the JQuery Handle from.
+      if (typeof exports === 'object') {
+        var domino = require('domino');
+        $ = require('jquery')(domino.createWindow());
+        var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+        $.support.cors = true; // cross domain
+        $.ajaxSettings.xhr = () => { return new XMLHttpRequest(); };
+      } else if (window) {
+        $ = window.$;
+      }
+
+      /**
+       * The simple function which does the HTTP GET/POST to send data to 
+       * the Event Collector.
+       */
+      var httpService = function(){
+        var eventData = eventQueue.poll();
+
+        if (eventData && eventData.parameterMap) {
+          var eventJson = JSON.stringify(eventData.parameterMap)
+          if (eventData && isNonEmptyValue(eventJson) && "{}" !== eventJson) {
+            _this.doAjax(eventJson);
+          }
+        }
+      };
+
+      /**
+       * The ajax utility function.
+       */
+      this.doAjax = function(eventData){
+          var collector_api = localStorage.getItem("collector_api")
+          if (!!collector_api && collector_api != 'undefined') {
+              $.ajax({
+                  type: 'POST',
+                  url: 'http://' + collector_api,
+                  data: { data: eventData, analytics_id: localStorage.getItem("analytics_id") }
+              }).done(function (response) {
+                  /* console.log("Received response: " + response); */
+              }).fail(function (data) {
+                //  console.log(data);
+              });
+          }
+      };
+
+      // Schedule the services at 1/2 a second intervals.
+      var httpWorker = (window) ? window.setInterval(httpService, 0) : setInterval(httpService, 0);
+      var eventFactory = new EventFactory();
+
+      /**
+       * Shuts down the timers clearing them.
+       */
+      this.shutdown = function(){
+        if (window) { window.clearInterval(httpWorker); } else { clearInterval(httpWorker); }
+      };
+
+      /**
+       * The event handler, which pushes the events to the Event-Queue.
+       * 
+       * @param eventMap the event details.
+       * @reponseKey the response tracker.
+       */
+      this.handleEvent = function(eventMap){
+        eventQueue.offer(eventFactory.create(eventMap));
+      };
+    };
+
+    /**
+     * Enumeration representing the types of events supported by the plugin.
+     */
+    var EventContextKeys = function(){
+      this.EVENT_TYPE = "et";
+      this.EVENT_OCCURENCE_TIME = "eot";
+      this.ERROR_REASON_CODE = "erc";
+
+      this.THUMB_VIDEO_CLICK = 1;
+      this.PLAYER_LOAD = 2;
+      this.AD_STARTED = 3;
+      this.AD_SKIPPED = 4;
+      this.AD_ENDED_BY_USER = 5;
+      this.AD_COMPLETED = 6;
+      this.VIDEO_STARTED = 7;
+      this.VIDEO_ENDED_BY_USER = 8;
+      this.VIDEO_COMPLETED = 9;
+      this.VIDEO_SEEK = 10;
+      this.BUFFER_START = 11;
+      this.BUFFER_END = 12;
+      this.VIDEO_PAUSE = 13;
+      this.VIDEO_RESUME = 14;
+      this.HEART_BEAT = 15;
+      this.ERROR_MSGS = 16;
+      this.BITRATE_CHANGE = 17;
+
+    };
+
+
+    /**
+     * The Video analytics plugin's main class.
+     */
+    var VideoAnalyticsPlugin = function(){
+
+      var yupptv = {};
+      yupptv.eventContextKeys = new EventContextKeys();
+      yupptv.eventQueueManager = {};
+      yupptv.sessionKey = {};
+      yupptv._this = this;
+      yupptv.heartBeatRate = 20;
+      yupptv.httpHeartBeatWorker = {};
+      yupptv.eventCounter = 1;
+      yupptv.playerData = {};
+      yupptv.contentData = {};
+      yupptv.userData = {};
+      yupptv.clientData = {};
+      yupptv.videoData = {};
+      yupptv.eventDefaultValue = -1;
+      yupptv.playSessionKey = yupptv.totalVideoLength = yupptv.playerPosition = yupptv.playerState = yupptv.bitRate = yupptv.eventDefaultValue;
+      yupptv.eventMetaData = {
+        STPosition: yupptv.eventDefaultValue,
+        ETPosition: yupptv.eventDefaultValue,
+        errorMsg: yupptv.eventDefaultValue,
+        adType: yupptv.eventDefaultValue,
+      };
+      yupptv.serverTimeStamp = 0;
+      yupptv.timer = '';
+
+      yupptv.isVideoPlaying = false;
+      yupptv.isPaused = false;
+      yupptv.isAdPlaying = false;
+      yupptv.isBuffering = false;
+      yupptv.newSessionStart = false;      
+      yupptv.pollPromise;
+
+      /**
+       * Set the Geographical information.
+       */
+
+      var setValue = function(value){
+        return isNonEmptyValue(value) ? value : yupptv.eventDefaultValue;
+      }
+
+      /**
+       * Set some meta data about the player used to play the streams.
+       */
+      this.setPlayerMetaData = function(data){
+        yupptv.playerData.playerName = setValue(data.playerName);
+        yupptv.playerData.playerVersion = setValue(data.playerVersion);
+      };
+
+
+      /*
+        sets the meta information about sessions and network 
+        */
+      this.setClientMetaData = function(data){
+        yupptv.clientData.appVersion = setValue(data.appVersion);
+        yupptv.clientData.connectionType = setValue(data.connectionType);
+        yupptv.clientData.clientIP = setValue(data.clientIP);
+        yupptv.clientData.NWProvider = setValue(data.NWProvider);        
+      }
+
+      /**
+       * Set meta data about the content which is being played.
+       */
+      this.setContentMetaData = function(data){
+        yupptv.contentData.CDNetwork = setValue(data.CDNetwork);
+        yupptv.contentData.navigationFrom = setValue(data.navigationFrom);
+        yupptv.contentData.metaId = setValue(data.metaId);
+        yupptv.contentData.metaMap = setValue(data.metaMap);                   
+        yupptv.contentData.pollKey = setValue(data.pollKey);
+        yupptv.contentData.pollTime = setValue(data.pollTime);           
+        yupptv.contentData.environment = setValue(data.environment); 
+      };
+
+      /**
+       * Sets the meta information about the user who has logged in.
+       */
+      this.setUserMetaData = function(data){
+
+        yupptv.userData.userId = setValue(data.userId);
+        yupptv.userData.boxId = setValue(data.boxId);
+        yupptv.userData.deviceType = setValue(data.deviceType);
+        yupptv.userData.deviceClient = setValue(data.deviceClient);     
+        yupptv.userData.deviceOS = setValue(data.deviceOS);
+        yupptv.userData.isSubscribed = setValue(data.isSubscribed); 
+        yupptv.userData.sessionId = setValue(data.session_id);    
+        yupptv.userData.analyticsId = setValue(data.analytics_id);       
+      };
+
+      /*
+       set meta data for video information
+      */
+      this.setVideoMetaData = function(data){
+        yupptv.videoData.autoplay = data.autoplay;        
+        yupptv.videoData.productName = setValue(data.productName);
+        yupptv.videoData.streamURL = setValue(data.streamURL);        
+        yupptv.videoData.totalVideoLength = setValue(data.totalDuration);   // seconds to milliiseconds * 1000
+      }
+
+      /*
+      set meta data for video information
+     */
+      this.setBitRate = function(data){
+        yupptv.bitRate = setValue(data.bitRate);
+      }
+      // reset eventmeta data		 
+      var resetEventMetaData = function(){
+        for (var key in yupptv.eventMetaData) {
+          yupptv.eventMetaData[key] = yupptv.eventDefaultValue;
+        }
+      }
+
+      /*
+       *  functon to collect total analytics data to push   
+       */
+      var collateEventData = function(eventContextKey){
+        var eventDataMap = {};
+
+        if (eventContextKey === yupptv.eventContextKeys.THUMB_VIDEO_CLICK) {
+
+          // collate user and device information				             
+          eventDataMap.dos = yupptv.userData.deviceOS;    // DeviceOS                                     
+
+          // Collate player information.
+          eventDataMap.pln = yupptv.playerData.playerName;    // PlayerName
+          eventDataMap.plv = yupptv.playerData.playerVersion;    // PlayerVersion
+
+          // Collate program information.		
+          eventDataMap.pn = yupptv.contentData.programName;     // ProgramName
+          eventDataMap.g = yupptv.contentData.genre;     // Genre
+          eventDataMap.cdn = yupptv.contentData.CDNetwork;     // ContentDeliveryNetwork		
+          eventDataMap.cn = yupptv.contentData.channelName;    // ChannelName
+          eventDataMap.nf = yupptv.contentData.navigationFrom;    // NavigationFrom
+          eventDataMap.l = yupptv.contentData.lang;     // Language
+          eventDataMap.is = (yupptv.contentData.isSubscribed==true)?1:0;     // IsSubscribed          
+
+          // Collate client information.               
+          eventDataMap.cnt = yupptv.clientData.connectionType;     // ConnectionType
+          eventDataMap.ip = yupptv.clientData.clientIP;     // ClientIP			
+          eventDataMap.np = yupptv.clientData.NWProvider;    // NetworkProvider-Carrier			          
+
+          // collate video information
+          eventDataMap.ap = yupptv.videoData.autoplay;     // Autoplay
+          eventDataMap.vl = yupptv.videoData.videoList;     // VideoList        		
+          eventDataMap.su = yupptv.videoData.streamURL;     // StreamURL     
+          eventDataMap.sn = yupptv.videoData.seasonNumber;     // seasonNumber     
+          eventDataMap.en = yupptv.videoData.episodeNumber;     // episodeNumber     
+          eventDataMap.sc = yupptv.videoData.subCategory;     // subCategory                                   
+
+        }
+
+        eventDataMap.epgst = yupptv.contentData.epgStartTime;     // epgStartTime
+        eventDataMap.epget = yupptv.contentData.epgEndTime;     // epgEndTime
+        eventDataMap.ispromo = yupptv.videoData.isPromotional;     // isPromotional
+        eventDataMap.vodn = yupptv.videoData.vodNumber;     // VOD Number
+        eventDataMap.appv = yupptv.clientData.appVersion;    // AppVersion
+        eventDataMap.dt = yupptv.userData.deviceType;     // DeviceType	
+        eventDataMap.bi = yupptv.userData.boxId;   // BoxId		               	
+        eventDataMap.dc = yupptv.userData.deviceClient;     // DeviceClient
+
+        eventDataMap.sk = yupptv.sessionKey.key;     // SessionKey    
+        eventDataMap.psk = yupptv.playSessionKey;     // playSessionKey    		 		   		  
+
+        eventDataMap.ui = yupptv.userData.userId;          // UserId	
+        eventDataMap.pi = yupptv.contentData.programId;    // ProgramId               
+        eventDataMap.pdn = yupptv.videoData.productName;     // ProductName        
+
+
+        if (eventContextKey == yupptv.eventContextKeys.THUMB_VIDEO_CLICK || eventContextKey == yupptv.eventContextKeys.PLAYER_LOAD) {    //eventContextKey == eventContextKeys.VIDEO_STARTED
+          eventDataMap.pp = yupptv.eventDefaultValue;     // PlayerPosition 
+          eventDataMap.ps = yupptv.eventDefaultValue;     // PlayerState
+        }
+        else {
+          eventDataMap.pp = Math.floor(setValue(yupptv.playerPosition));
+          eventDataMap.ps = (yupptv.playerState=='pause')?'paused':yupptv.playerState;
+        }
+
+        eventDataMap.meta_id = yupptv.contentData.metaId;
+        eventDataMap.meta_map = yupptv.contentData.metaMap;
+        eventDataMap.a1 = yupptv.eventDefaultValue;
+        eventDataMap.a2 = yupptv.eventDefaultValue; 
+
+        eventDataMap.sp = Math.floor(setValue(yupptv.eventMetaData.STPosition));     // StartTime-Position    
+        eventDataMap.ep = Math.floor(setValue(yupptv.eventMetaData.ETPosition));     // EndTime-Position    
+        eventDataMap.br = yupptv.bitRate;     // BitRate  		
+        eventDataMap.tvl = Math.floor(yupptv.videoData.totalVideoLength);     // totalVideoLength  
+        eventDataMap.em = yupptv.eventMetaData.errorMsg;     // EventMessage 
+        eventDataMap.at = yupptv.eventMetaData.adType;     // AdType    	
+        eventDataMap.et = eventContextKey;
+        eventDataMap.av = 'v2';     // AnalyticsVersion  
+        eventDataMap.ts = new Date().getTime();     // TimeStamp 	in milli seconds	
+        eventDataMap.ec = yupptv.eventCounter;
+        yupptv.eventCounter = yupptv.eventCounter + 1;
+        return eventDataMap;
+
+      };
+
+      /* The heart beat service, to make sure the client is live while watching the event. */
+      var heartBeatService = function(et){
+        resetEventMetaData();
+        var eventDataMap = collateEventData(et);
+        yupptv.eventQueueManager.doAjax(JSON.stringify(eventDataMap));
+      };
+
+      /* This function starts the heart-beat for the client. */
+      var startHeartbeat = function(){
+          var event_type = yupptv.eventContextKeys.HEART_BEAT;
+          var heartBeat = localStorage.getItem("hb_rate");
+          if(!heartBeat || heartBeat == "undefined"){
+              heartBeat = yupptv.heartBeatRate;
+          } 
+          yupptv.httpHeartBeatWorker = (window) ? window.setInterval(function () { heartBeatService(event_type); }, (1000 * heartBeat)) :
+          setInterval(function () { heartBeatService(event_type); }, (1000 * heartBeat));
+      };
+
+      /**
+       * This function stops the heart-beat for the client.
+       */
+      var stopHeartbeat = function(){
+        (window) ? window.clearInterval(yupptv.httpHeartBeatWorker) : clearInterval(yupptv.httpHeartBeatWorker);
+        //clearInterval(timer);
+        yupptv.eventCounter = 1;
+        yupptv.isVideoPlaying = false;
+        yupptv.isPaused = false;
+        yupptv.isAdPlaying = false;
+        yupptv.isBuffering = false;
+        yupptv.totalVideoLength = yupptv.eventDefaultValue;
+        yupptv.newSessionStart = false;
+      };
+
+      /**
+       * Loads and initializes the Plugin.
+       */
+      this.load = function(data){
+        console.log(data);
+        console.log('load');      
+        var configObj = new Configuration();
+        configObj.setConfig(data.analytics_id); //data.analytics_id  hard coding ftv live AI gopi suggested
+
+        var form = document.querySelector('#poll_key_form');
+        if(!form){        
+          //adding form to document for form posting.
+          var f = document.createElement("form");
+          f.setAttribute('id',"poll_key_form");   
+          f.setAttribute('method',"post");       
+          var i = document.createElement("input"); //input element, text
+          i.setAttribute('type',"text");
+          i.setAttribute('name',"poll_key");
+          i.setAttribute('id',"poll_key");               
+          i.setAttribute('value',data.pollKey || data['pollKey']);    
+          f.appendChild(i);           
+          document.getElementsByTagName('body')[0].appendChild(f);
+        }
+        else{
+          var key = document.querySelector('#poll_key');
+          key.setAttribute('value',data.pollKey);    
+        }
+
+        yupptv.eventQueueManager = new EventQueueManager();
+        yupptv.sessionKey.key = data.auth_key;    
+        // set empty when starts new session.
+        yupptv.pollPromise = '';
+
+        return yupptv._this;
+      };
+
+      /* The generic handle event method. */
+      var handleEvent = function(eventContextKey) {
+        var eventDataMap = collateEventData(eventContextKey);
+        yupptv.eventQueueManager.handleEvent(eventDataMap);
+      };
+
+
+      //  player events by shiva nomula 200671
+      //************* starts here ********************//
+      /*
+         triggers when thumbnail video clicks
+      */
+      this.thumbnailVideoClick = function(){
+        resetEventMetaData();
+        stopHeartbeat();
+        yupptv.playSessionKey = new Date().getTime();
+        yupptv.newSessionStart = true;     //   create new session when thumbnail click.               
+        handleEvent(yupptv.eventContextKeys.THUMB_VIDEO_CLICK);
+        startHeartbeat();
+      }
+
+      /*  triggers when player loads. */
+      this.handlePlayerLoad = function(){
+        handleEvent(yupptv.eventContextKeys.PLAYER_LOAD);
+      }
+
+      /*  triggers when ad started. */
+      this.handleAdStarted = function(playerEvent){
+        if (!yupptv.isAdPlaying) {
+          yupptv.eventMetaData.adType = playerEvent.adType;
+          handleEvent(yupptv.eventContextKeys.AD_STARTED);
+          yupptv.isAdPlaying = true;
+        }
+      }
+
+      /* 		   triggers when ad skipped. */
+      this.handleAdSkipped = function(playerEvent){
+        if (yupptv.isAdPlaying) {
+          yupptv.eventMetaData.adType = playerEvent.adType;
+          handleEvent(yupptv.eventContextKeys.AD_SKIPPED);
+          resetEventMetaData();
+          yupptv.isAdPlaying = false;
+        }
+      }
+
+      /* triggers when ad ended by user.*/
+      this.handleAdEndedByUser = function(playerEvent){
+        if (yupptv.isAdPlaying) {
+          yupptv.eventMetaData.adType = playerEvent.adType;
+          handleEvent(yupptv.eventContextKeys.AD_ENDED_BY_USER);
+          resetEventMetaData();
+          yupptv.isAdPlaying = false;
+        }
+      }
+
+      /* triggers when ad skipped.*/
+      this.handleAdCompleted = function(playerEvent){
+        if (yupptv.isAdPlaying) {
+          yupptv.eventMetaData.adType = playerEvent.adType;
+          handleEvent(yupptv.eventContextKeys.AD_COMPLETED);
+          resetEventMetaData();
+        }
+      }
+
+      /*  triggers when play starts */
+      this.handlePlayStarted = function(){
+        if (!yupptv.isVideoPlaying) {
+          resetEventMetaData();
+          handleEvent(yupptv.eventContextKeys.VIDEO_STARTED);
+          yupptv.isVideoPlaying = true;
+        }
+      };
+
+      /* triggers when play ends by user		 */
+      this.handlePlayEndedByUser = function(){
+        if (!!yupptv.newSessionStart) {
+          handleEvent(yupptv.eventContextKeys.VIDEO_ENDED_BY_USER);          
+          stopHeartbeat();
+          resetEventMetaData();
+          yupptv.newSessionStart = false;
+        }
+      };
+
+      /* *  triggers when play ends (completed) */
+      this.handlePlayCompleted = function(){
+        if (!!yupptv.newSessionStart) {
+          handleEvent(yupptv.eventContextKeys.VIDEO_COMPLETED);                   
+          stopHeartbeat();
+          resetEventMetaData();
+          yupptv.newSessionStart = false;
+        }
+      };
+
+      /*  triggers when seek  */
+      this.handleSeek = function(playerEvent){
+        yupptv.eventMetaData.STPosition = playerEvent.STPosition;
+        yupptv.eventMetaData.ETPosition = playerEvent.ETPosition;
+        handleEvent(yupptv.eventContextKeys.VIDEO_SEEK);
+      };
+
+      /*  triggers when video buffer starts */
+      this.handleBufferStart = function(){
+        if (!yupptv.isBuffering) {
+          resetEventMetaData();
+          handleEvent(yupptv.eventContextKeys.BUFFER_START);
+          yupptv.isBuffering = true;
+        }
+      };
+
+      /**   triggers when video buffer starts */
+      this.handleBufferEnd = function(){
+        if (yupptv.isBuffering) {
+          resetEventMetaData();
+          handleEvent(yupptv.eventContextKeys.BUFFER_END);
+          yupptv.isBuffering = false;
+        }
+      };
+
+      /* function to handle pause event */
+      this.handlePause = function(){
+        if (!yupptv.isPaused) {
+          resetEventMetaData();
+          handleEvent(yupptv.eventContextKeys.VIDEO_PAUSE);
+          yupptv.isPaused = true;
+        }
+      };
+
+      /* function to handle resume event */
+      this.handleResume = function(){
+        if (yupptv.isPaused) {
+        	console.log('resume')
+          resetEventMetaData();
+          handleEvent(yupptv.eventContextKeys.VIDEO_RESUME);
+          yupptv.isPaused = false;
+        }
+      };
+
+      /* function to playing status */
+      this.handleIsPlaying = function(){
+        if (!!yupptv.httpHeartBeatWorker) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      };
+
+      /* function for handling error event */
+      this.handleError = function(playerEvent){
+        if (!!yupptv.newSessionStart) {
+          yupptv.eventMetaData.errorMsg = playerEvent.errorMsg;
+          handleEvent(yupptv.eventContextKeys.ERROR_MSGS);
+          yupptv.newSessionStart = false;
+        }
+        stopHeartbeat();
+      };
+
+      /* function to handle bitrate change envent */
+      this.handleBitRateChange = function(playerEvent){
+        yupptv.bitRate = playerEvent.bitRate;
+        handleEvent(yupptv.eventContextKeys.BITRATE_CHANGE);
+      };
+
+      this.setPlayerMediaInfo = function(data){
+        yupptv.playerPosition = (!!data.position ? data.position : (!!data.state ? ((data.state =='buffering' || data.state == 'playing') ? yupptv.playerPosition : '') : ''));
+        yupptv.playerState = (!!data.state ? data.state : '');
+      };
+
+      this.getBrowserName = function(){
+        var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+        var isFirefox = typeof InstallTrigger !== 'undefined';
+        var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        var isChrome = !!window.chrome && !!window.chrome.webstore;
+
+        var client = "";
+        if ((!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0) {
+          client = "opera";
+        }
+        else if (typeof InstallTrigger !== 'undefined') {
+          client = "firefox";
+        }
+        else if (/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification)) {
+          client = "safari";
+        }
+        else if (/*@cc_on!@*/false || !!document.documentMode) {
+          client = "ie";
+        }
+        else if (!!window.chrome && !!window.chrome.webstore) {
+          client = "chrome";
+        }
+        else if ((navigator.userAgent.match(/iphone/i) != null) || (navigator.userAgent.match(/ipad/i) != null) || (navigator.userAgent.match(/ipod touch/i) != null)) {
+          client = "ios";
+        }
+        else if (navigator.userAgent.indexOf('534.30') > 0 && navigator.userAgent.toLowerCase().match(/android/)) {
+          client = "android";
+        }
+        else if (navigator.userAgent.toLowerCase().match(/android/)) {
+          client = "android";
+        }
+
+        return client;
+      }
+
+      this.getPlatForm = function(){
+        return navigator.platform;
+      }
+
+      this.getCDNetwork = function(data){
+        return (data.includes("akamai") ? "akamai" : data.includes("lime") ? "limelight" : data.includes("bitgravity") ? "bitgravity" : data.includes("thunderstorm") ? "thunderstorm" : data.includes("yuppcdn") ? "yuppcdn" : '');
+      }
+
+      
+      this.getContentType = function(ctype){
+            if (ctype == "channel") {
+              return "live";     	
+            } else if (ctype == "program_epg") {
+                  return "vod";
+            } else if (ctype == "epg") {
+                  return "vod";
+            } else if (ctype == "movie") {
+              return "yuppflix";
+            } else if (ctype == "premiummovie") {
+              return "yuppflix";
+            } else if (ctype == "movietrailer") {
+              return "yuppflixtrailer";
+            } else if (ctype == "tvshowepisode") {
+              return "yupptvshows";
+            } else if (ctype == "clip") {
+              return "clip";
+            } else if (ctype == "network") {
+              return "nw-video";
+            } else {
+              return "-1";
+            }     
+	    }
+
+      this.startStreamPoll = function(){
+              console.log("yupptv.contentData.pollTime" , yupptv.contentData.pollTime);
+              console.log("yupptv.contentData.environment" , yupptv.contentData.environment);
+              let apiUrl = '';
+              if(yupptv.contentData.environment ==="beta"){ // test
+                apiUrl = "http://13.232.21.220:8080/service/api/v1/stream/poll";
+              } 
+              else if(yupptv.contentData.environment ==="uat"){ // uat
+                apiUrl = "https://frndlytv-uatapi.revlet.net/service/api/v1/stream/poll";
+              }
+              else{  // live
+                apiUrl = "https://frndlytv-api.revlet.net/service/api/v1/stream/poll";
+              }
+              
+              if((!!yupptv.userData.boxId && yupptv.userData.boxId != -1) && 
+                 (!!yupptv.videoData.productName && yupptv.videoData.productName != -1) &&
+                 (!!yupptv.userData.sessionId && yupptv.userData.sessionId != -1)){
+                  (!!polltime) && (clearInterval(polltime)); // clear old intervals
+                  var polltime = setInterval(function(){
+                      if (!yupptv.pollPromise) {
+                        $.ajax({
+                          type: "POST",
+                          dataType: "json",
+                          url: apiUrl,                        
+                          headers: {
+                            'box-id': yupptv.userData.boxId,
+                            'tenant-code': yupptv.videoData.productName,  // product name is tanant code                      
+                            'session-id': yupptv.userData.sessionId,                          
+                          },                  
+                          data: $('#poll_key_form').serialize(),
+                          success : function(response){    
+                                      console.log("stream/poll : ",response);                            
+                                      if(!response.status){                                        
+                                        clearInterval(polltime);     
+                                        yupptv.pollPromise = response;                                      
+                                      }
+                                    },
+                          error : function(error){
+                              console.log(error);
+                          }          
+                        });                
+                    }
+                },yupptv.contentData.pollTime || 60000 * 3); 
+              }           
+              else {
+                console.log("some thing missed", yupptv.userData.boxId , yupptv.videoData.productName, yupptv.userData.sessionId );
+              }        
+                   
+      } 
+
+      this.streamSessionEnd = function(){
+              console.log("yupptv.contentData.pollTime" , yupptv.contentData.pollTime);
+              console.log("yupptv.contentData.environment" , yupptv.contentData.environment);
+              let apiUrl = ''; 
+              if(yupptv.contentData.environment ==="beta"){ // test  
+                apiUrl = "http://13.232.21.220:8080/service/api/v1/stream/session/end";
+              } 
+              else if(yupptv.contentData.environment ==="uat"){ // uat
+                apiUrl = "https://frndlytv-uatapi.revlet.net/service/api/v1/stream/session/end";
+              }
+              else{  // live
+                apiUrl = "https://frndlytv-api.revlet.net/service/api/v1/stream/session/end";
+              }
+              
+              if((!!yupptv.userData.boxId && yupptv.userData.boxId != -1) && 
+                 (!!yupptv.videoData.productName && yupptv.videoData.productName != -1) &&
+                 (!!yupptv.userData.sessionId && yupptv.userData.sessionId != -1)){                                                      
+                        
+                  if (!yupptv.pollPromise) {
+                      $.ajax({
+                              type: "POST",
+                              dataType: "json",
+                              url: apiUrl,                        
+                              headers: {
+                                'box-id': yupptv.userData.boxId,
+                                'tenant-code': yupptv.videoData.productName,  // product name is tanant code                      
+                                'session-id': yupptv.userData.sessionId,                          
+                              },                  
+                              data: $('#poll_key_form').serialize(),
+                              success : function(response){    
+                                          console.log("session/end : ",response);                            
+                                          if(!!response.status){                                                                                
+                                            yupptv.pollPromise = response;                                      
+                                          }
+                                        },
+                              error : function(error){
+                                  console.log(error);
+                              }          
+                      });  
+                  }
+
+              }           
+              else {
+                console.log("some thing missed", yupptv.userData.boxId , yupptv.videoData.productName, yupptv.userData.sessionId );
+              }        
+                   
+      }
+
+      this.checkStreamPoll = function(){
+          return yupptv.pollPromise;
+      }
+
+      //************* ends here ********************///
+
+    };
+
+
+
+// End of Plugin Code.
+  </script>
+</body>
+
+</html>

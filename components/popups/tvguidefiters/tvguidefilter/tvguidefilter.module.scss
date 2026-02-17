@@ -1,0 +1,19 @@
+@import "variables.scss";
+
+.filters {
+  .filters_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+    margin-bottom: 10px;
+  }
+
+  .filters_inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  margin-bottom: 30px;
+}

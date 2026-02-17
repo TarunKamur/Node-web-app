@@ -1,0 +1,117 @@
+@import "variables.scss";
+
+.container {
+  .cptabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: fixed;
+    top: 100px;
+    z-index: 8;
+    padding: 25px 0 30px 55px;
+
+    @include breakpoint(laptop) {
+      padding: 20px 0 25px 55px;
+      top: 90px;
+    }
+    @include breakpoint(desktop-small) {
+      padding: 25px 0 30px 30px;
+    }
+    &.movetop {
+      top: 50px;
+      width: 100%;
+      background-color: $nav-bg;
+      // border-top: 1px solid rgba(255, 255, 255, 0.3);
+      // background-image:linear-gradient(180deg,#141414 0,hsla(0,0%,8%,0));
+      transition:
+        top 0.3s ease-in,
+        background-color 1s ease-in-out;
+      padding: 25px 0 10px 55px;
+    }
+
+    .cptab {
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      background-color: transparent;
+
+      @include breakpoint(laptop) {
+        font-size: 14px;
+        border-radius: 80px;
+        gap: 5px;
+        padding: 10px 22px;
+      }
+
+      &.active {
+        background-color:#484848;
+      }
+    }
+
+    .cptab:hover {
+      background-color: #484848;
+    }
+
+    @include breakpoint(mobile) {
+      display: none;
+    }
+  }
+
+  .cptabsM {
+    display: none;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    padding: 5px 0px 10px 15px;
+    position: fixed;
+    top: 80px;
+    z-index: 9;
+
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+
+    &::-webkit-scrollbar {
+      display: none; /* WebKit browsers */
+    }
+    &.movetopM {
+      // top: 40px;
+      width: 100%;
+      background-color: $mobile-header-bg;
+      // border-top: 1px solid rgba(255, 255, 255, 0.3);
+      // background-image:linear-gradient(180deg,#141414 0,hsla(0,0%,8%,0));
+      transition:
+        // top 0.3s ease-in,
+        background-color 1s ease-in-out;
+    }
+
+    .cptabM {
+      color: #a6a6a6;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      font-size: 14px;
+
+      &.activeM {
+        color: #fff;
+        border-bottom: 1px solid #fff;
+      }
+    }
+
+    @include breakpoint(mobile) {
+      display: flex;
+    }
+
+    .img {
+      width: 15px;
+      height: 15px;
+    }
+  }
+}

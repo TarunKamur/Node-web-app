@@ -1,0 +1,18 @@
+.video_tag{
+  width: 100%;
+  aspect-ratio:16 / 9;
+}
+
+.mute_container{
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index:9;
+  img{
+    height: 100%;
+    width: 100%;
+  }
+}

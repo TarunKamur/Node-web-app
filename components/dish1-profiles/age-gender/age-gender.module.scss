@@ -1,0 +1,113 @@
+@import 'variables.scss';
+
+.container {
+  background-color: transparent;
+  // height: 63vh;
+
+  .SelectContent1 {
+    font-weight: 500;
+    font-size: 20px;
+
+    @include breakpoint(mobile) {
+      font-size: 16px;
+      margin-top: 18px;
+      display: none;
+    }
+
+    @include breakpoint(tablet) {
+      font-size: 18px;
+    }
+    &.mobile{display: none;
+     @include breakpoint(mobile){display: flex; font-size: 14px;}
+    }
+  }
+    .SelectContent2 {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 20px;
+
+   
+
+    @include breakpoint(tablet) {
+      font-size: 18px;
+    }
+     @include breakpoint(mobile) {
+      font-size: 14px;
+      margin-top: 24px;
+    }
+  }
+
+  .options {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+
+    @include breakpoint(mobile) {
+      gap: 10px;
+    }
+     &.gender{
+      .optionButton{
+        min-width: 103px;
+        @include breakpoint(mobile){min-width: 74px;}
+      }
+    }
+  }
+
+  .optionButton {
+    // padding: 8px 16px;
+    border: 0.1px solid #73717199;
+    border-radius: 4px;
+    background-color: #2D2B2B;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    min-width: 74px;
+    height: 35px;
+   
+    &.selected {
+      background-color: #434343;
+      border: 2px solid #FFFFFF99;
+      color: #FFFFFF;
+    }
+
+    @include breakpoint(mobile) {
+      font-size: 12px;
+      padding: 6px 12px;
+      height: 34px;
+    }
+
+    @include breakpoint(tablet) {
+      font-size: 13px;
+    }
+  }
+
+  .saveBtn {
+    width: 212px;
+    height: 54px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #D13066;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    margin-top: 30px;
+
+    @include breakpoint(mobile) {
+      width: 100%;
+      height: 48px;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+
+    @include breakpoint(tablet) {
+      width: 160px;
+      height: 50px;
+      font-size: 15px;
+    }
+  }
+}

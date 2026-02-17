@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://www.gstatic.com/cast/js/receiver/1.0/cast_receiver.js"></script>
+        <script type="text/javascript">
+            cast.receiver.logger.setLevelValue(0);
+
+            var startideal = null;
+            var pauseideal = null;
+            var _firstload = true;
+            var _pauseideal = false;
+            var _ismediastart = false;
+            startideal = setTimeout(closreceiver, 600000);
+            // Initialize and start the media playing receiver
+            var receiver = new cast.receiver.Receiver(
+                    '4527E698-2C8C-4FED-8216-A57BAE66C497_1',
+                    [cast.receiver.RemoteMedia.NAMESPACE],
+                    "",
+                    5);
+            var remoteMedia = new cast.receiver.RemoteMedia();
+            remoteMedia.addChannelFactory(
+                    receiver.createChannelFactory(cast.receiver.RemoteMedia.NAMESPACE));
+
+            receiver.start();
+
+            window.addEventListener('load', function () {
+                var elem = document.getElementById('vid');
+                remoteMedia.setMediaElement(elem);
+                var vtitle = document.getElementById('videotitle');
+                elem.addEventListener("loadedmetadata", function () {
+                    var dtitle = document.getElementById('contenttitle');
+                    var dimg = document.getElementById('contentimage');
+                    //var status = document.getElementById('status');
+                    if (remoteMedia.getContentInfo() != null) {
+                        dtitle.innerHTML = remoteMedia.getContentInfo()["text"];
+                        //dtitle.innerHTML = JSON.stringify(remoteMedia.getContentInfo());
+                        dimg.innerHTML = '<img src="' + remoteMedia.getContentInfo()["url"] + '" width="120" height="120" />';
+                        vtitle.style.display = 'block';
+                        //status.style.display = 'none';
+                    }
+                    else {
+                        dtitle.innerHTML = remoteMedia.getTitle();
+                        dimg.innerHTML = '<img src="' + remoteMedia.getImageUrl() + '" width="120" height="120" />';
+                        vtitle.style.display = 'block';
+                        //status.style.display = 'none';
+                    }
+                }
+							);
+
+                var checkStatus = function () {
+                    var status = document.getElementById('status');
+                    var st = remoteMedia.getStatus()['state'];
+
+                    if (st == 0 || remoteMedia.getStatus()['current_time'] == 0) {
+                        if (_firstload) {
+                            _firstload = false;
+                            status.innerHTML = '<img src="yupptv.png">';
+                            status.style.display = 'block';
+                        }
+                    }
+                    else {
+
+                        if (st == 1 && remoteMedia.getStatus()['current_time'] > 0) {
+
+                            if (!(_pauseideal)) {
+                                _pauseideal = true;
+                                status.innerHTML = "";
+                                status.innerHTML = '<img src="pause.png">';
+                                status.style.display = 'block';
+                                vtitle.style.display = 'block';
+                                pauseideal = setTimeout(clospausereceiver, 600000);
+
+                            }
+                        }
+                        else {
+                            if (_ismediastart == true) {
+                                _pauseideal = false;
+                                if (pauseideal != null)
+                                    clearTimeout(pauseideal);
+                                status.innerHTML = "";
+                                status.innerHTML = '<img src="play.png">';
+                                setTimeout(function () { status.style.display = 'none'; vtitle.style.display = 'none'; }, 500);
+                            }
+                            else {
+                                _ismediastart = true;
+                                if (startideal != null)
+                                    clearTimeout(startideal);
+                                status.style.display = 'none';
+                                vtitle.style.display = 'block';
+                            }
+                            elem.style.display = 'block';
+                        }
+                    }
+                }
+                setInterval(checkStatus, 1000);
+            });
+
+
+            function clospausereceiver() {
+                if (_pauseideal) {
+                    window.close();
+                }
+            }
+            function closreceiver() {
+                if (!(_ismediastart)) {
+                    window.close();
+                }
+            }  
+			  
+        </script>
+        <title>
+        </title>
+    </head>
+     <body style="width:100%; height:100%;margin:0;padding:0;position:fixed;color:#fff;font-size:300%;background:#438ACA url(pattern.png) repeat;">
+        
+		<video id="vid" style="display:none;position:absolute;top:0;left:0;height:100%;width:100%"></video>
+        <div id="videotitle" style="display:none;width:100%;height:auto;position:fixed;top:0;left:0;background-color:#414D50;border-bottom:2px solid gray;opacity:0.5;filter:alpha(opacity=50);">
+			<div style="width:auto;height:auto;padding:2% 3%">
+                <div id="contentimage" style="float:left;width:auto;height:auto;padding-left:20px"><img src="" width="120" height="120" /></div>
+			    <div id="contenttitle" style="float:left;width:75%;height:auto;padding:20px 10px 0px 20px;"></div>		
+		    </div>
+        </div>
+		<div id="status" style="display:none;position:absolute;text-align:center;font-size:300%;width:100%;height:auto;top:35%;z-index:100;">
+			<img src="yupptv.png" alt=""/>
+		</div>
+    </body>
+</html>
