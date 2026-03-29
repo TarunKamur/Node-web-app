@@ -1,27 +1,40 @@
-# ---------- Stage 1 ----------
+# ---------- Stage 1: Builder ----------
 FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Install dependencies first (better caching)
 COPY package*.json ./
 RUN npm ci
 
+# Copy source
 COPY . .
 
+# Build app
 RUN npm run build:dishtv:prod
 
 
-# ---------- Stage 2 ----------
+# ---------- Stage 2: Production ----------
 FROM node:18-alpine
 
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Copy EVERYTHING except node_modules rebuild
-COPY --from=builder /app ./
+# Install ONLY production dependencies
+COPY package*.json ./
+RUN npm ci --only=production && npm cache clean --force
+
+# Copy built files only (NOT entire app)
+COPY --from=builder /app/dist ./dist
+
+# If app needs other files (uncomment if needed)
+# COPY --from=builder /app/public ./public
+
+# Security: run as non-root user
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+USER appuser
 
 EXPOSE 8081
 
-CMD ["npm", "start"]
-
+CMD ["node", "dist/index.js"]
